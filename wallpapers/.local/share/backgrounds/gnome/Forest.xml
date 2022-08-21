@@ -1,0 +1,37 @@
+<background>
+	<starttime>
+		<year>2022</year>
+		<month>1</month>
+		<day>1</day>
+		<hour>0</hour>
+		<minute>0</minute>
+		<second>0</second>
+	</starttime>
+	<static>
+		<duration>14400</duration>
+        <file>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/0.png</file>
+	</static>
+	<transition type="overlay">
+		<duration>7200</duration>
+        <from>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/0.png</from>
+        <to>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/1.png</to>
+	</transition>
+	<static>
+		<duration>25200</duration>
+        <file>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/1.png</file>
+	</static>
+	<transition type="overlay">
+		<duration>18000</duration>
+        <from>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/1.png</from>
+        <to>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/2.png</to>
+	</transition>
+	<transition type="overlay">
+		<duration>7200</duration>
+        <from>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/2.png</from>
+        <to>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/3.png</to>
+	</transition>
+	<static>
+		<duration>14400</duration>
+        <file>/home/ricardo/.local/share/backgrounds/gnome/Forest-wallpaper/3.png</file>
+	</static>
+</background>

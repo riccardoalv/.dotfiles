@@ -1,0 +1,62 @@
+#!/bin/env python
+
+from sys import stdin
+import argparse
+from bs4 import BeautifulSoup
+
+parser = argparse.ArgumentParser(prog='htmlx', usage='%(prog)s [options]')
+parser.add_argument('-t', dest='tagname', type=str, help='Returns all tags with that name', default='', required=False)
+parser.add_argument('-i', dest='id', type=str, help='Returns all tags with that ID', default='', required=False)
+parser.add_argument('-c', dest='clas', type=str, help='Returns all tags with that class', default='', required=False)
+parser.add_argument('-n', dest='number', help='Choose tag position', action='append', required=False)
+parser.add_argument('-a', dest='attribute', type=str, help='Return tag attribute value', default='', required=False)
+parser.add_argument('-I', dest='inner', help='show inner tag', action='store_const', const=-1,  required=False)
+parser.add_argument('-l', dest='len', help='len', action='store_const', const=-1,  required=False)
+
+args = parser.parse_args()
+
+html_doc = str(stdin.read())
+
+soup = BeautifulSoup(html_doc, 'html.parser')
+
+def findbytagname(arg):
+    return soup.find_all(arg)
+
+def findbyid(arg):
+    return soup.find_all(id=arg)
+
+def findbyclass(arg):
+    return soup.find_all(class_=arg)
+
+def parametercheck():
+    tag = []
+
+    try:
+        if args.tagname != '':
+            tag = findbytagname(args.tagname)
+        elif args.id != '':
+            tag = findbyid(args.id)
+        elif args.clas != '' :
+            tag  = findbyclass(args.clas)
+        if args.number:
+            tag = tag[int(args.number[0])]
+        if args.attribute != '' and len(args.number) >= 2:
+            tag = tag[args.attribute][int(args.number[1])]
+        elif args.attribute != '':
+                tag = tag[args.attribute]
+
+        return tag
+
+    except IndexError:
+        print('Exceeded the maximum number of tags')
+        exit()
+    except KeyError:
+        print('Attribute not found')
+        exit()
+
+if args.inner == -1:
+    print(parametercheck().string)
+elif args.len == -1:
+    print(len(parametercheck()))
+else:
+    print(parametercheck())
