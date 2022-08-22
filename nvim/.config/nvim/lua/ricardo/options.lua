@@ -1,6 +1,7 @@
 local o = vim.o
 
 -- Set general options
+o.cursorline = true
 o.ruler = true
 o.hidden = true
 o.backspace = "indent,eol,start"

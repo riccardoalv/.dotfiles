@@ -45,10 +45,6 @@ keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", opts)
 keymap("n", "<space><tab>", "i<cr><esc>", opts)
 keymap("n", "<space><space>", "i<space><esc>", opts)
-keymap("n", "<c-j>", "o<esc>", opts)
-keymap("n", "<c-k>", "O<esc>", opts)
-keymap("i", "<M-space>", "<BS>", opts)
-keymap("i", "<M-w>", "<c-w>", opts)
 
 -- Shiftwidth
 keymap("n", "<A-,>", "<ap", opts)
