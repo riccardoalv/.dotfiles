@@ -1,4 +1,9 @@
-require("bufferline").setup()
+require("bufferline").setup({
+	options = {
+		show_close_icon = false,
+		always_show_bufferline = false,
+	},
+})
 
 vim.cmd([[ au VimEnter * hi BufferLineTab          guibg=NONE ]])
 vim.cmd([[ au VimEnter * hi BufferLineFill         guibg=NONE ]])
