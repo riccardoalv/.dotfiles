@@ -58,7 +58,7 @@ require("hop").setup()
 keymap("n", "<space>w", ":HopWord<cr>", opts)
 
 -- FTerm.nvim
-require("FTerm").setup({ cmd = { "tmux" } })
+require("FTerm").setup({ cmd = { "tmux new -s FTerm || tmux attach-session -t FTerm" } })
 vim.cmd("command! FTerm lua require('FTerm').toggle()")
 
 keymap("n", "<A-i>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
