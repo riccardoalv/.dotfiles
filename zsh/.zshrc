@@ -39,7 +39,6 @@ plugins=(
     pip
     rust
     # zsh plugins
-    vi-mode
     zsh-syntax-highlighting
     zsh-autosuggestions
     dotenv
@@ -77,9 +76,6 @@ alias cleanmeta='exiftool -all:all= -overwrite_original '
 alias clip='xclip -selection clipboard'
 alias dj='django-admin '
 
-alias icat='kitty +kitten icat'
-alias ktab='kitty @ launch --type=tab --keep-focus --hold '
-
 alias open='xdg-open > /dev/null 2>/dev/null'
 alias du='du -h'
 alias x='chmod +x'
@@ -89,8 +85,9 @@ alias dc=docker-compose
 alias wget="wget -c"
 alias findgit="find . -iname '.git' -exec rm -rf {} \;; find . -iname '.gitignore' -exec rm -rf {} \;; find . -iname '.github' -exec rm -rf {} \;"
 
-GSCONNECT="$HOME/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/service/daemon.js" || echo ""
-. $HOME/.asdf/asdf.sh || echo "Install asdf"
+GSCONNECT="$HOME/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/service/daemon.js"
+test -e $GSCONNECT && gs () { $GSCONNECT -d $($GSCONNECT -l) }
+test -e "$HOME/.asdf/asdf.sh"
 unalias gg
 unalias md
 
