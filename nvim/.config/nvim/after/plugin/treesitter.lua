@@ -1,7 +1,12 @@
 local o = vim.o
 
+local status, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status then
+	return
+end
+
 -- nvim tree sitter
-require("nvim-treesitter.configs").setup({
+treesitter.setup({
 	highlight = {
 		enable = true,
 		disable = {},
@@ -25,7 +30,10 @@ require("nvim-treesitter.configs").setup({
 	},
 	matchup = {
 		enable = true,
-	}
+	},
+    autotag = {
+        enable = true
+    }
 })
 
 local parsers = require("nvim-treesitter.parsers")
@@ -43,9 +51,6 @@ end
 vim.cmd([[autocmd FileType * :lua ensure_treesitter_language_installed()]])
 
 o.foldexpr = "nvim_treesitter#foldexpr()"
-
--- autotag
-require("nvim-treesitter.configs").setup({ autotag = { enable = true } })
 
 require("treesitter-context").setup({
 	patterns = {

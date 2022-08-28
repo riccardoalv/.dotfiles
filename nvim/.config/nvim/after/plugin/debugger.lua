@@ -1,7 +1,11 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
-local dap = require("dap")
+local status, dap = pcall(require, "dap")
+if not status then
+	return
+end
+
 require("nvim-dap-virtual-text").setup()
 dap.adapters.lldb = {
 	type = "executable",

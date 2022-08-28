@@ -1,4 +1,9 @@
-require("bufferline").setup({
+local status, bufferline = pcall(require, "bufferline")
+if not status then
+	return
+end
+
+bufferline.setup({
 	options = {
 		show_close_icon = false,
 		always_show_bufferline = false,

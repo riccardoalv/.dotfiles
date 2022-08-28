@@ -1,5 +1,13 @@
-local cmp = require("cmp")
-local lspkind = require("lspkind")
+local status, cmp = pcall(require, "cmp")
+if not status then
+	return
+end
+
+local status1, lspkind = pcall(require, "lspkind")
+if not status1 then
+	return
+end
+
 cmp.setup({
 	experimental = {
 		ghost_text = true,
