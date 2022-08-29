@@ -11,7 +11,7 @@ gitsigns.setup({ current_line_blame = true })
 
 -- neoclip
 local status1, neoclip = pcall(require, "neoclip")
-if not status then
+if not status1 then
 	return
 end
 neoclip.setup()
@@ -20,7 +20,7 @@ keymap("n", "<A-y>", ':lua require("telescope").extensions.neoclip.default()<cr>
 
 -- harpoon
 local status2, harpoon = pcall(require, "harpoon")
-if not status then
+if not status2 then
 	return
 end
 
@@ -58,7 +58,6 @@ require("hop").setup()
 keymap("n", "<space>w", ":HopWord<cr>", opts)
 
 -- FTerm.nvim
-require("FTerm").setup({ cmd = { "tmux" } })
 vim.cmd("command! FTerm lua require('FTerm').toggle()")
 
 keymap("n", "<A-i>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
@@ -67,10 +66,11 @@ keymap("t", "<A-i>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 set_var("asynctasks_term_pos", "bottom")
 
 -- nvim-tree.lua
-local status, nvim_tree = pcall(require, "nvim-tree")
+local nvim_tree = require("nvim-tree")
 if not status then
 	return
 end
+
 nvim_tree.setup({ view = { side = "right" } })
 keymap("n", "<leader>nn", ":NvimTreeToggle<cr>", opts)
 vim.cmd([[ au BufEnter NvimTree hi clear StatusLine ]])
@@ -94,7 +94,7 @@ keymap("v", "<space>rp", ":lua require('refactoring').debug.print_var({})<CR>", 
 keymap("n", "<space>rc", ":lua require('refactoring').debug.cleanup({})<CR>", { noremap = true })
 
 -- colorizer
-local status, colorizer = pcall(require, "colorizer")
+local colorizer = require("colorizer")
 if not status then
 	return
 end
