@@ -14,7 +14,10 @@ rm -rf $HOME/.zshrc
 
 # set dotfiles
 cd $HOME/.dotfiles
-STOW_FOLDERS="git,scripts,kitty,i3,zsh,tmux,wallpapers"
+
+mkdir $HOME/.local/bin
+
+STOW_FOLDERS="git,scripts,kitty,i3,zsh,tmux"
 
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
