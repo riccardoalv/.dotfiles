@@ -20,16 +20,14 @@ local on_attach = function(client, bufnr)
 	keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
 	keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
 
-	-- formatting
-	if client.resolved_capabilities.document_formatting then
-		vim.cmd([[augroup Format]])
-		vim.cmd([[autocmd! * <buffer>]])
-		vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
-		vim.cmd([[augroup END]])
-	end
-
 	client.resolved_capabilities.document_formatting = false
 end
+
+-- formatting
+vim.cmd([[augroup Format]])
+vim.cmd([[autocmd! * <buffer>]])
+vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+vim.cmd([[augroup END]])
 
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticError" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticInfo" })
