@@ -4,6 +4,8 @@ export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 export PATH=$PATH:$HOME/.luarocks/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin/
+export PATH=$PATH:$HOME/.nix-profile/bin
+export PATH=$PATH:$HOME/.asdf/shims
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 export VISUAL=nvim
@@ -49,10 +51,11 @@ plugins=(
     # others
     adb
     docker
+    nix-shell
 )
 
 source $ZSH/oh-my-zsh.sh
-alias grep='grep --color'
+alias grep='rg '
 
 # auto pair plugin
 source $HOME/.zsh-autopair/autopair.zsh
@@ -88,7 +91,6 @@ alias findgit="find . -iname '.git' -exec rm -rf {} \;; find . -iname '.gitignor
 
 GSCONNECT="$HOME/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/service/daemon.js"
 test -e $GSCONNECT && gs () { $GSCONNECT -d $($GSCONNECT -l) }
-test -e "$HOME/.asdf/asdf.sh"
 unalias gg
 unalias md
 
