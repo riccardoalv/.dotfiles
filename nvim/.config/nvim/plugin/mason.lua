@@ -20,7 +20,7 @@ lspconfig.setup({
 		"dockerls",
 		"sumneko_lua",
 		"rust_analyzer",
-		"pylsp",
+		"pyright",
 		"tsserver",
 		"texlab",
 	},
