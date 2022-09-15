@@ -64,6 +64,14 @@
        core = { excludesfile = "/home/ricardo/.gitignore"; };
        init = { defaultBranch = "master"; };
        credential = { helper = "store"; };
+       color = {
+           diff = "auto";
+           status = "auto";
+           branch = "auto";
+           interactive = "auto";
+           ui = true;
+           pager = true;
+       };
     };
     ignores =  [
       ".vim"
