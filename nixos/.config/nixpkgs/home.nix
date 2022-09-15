@@ -7,6 +7,12 @@
     ./dconf.nix
   ];
 
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "ricardo";
@@ -14,7 +20,6 @@
 
   home.packages = with pkgs; [
     vim
-    neovim
     vscode
     xclip
     ctags
@@ -41,6 +46,11 @@
     gnome.gnome-tweaks
     gnome.adwaita-icon-theme 
   ];
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+  };
 
   programs.starship = {
     enable = true;
