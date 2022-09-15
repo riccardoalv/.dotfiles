@@ -2,6 +2,13 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local set_var = vim.api.nvim_set_var
 
+-- vim-easy-align
+keymap("x", "ga", "<Plug>(EasyAlign)", opts)
+keymap("n", "ga", "<Plug>(EasyAlign)", opts)
+
+-- vim-argwrap
+keymap("n", "<leader>a", "<cmd>ArgWrap<cr>", opts)
+
 -- Gitsigns
 local status, gitsigns = pcall(require, "gitsigns")
 if not status then

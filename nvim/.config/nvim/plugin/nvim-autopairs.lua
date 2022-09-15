@@ -4,5 +4,5 @@ if not status then
 end
 
 autopairs.setup({
-  disable_filetype = { "TelescopePrompt"},
+	disable_filetype = { "TelescopePrompt" },
 })

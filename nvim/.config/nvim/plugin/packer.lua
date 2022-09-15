@@ -32,6 +32,8 @@ packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("lewis6991/gitsigns.nvim")
+	use("junegunn/vim-easy-align")
+	use("FooSoft/vim-argwrap")
 
 	-- treesitter
 	use("nvim-treesitter/nvim-treesitter-textobjects")

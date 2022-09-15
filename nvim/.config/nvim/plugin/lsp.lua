@@ -10,6 +10,17 @@ if not status1 then
 	return
 end
 
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -20,14 +31,17 @@ local on_attach = function(client, bufnr)
 	keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
 	keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
 
-	client.resolved_capabilities.document_formatting = false
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
 end
-
--- formatting
-vim.cmd([[augroup Format]])
-vim.cmd([[autocmd! * <buffer>]])
-vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
-vim.cmd([[augroup END]])
 
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticError" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticInfo" })

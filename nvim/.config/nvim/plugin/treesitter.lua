@@ -31,9 +31,9 @@ treesitter.setup({
 	matchup = {
 		enable = true,
 	},
-    autotag = {
-        enable = true
-    }
+	autotag = {
+		enable = true,
+	},
 })
 
 local parsers = require("nvim-treesitter.parsers")
