@@ -28,6 +28,8 @@
   virtualisation.libvirtd.enable = true;
 
   # gnome
+  services.gvfs.enable = true;
+  services.gnome.sushi.enable = true;
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
@@ -52,7 +54,11 @@
   programs.neovim.defaultEditor = true;
 
   # Samba
-  services.samba.enable = true;
+  services.samba-wsdd.enable = true;
+  services.samba = {
+    enable = true;
+    package = pkgs.sambaFull;
+  };
 
   # auto-cpufreq
   services.auto-cpufreq.enable = true;
