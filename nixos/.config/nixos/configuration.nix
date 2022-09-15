@@ -12,9 +12,45 @@
   ];
 
   # Use the Systemd-Boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    plymouth.enable = true;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        useOSProber = true;
+        # enableCryptdisk = true;
+      };
+    };
+    kernelParams = [
+      "quiet"
+      "splash"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    consoleLogLevel = 0;
+    initrd = {
+      verbose = false;
+      # luks.devices = [
+      #   {
+      #     name = "root";
+      #     device = "/disk/by-uuid/********-****-****-****-************";
+      #   };
+      #   {
+      #     name = "home"
+      #     device = "/disk/by-uuid/********-****-****-****-************"
+      #   };
+      # ];
+    };
+  };
 
-  boot.plymouth.enable = true;
+  services.fwupd.enable = true;
+
+  swapDevices = [{device = "/var/swapfile"; size = 4000;}];
 
   # Network
   networking.usePredictableInterfaceNames = false;
@@ -44,7 +80,6 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
   };
 
@@ -64,6 +99,8 @@
 
   # Enable Auto Upgrade
   system.autoUpgrade.enable = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.stateVersion = "22.05";
 }
