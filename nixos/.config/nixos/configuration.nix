@@ -22,7 +22,8 @@
         efiSupport = true;
         device = "nodev";
         useOSProber = true;
-        # enableCryptdisk = true;
+# enableCryptdisk = true;
+        extraConfig = "set theme=/boot/grub/themes/vimix/theme.txt";
       };
     };
     kernelParams = [
