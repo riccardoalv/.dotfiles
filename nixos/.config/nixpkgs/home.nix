@@ -7,12 +7,6 @@
     ./dconf.nix
   ];
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "ricardo";
@@ -20,6 +14,9 @@
 
   home.packages = with pkgs; [
     vim
+    neovim
+    tree-sitter
+    luarocks
     vscode
     xclip
     ctags
@@ -46,18 +43,6 @@
     gnome.gnome-tweaks
     gnome.adwaita-icon-theme 
   ];
-
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;
-    extraPackages = with pkgs; [
-        tree-sitter
-        luarocks
-    ];
-    withNodeJs = true;
-    withPython3 = true;
-    withRuby = true;
-  };
 
   programs.starship = {
     enable = true;
