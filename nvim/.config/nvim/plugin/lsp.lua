@@ -83,3 +83,8 @@ lspconfig.texlab.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+
+lspconfig.rnix.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})

@@ -23,6 +23,7 @@ lspconfig.setup({
 		"pyright",
 		"tsserver",
 		"texlab",
+		"rnix",
 	},
 	automatic_installation = true,
 })
@@ -32,5 +33,6 @@ installer.setup({
 		"hadolint",
 		"stylua",
 		"autopep8",
+		"luacheck",
 	},
 })

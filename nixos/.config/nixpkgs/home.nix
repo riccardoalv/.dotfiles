@@ -50,6 +50,13 @@
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
+    extraPackages = with pkgs; [
+        tree-sitter
+        luarocks
+    ];
+    withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
   };
 
   programs.starship = {
