@@ -18,6 +18,9 @@
 
   # pkgs Settings
 
+  # flatpak
+  services.flatpak.enable = true;
+
   # docker
   virtualisation.docker.enable = true;
   virtualisation.docker.daemon.settings = { 
