@@ -5,6 +5,7 @@
     ./tmux.nix
     ./kitty.nix
     ./dconf.nix
+    ./dev.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -27,15 +28,15 @@
     stow
 
     docker-compose
+    texlive.combined.scheme-medium
     asdf-vm
     gcc
     rustup
-    stdenv.cc.cc
-    texlive.combined.scheme-medium
+    python3
+    nodejs
 
     nmap
 
-    kitty
     firefox
     brave
     chromium
@@ -44,46 +45,6 @@
     gnome.gnome-tweaks
     gnome.adwaita-icon-theme 
   ];
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-    };
-  };
-
-  programs.gh = {
-    enable = true;
-    settings = {
-      git_protocol = "ssh";
-    };
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Ricardo Alves da Silva";
-    userEmail = "ricardcpu@gmail.com";
-    extraConfig = {
-       core = { excludesfile = "/home/ricardo/.gitignore"; };
-       init = { defaultBranch = "master"; };
-       credential = { helper = "store"; };
-       color = {
-           diff = "auto";
-           status = "auto";
-           branch = "auto";
-           interactive = "auto";
-           ui = true;
-           pager = true;
-       };
-    };
-    ignores =  [
-      ".vim"
-      ".tasks"
-      ".env"
-      ".dotenv"
-      "Session.vim"
-    ];
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
