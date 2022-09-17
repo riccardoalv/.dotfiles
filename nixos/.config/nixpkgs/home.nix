@@ -31,6 +31,7 @@
     gcc
     rustup
     stdenv.cc.cc
+    texlive.combined.scheme-medium
 
     nmap
 
