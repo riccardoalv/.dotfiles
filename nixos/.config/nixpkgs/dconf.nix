@@ -70,6 +70,14 @@
       favorite-apps = [ "kitty.desktop" "org.gnome.Nautilus.desktop" "brave-browser.desktop" "spotify.desktop" "org.gnome.Geary.desktop" "code.desktop" ];
       had-bluetooth-devices-setup=false;
     };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Shift><Super>m";
+      command = "geary";
+      name = "Launch geary";
+    };
     "org/gnome/terminal/legacy" = {
       theme-variant = "dark";
     };
