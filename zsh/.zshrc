@@ -35,6 +35,7 @@ plugins=(
     # languages plugins
     asdf
     npm
+    nvm
     python
     pip
     pyenv

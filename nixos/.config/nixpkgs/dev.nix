@@ -19,7 +19,6 @@
     userName = "Ricardo Alves da Silva";
     userEmail = "ricardcpu@gmail.com";
     extraConfig = {
-      core = { excludesfile = "/home/ricardo/.gitignore"; };
       init = { defaultBranch = "master"; };
       credential = { helper = "store"; };
       color = {
