@@ -34,6 +34,7 @@ packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	use("junegunn/vim-easy-align")
 	use("FooSoft/vim-argwrap")
+	use("editorconfig/editorconfig-vim")
 
 	-- treesitter
 	use("nvim-treesitter/nvim-treesitter-textobjects")
