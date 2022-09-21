@@ -27,6 +27,8 @@
       xkb-options = [ "caps:swapescape" ];
     };
     "org/gnome/desktop/interface" = {
+      clock-show-weekday = true;
+      show-battery-percentage = true;
       color-scheme = "prefer-dark";
       font-antialiasing = "grayscale";
       font-hinting = "slight";

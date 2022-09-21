@@ -2,8 +2,12 @@
 {
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       add_newline = false;
+      battery = {
+        disabled = true;
+      };
     };
   };
 
@@ -32,12 +36,11 @@
     };
     ignores =  [
       ".vim"
-        ".tasks"
-        ".env"
-        ".dotenv"
-        "Session.vim"
-        "shell.nix"
-        "default.nix"
+      ".env"
+      ".dotenv"
+      "tags"
+      "Session.vim"
+      "shell.nix"
     ];
   };
 
