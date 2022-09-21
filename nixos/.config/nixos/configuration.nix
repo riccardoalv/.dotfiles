@@ -72,6 +72,9 @@
       "networkmanager"
       "docker"
       "libvirtd"
+      "flatpak"
+      "qemu-libvirtd"
+      "kvm"
     ];
   };
 
@@ -95,9 +98,6 @@
   # Enable touchpad support
   services.xserver.libinput.enable = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable Auto Upgrade
   system.autoUpgrade.enable = true;
 
@@ -105,4 +105,3 @@
 
   system.stateVersion = "22.05";
 }
-

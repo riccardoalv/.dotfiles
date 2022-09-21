@@ -14,6 +14,7 @@
     virt-manager
     vim
     stow
+    cifs-utils
   ];
 
   # pkgs Settings
@@ -61,6 +62,29 @@
   services.samba = {
     enable = true;
     package = pkgs.sambaFull;
+  };
+
+  # Avahi
+  avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+      hinfo = true;
+      userServices = true;
+      workstation = true;
+    };
+  };
+
+  # Enable CUPS to print documents.
+  services.printing = {
+    enable = true;
+    browsing = true;
+    drivers = with pkgs; [
+      hplipWithPlugin
+    ];
   };
 
   # auto-cpufreq
