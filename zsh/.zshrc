@@ -90,8 +90,6 @@ alias dc=docker-compose
 alias wget="wget -c"
 alias findgit="find . -iname '.git' -exec rm -rf {} \;; find . -iname '.gitignore' -exec rm -rf {} \;; find . -iname '.github' -exec rm -rf {} \;"
 
-GSCONNECT="$HOME/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/service/daemon.js"
-test -e $GSCONNECT && gs () { $GSCONNECT -d $($GSCONNECT -l) }
 unalias gg
 unalias md
 
