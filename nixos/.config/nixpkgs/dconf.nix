@@ -15,6 +15,11 @@
       name = "X-GNOME-Utilities.directory";
       translate=true;
     };
+    "org/gnome/desktop/app-folders/folders/bb93b9e9-73db-436c-88d5-9dac1e98dbc0" = {
+      apps = [ "org.kde.kdeconnect.nonplasma.desktop" "org.kde.kdeconnect.app.desktop" "org.kde.kdeconnect-settings.desktop" "org.kde.kdeconnect.sms.desktop" ];
+      name="KDE";
+      translate=false;
+    };
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
