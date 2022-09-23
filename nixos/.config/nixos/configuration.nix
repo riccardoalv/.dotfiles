@@ -98,9 +98,6 @@
   # Enable touchpad support
   services.xserver.libinput.enable = true;
 
-  # Enable Auto Upgrade
-  system.autoUpgrade.enable = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.stateVersion = "22.05";

@@ -34,6 +34,7 @@
     rustup
     python3
     nodejs
+    ansible
 
     nmap
 
@@ -58,7 +59,10 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  services.home-manager.autoUpgrade.enable = true;
+  services.home-manager.autoUpgrade = {
+    enable = true;
+    frequency = "daily";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

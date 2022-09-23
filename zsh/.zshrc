@@ -80,6 +80,7 @@ alias meta='exiftool -d "%e %B de %Y as %r %a"'
 alias cleanmeta='exiftool -all:all= -overwrite_original '
 alias clip='xclip -selection clipboard'
 alias dj='django-admin '
+alias sshk="kitty +kitten ssh "
 
 alias open='xdg-open > /dev/null 2>/dev/null'
 alias du='du -h'

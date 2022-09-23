@@ -35,12 +35,14 @@
 
       allow_remote_control = true;
       enabled_layouts = "splits";
-      linux_display_server = "x11";
+      /* linux_display_server = "x11"; */
       enable_audio_bell = false;
       remember_window_size = true;
       listen_on = "unix:/tmp/mykitty";
 
       background = "#171B20";
+      background_opacity = "0.9";
+      hide_window_decorations = "yes";
       dynamic_background_opacity = true;
       active_border_color = "#2C4D6C";
       tab_bar_background = "#101014";
