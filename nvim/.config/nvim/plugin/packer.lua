@@ -9,6 +9,7 @@ packer.init({
 packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
+	use("navarasu/onedark.nvim")
 	use("windwp/nvim-autopairs")
 	use("andymass/vim-matchup")
 	use("kana/vim-submode")
@@ -37,10 +38,12 @@ packer.startup(function(use)
 	use("editorconfig/editorconfig-vim")
 
 	-- treesitter
-	use("nvim-treesitter/nvim-treesitter-textobjects")
-	use("nvim-treesitter/playground")
-	use("nvim-treesitter/nvim-treesitter-context")
-	use("nvim-treesitter/nvim-treesitter")
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		"nvim-treesitter/playground",
+		"nvim-treesitter/nvim-treesitter-context",
+		"nvim-treesitter/nvim-treesitter",
+	})
 
 	-- Snippets Plugins
 	use("L3MON4D3/LuaSnip")

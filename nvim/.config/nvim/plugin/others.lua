@@ -65,12 +65,14 @@ require("hop").setup()
 keymap("n", "<space>w", ":HopWord<cr>", opts)
 
 -- FTerm.nvim
+require("FTerm").setup({
+	border = "rounded",
+})
+
 vim.cmd("command! FTerm lua require('FTerm').toggle()")
 
 keymap("n", "<A-i>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
 keymap("t", "<A-i>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
-
-set_var("asynctasks_term_pos", "bottom")
 
 -- nvim-tree.lua
 local nvim_tree = require("nvim-tree")
@@ -108,6 +110,12 @@ end
 colorizer.setup()
 
 require("indent_blankline").setup({ buftype_exclude = { "terminal" }, char = "|" })
+
+-- nvim-autopairs
+local Rule = require("nvim-autopairs.rule")
+local npairs = require("nvim-autopairs")
+
+npairs.add_rule(Rule("$$", "$$", "tex"))
 
 -- Nvim Comment
 require("nvim_comment").setup()
