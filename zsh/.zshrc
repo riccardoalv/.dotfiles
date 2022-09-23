@@ -81,6 +81,7 @@ alias cleanmeta='exiftool -all:all= -overwrite_original '
 alias clip='xclip -selection clipboard'
 alias dj='django-admin '
 alias sshk="kitty +kitten ssh "
+alias icat="kitty +kitten icat "
 
 alias open='xdg-open > /dev/null 2>/dev/null'
 alias du='du -h'

@@ -28,7 +28,7 @@
     stow
 
     docker-compose
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     asdf-vm
     gcc
     rustup
