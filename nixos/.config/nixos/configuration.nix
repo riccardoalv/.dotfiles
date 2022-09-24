@@ -13,6 +13,9 @@
 
   # Use the Systemd-Boot EFI boot loader.
   boot = {
+    kernel.sysctl = {
+      "vm.vfs_cache_pressure" = 50 ;
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
     loader = {
@@ -23,7 +26,6 @@
         device = "nodev";
         useOSProber = true;
 # enableCryptdisk = true;
-        extraConfig = "set theme=/boot/grub/themes/vimix/theme.txt";
       };
     };
     kernelParams = [
@@ -51,8 +53,6 @@
 
   services.fwupd.enable = true;
 
-  swapDevices = [{device = "/var/swapfile"; size = 4000;}];
-
   # Network
   networking.usePredictableInterfaceNames = false;
 
@@ -67,7 +67,7 @@
     isNormalUser = true;
     home = "/home/ricardo";
     description = "Ricardo Alves da Silva";
-    extraGroups = [ 
+    extraGroups = [
       "wheel"
       "networkmanager"
       "docker"
