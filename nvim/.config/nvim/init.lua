@@ -6,8 +6,5 @@ require("onedark").setup({
 	colors = {
 		bg0 = "#171b20",
 	},
-	highlights = {
-		FloatBorder = { bg = "NONE" },
-	},
 })
 require("onedark").load()

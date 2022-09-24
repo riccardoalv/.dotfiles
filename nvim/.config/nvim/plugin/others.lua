@@ -64,15 +64,23 @@ endf
 require("hop").setup()
 keymap("n", "<space>w", ":HopWord<cr>", opts)
 
--- FTerm.nvim
-require("FTerm").setup({
-	border = "rounded",
+-- toggle term
+
+require("toggleterm").setup({
+	open_mapping = [[<A-i>]],
+	highlights = {
+		FloatBorder = {
+			guibg = "NONE",
+		},
+	},
+	direction = "float",
+	float_opts = {
+		border = "rounded",
+		winblend = 10,
+		width = 120,
+		height = 30,
+	},
 })
-
-vim.cmd("command! FTerm lua require('FTerm').toggle()")
-
-keymap("n", "<A-i>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
-keymap("t", "<A-i>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 
 -- nvim-tree.lua
 local nvim_tree = require("nvim-tree")
