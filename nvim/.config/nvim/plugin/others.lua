@@ -90,7 +90,6 @@ end
 
 nvim_tree.setup({ view = { side = "right" } })
 keymap("n", "<leader>nn", ":NvimTreeToggle<cr>", opts)
-vim.cmd([[ au BufEnter NvimTree hi clear StatusLine ]])
 
 -- Matchup
 vim.g.loaded_matchit = 1

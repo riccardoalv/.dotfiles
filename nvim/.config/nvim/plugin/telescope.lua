@@ -6,6 +6,8 @@ if not status then
 	return
 end
 
+local dropdown = [[ require("telescope.themes").get_dropdown({}) ]]
+
 -- Telescope.nvim
 local actions = require("telescope.actions")
 telescope.setup({
@@ -29,25 +31,19 @@ telescope.setup({
 
 telescope.load_extension("ui-select")
 
+local f = string.format
+
 vim.cmd([[au FileType TelescopePrompt nmap <buffer> v <c-v>]])
 vim.cmd([[au FileType TelescopePrompt nmap <buffer> x <c-x>]])
 
-keymap("n", "<leader>f", ':lua require("telescope.builtin").git_files()<cr>', opts)
-keymap("n", "<leader>g", ':lua require("telescope.builtin").live_grep()<cr>', opts)
-keymap(
-	"n",
-	"<c-p>",
-	':lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({}))<cr>',
-	opts
-)
-keymap("n", "<leader>s", ':lua require("telescope.builtin").git_status()<cr>', opts)
-keymap("n", "<A-b>", ':lua require("telescope.builtin").git_branches()<cr>', opts)
-keymap("n", "<A-t>", ':lua require("telescope.builtin").treesitter()<cr>', opts)
-keymap("n", "<A-q>", ':lua require("telescope.builtin").quickfix()<cr>', opts)
-keymap(
-	"n",
-	"<space>b",
-	':lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({}))<cr>',
-	opts
-)
-keymap("n", "<space>ca", ":lua vim.lsp.buf.code_action()<cr>", opts)
+-- stylua: ignore start
+keymap("n", "<leader>f", f(':lua require("telescope.builtin").git_files(%s)<cr>',    dropdown), opts)
+keymap("n", "<c-p>",     f(':lua require("telescope.builtin").find_files(%s)<cr>',   dropdown), opts)
+keymap("n", "<leader>s", f(':lua require("telescope.builtin").git_status(%s)<cr>',   dropdown), opts)
+keymap("n", "<A-b>",     f(':lua require("telescope.builtin").git_branches(%s)<cr>', dropdown), opts)
+keymap("n", "<A-q>",     f(':lua require("telescope.builtin").quickfix(%s)<cr>',     dropdown), opts)
+keymap("n", "<space>b",  f(':lua require("telescope.builtin").buffers(%s)<cr>',      dropdown), opts)
+keymap("n", "<leader>g", ':lua require("telescope.builtin").live_grep()<cr>',        opts)
+keymap("n", "<A-t>",     ':lua require("telescope.builtin").treesitter()<cr>',       opts)
+keymap("n", "<space>ca", ":lua vim.lsp.buf.code_action()<cr>",                       opts)
+-- stylua: ignore end

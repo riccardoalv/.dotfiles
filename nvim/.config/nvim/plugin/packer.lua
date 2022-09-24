@@ -8,6 +8,7 @@ packer.startup(function(use)
 
 	use("navarasu/onedark.nvim")
 	use("andymass/vim-matchup")
+	use("rcarriga/nvim-notify")
 	use("kana/vim-submode")
 	use("terrortylor/nvim-comment")
 	use("AckslD/nvim-neoclip.lua")
