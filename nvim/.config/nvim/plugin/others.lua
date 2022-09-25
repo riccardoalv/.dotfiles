@@ -77,8 +77,8 @@ require("toggleterm").setup({
 	float_opts = {
 		border = "rounded",
 		winblend = 10,
-		width = 120,
-		height = 30,
+		width = math.ceil(0.55 * vim.o.columns),
+		height = math.ceil(0.55 * vim.o.lines),
 	},
 })
 
