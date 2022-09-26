@@ -61,7 +61,7 @@
 
   services.home-manager.autoUpgrade = {
     enable = true;
-    frequency = "daily";
+    frequency = "weekly";
   };
 
   # Let Home Manager install and manage itself.

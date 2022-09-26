@@ -57,13 +57,6 @@
   # Editor
   programs.neovim.defaultEditor = true;
 
-  # Samba
-  services.samba-wsdd.enable = true;
-  services.samba = {
-    enable = true;
-    package = pkgs.sambaFull;
-  };
-
   # Avahi
   avahi = {
     enable = true;
