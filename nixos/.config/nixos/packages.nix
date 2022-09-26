@@ -24,8 +24,8 @@
 
   # docker
   virtualisation.docker.enable = true;
-  virtualisation.docker.daemon.settings = { 
-    data-root = "/home/ricardo/.local/var/lib/"; 
+  virtualisation.docker.daemon.settings = {
+    data-root = "/home/ricardo/.local/var/lib/";
   };
 
   # libvirtd
@@ -90,8 +90,8 @@
   # auto-cpufreq
   services.auto-cpufreq.enable = true;
   services.thermald.enable = true;
-  systemd.packages = with pkgs; [ 
-    auto-cpufreq 
+  systemd.packages = with pkgs; [
+    auto-cpufreq
     thermald
   ];
 

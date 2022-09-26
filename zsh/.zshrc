@@ -26,6 +26,7 @@ md () {
 
 # ZSH_THEME="bira"
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 
 plugins=(
     # git plugins
