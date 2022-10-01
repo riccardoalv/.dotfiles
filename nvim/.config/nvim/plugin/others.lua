@@ -116,7 +116,13 @@ if not status then
 end
 colorizer.setup()
 
-require("indent_blankline").setup({ buftype_exclude = { "terminal" }, char = "|" })
+-- indent blankline
+vim.opt.list = true
+require("indent_blankline").setup({
+	show_current_context = true,
+	show_current_context_start = true,
+	buftype_exclude = { "terminal" },
+})
 
 -- nvim-autopairs
 local Rule = require("nvim-autopairs.rule")
