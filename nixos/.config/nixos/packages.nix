@@ -34,6 +34,7 @@
   # gnome
   services.gvfs.enable = true;
   services.gnome.sushi.enable = true;
+  services.colord.enable = true;
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
@@ -46,6 +47,11 @@
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour
+    epiphany
+    gnome-user-docs
+    gnome.gnome-software
+    gnome.gnome-weather
+    gnome.gnome-maps
   ]);
 
   # zsh
@@ -58,7 +64,7 @@
   programs.neovim.defaultEditor = true;
 
   # Avahi
-  avahi = {
+  services.avahi = {
     enable = true;
     nssmdns = true;
     publish = {
@@ -75,27 +81,17 @@
   services.printing = {
     enable = true;
     browsing = true;
-    drivers = with pkgs; [
-      hplipWithPlugin
-    ];
+    drivers = with pkgs; [ hplip ];
   };
 
   # auto-cpufreq
   services.auto-cpufreq.enable = true;
   services.thermald.enable = true;
-  systemd.packages = with pkgs; [
-    auto-cpufreq
-    thermald
-  ];
-
+  systemd.packages = with pkgs; [ auto-cpufreq thermald ];
   programs.nix-ld.enable = true;
   environment.variables = {
-    NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
-      pkgs.gcc
-      pkgs.stdenv.cc.cc
-      pkgs.openssl
-      pkgs.glib
-    ];
+    NIX_LD_LIBRARY_PATH =
+      lib.makeLibraryPath [ pkgs.gcc pkgs.stdenv.cc.cc pkgs.openssl pkgs.glib ];
     NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
   };
 }

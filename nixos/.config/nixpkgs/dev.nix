@@ -1,21 +1,16 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      battery = {
-        disabled = true;
-      };
+      battery = { disabled = true; };
     };
   };
 
   programs.gh = {
     enable = true;
-    settings = {
-      git_protocol = "ssh";
-    };
+    settings = { git_protocol = "ssh"; };
   };
 
   programs.git = {
@@ -34,14 +29,7 @@
         pager = true;
       };
     };
-    ignores =  [
-      ".vim"
-      ".env"
-      ".dotenv"
-      "tags"
-      "Session.vim"
-      "shell.nix"
-    ];
+    ignores = [ ".vim" "tags" "Session.vim" "shell.nix" ];
   };
   programs.direnv = {
     enable = true;

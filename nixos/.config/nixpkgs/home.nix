@@ -1,12 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./tmux.nix
-    ./kitty.nix
-    ./dconf.nix
-    ./dev.nix
-  ];
+  imports = [ ./tmux.nix ./kitty.nix ./dconf.nix ./dev.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -14,7 +9,6 @@
   home.homeDirectory = "/home/ricardo";
 
   home.packages = with pkgs; [
-    vim
     neovim
     tree-sitter
     luarocks
@@ -45,6 +39,7 @@
     spotify
     gnome.gnome-tweaks
     gnome.adwaita-icon-theme
+    gnomeExtensions.appindicator
   ];
 
   # This value determines the Home Manager release that your

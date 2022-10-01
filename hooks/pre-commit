@@ -5,3 +5,4 @@ set -e
 echo "Running stylua..."
 
 stylua $(git ls-files | grep '.*lua$')
+nixfmt $(git ls-files | grep '.*nix$')

@@ -48,8 +48,8 @@
       cursor_blink_interval = 0;
       tab_bar_style = "powerline";
       tab_fade = 1;
-      active_tab_foreground   = "#171B20";
-      active_tab_background   = "#6495ED";
+      active_tab_foreground = "#171B20";
+      active_tab_background = "#6495ED";
       inactive_tab_foreground = "#787c99";
       inactive_tab_background = "#171B20";
     };

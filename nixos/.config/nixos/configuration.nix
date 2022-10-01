@@ -5,17 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ./packages.nix
   ];
 
   # Use the Systemd-Boot EFI boot loader.
   boot = {
-    kernel.sysctl = {
-      "vm.vfs_cache_pressure" = 50 ;
-    };
+    kernel.sysctl = { "vm.vfs_cache_pressure" = 50; };
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
     loader = {
@@ -25,7 +22,7 @@
         efiSupport = true;
         device = "nodev";
         useOSProber = true;
-# enableCryptdisk = true;
+        # enableCryptdisk = true;
       };
     };
     kernelParams = [
@@ -56,7 +53,7 @@
   # Network
   networking.usePredictableInterfaceNames = false;
 
-  networking.hostName = "NixOs"; # Define your hostname.
+  networking.hostName = "NixOS"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
