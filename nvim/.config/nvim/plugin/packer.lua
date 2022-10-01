@@ -7,6 +7,7 @@ packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	use("navarasu/onedark.nvim")
+	use("lewis6991/impatient.nvim")
 	use("andymass/vim-matchup")
 	use("rcarriga/nvim-notify")
 	use("kana/vim-submode")
