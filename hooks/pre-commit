@@ -3,6 +3,7 @@
 set -e
 
 echo "Running stylua..."
+stylua $(find . -name "*.lua" ! -path '*/undodir/**')
 
-stylua $(git ls-files | grep '.*lua$')
-nixfmt $(git ls-files | grep '.*nix$')
+echo "Running nixfmt..."
+nixfmt $(find . -name "*.nix" ! -path '*/undodir/**')
