@@ -6,8 +6,7 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    /etc/nixos/hardware-configuration.nix
-    ./packages.nix
+    ./modules/packages.nix
   ];
 
   # Use the Systemd-Boot EFI boot loader.

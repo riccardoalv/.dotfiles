@@ -9,7 +9,7 @@ cd $HOME/.dotfiles
 
 mkdir $HOME/.local/bin
 
-STOW_FOLDERS="nvim,scripts,nixos,zsh"
+STOW_FOLDERS="nvim,scripts,zsh"
 
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
