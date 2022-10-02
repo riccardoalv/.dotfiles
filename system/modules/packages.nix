@@ -23,9 +23,10 @@
   services.flatpak.enable = true;
 
   # docker
-  virtualisation.docker.enable = true;
-  virtualisation.docker.daemon.settings = {
-    data-root = "/home/ricardo/.local/var/lib/";
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+    daemon.settings = { data-root = "/home/ricardo/.local/var/lib/"; };
   };
 
   # libvirtd
@@ -92,7 +93,8 @@
   # auto-cpufreq
   services.auto-cpufreq.enable = true;
   services.thermald.enable = true;
-  systemd.packages = with pkgs; [ auto-cpufreq thermald ];
+
+  # nix-ld
   programs.nix-ld.enable = true;
   environment.variables = {
     NIX_LD_LIBRARY_PATH =
