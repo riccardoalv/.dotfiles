@@ -71,6 +71,11 @@
       "flatpak"
       "qemu-libvirtd"
       "kvm"
+      "adbusers"
+      "input"
+      "video"
+      "audio"
+      "colord"
     ];
   };
 

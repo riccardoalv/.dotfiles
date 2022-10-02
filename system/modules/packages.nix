@@ -55,6 +55,9 @@
     gnome.gnome-music
   ]);
 
+  # Android
+  programs.adb.enable = true;
+
   # zsh
   programs.zsh.enable = true;
 
