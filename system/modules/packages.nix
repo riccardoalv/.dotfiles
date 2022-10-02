@@ -40,6 +40,7 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
+    excludePackages = (with pkgs; [ xterm ]);
   };
   programs.xwayland.enable = true;
   programs.dconf.enable = true;
