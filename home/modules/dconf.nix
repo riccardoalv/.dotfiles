@@ -3,16 +3,6 @@
 {
   dconf.settings = {
     "org/gnome/Geary" = { startup-notifications = true; };
-    "org/gnome/desktop/app-folders/folders/153ff771-eb3f-41aa-8306-d701d860d5cf" =
-      {
-        apps = [
-          "org.gnome.Epiphany.desktop"
-          "firefox.desktop"
-          "brave-browser.desktop"
-          "chromium-browser.desktop"
-        ];
-        name = "Internet";
-      };
     "org/gnome/desktop/app-folders/folders/Utilities" = {
       apps = [
         "gnome-abrt.desktop"
@@ -37,17 +27,6 @@
       name = "X-GNOME-Utilities.directory";
       translate = true;
     };
-    "org/gnome/desktop/app-folders/folders/bb93b9e9-73db-436c-88d5-9dac1e98dbc0" =
-      {
-        apps = [
-          "org.kde.kdeconnect.nonplasma.desktop"
-          "org.kde.kdeconnect.app.desktop"
-          "org.kde.kdeconnect-settings.desktop"
-          "org.kde.kdeconnect.sms.desktop"
-        ];
-        name = "KDE";
-        translate = false;
-      };
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
@@ -83,8 +62,9 @@
     "org/gnome/epiphany" = { ask-for-default = false; };
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
-      edge-tiling = true;
       workspaces-only-on-primary = true;
+      attach-modal-dialogs = true;
+      center-new-windows = true;
     };
     "org/gnome/nautilus/icon-view" = { default-zoom-level = "standard"; };
     "org/gnome/nautilus/preferences" = {
