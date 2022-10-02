@@ -43,10 +43,21 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticError" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticHint" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticWarn" })
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "● ",
+	},
+	severity_sort = true,
+	float = {
+		source = "always",
+	},
+})
 
 signature.setup({
 	handler_opts = { border = "single" },

@@ -29,6 +29,8 @@
       ansible
 
       nmap
+      unzip
+      gnumake
 
       firefox
       brave
