@@ -52,6 +52,7 @@
     gnome.gnome-software
     gnome.gnome-weather
     gnome.gnome-maps
+    gnome.gnome-music
   ]);
 
   # zsh
