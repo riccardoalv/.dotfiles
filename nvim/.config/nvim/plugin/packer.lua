@@ -5,7 +5,6 @@ end
 
 packer.startup(function(use)
 	use("wbthomason/packer.nvim")
-
 	-- others
 	use("lewis6991/impatient.nvim")
 	use("AckslD/nvim-neoclip.lua")

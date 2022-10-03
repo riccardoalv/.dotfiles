@@ -10,6 +10,7 @@ require("onedark").setup({
 	ending_tildes = true,
 	colors = {
 		bg0 = "#181A21",
+		bg_d = "#181A21",
 	},
 })
 require("onedark").load()

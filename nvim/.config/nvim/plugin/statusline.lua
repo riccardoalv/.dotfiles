@@ -167,7 +167,7 @@ components.active[1][11] = {
 		if vim.o.clipboard == "" then
 			return ""
 		else
-			return "  "
+			return "   "
 		end
 	end,
 	hl = { fg = colors.blue },
@@ -216,13 +216,13 @@ components.active[3][1] = {
 			return ""
 		end
 	end,
-	hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
+	hl = { fg = colors.green, bg = colors.statusline_bg },
 }
 
 components.active[3][2] = {
 	provider = "git_branch",
 	hl = {
-		fg = colors.grey_fg2,
+		fg = colors.blue,
 		bg = colors.statusline_bg,
 	},
 	icon = "  ",

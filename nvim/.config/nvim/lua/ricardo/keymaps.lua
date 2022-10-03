@@ -31,6 +31,8 @@ keymap("n", "<A-h>", ":noh<cr>", opts)
 
 -- copy
 keymap("n", "Y", "y$", opts)
+keymap("n", "d", '"_d', opts)
+keymap("n", "x", '"_x', opts)
 
 -- text-objectis quotes
 keymap("o", "ix", [[i']], opts)

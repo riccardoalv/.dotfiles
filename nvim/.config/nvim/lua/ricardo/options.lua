@@ -32,6 +32,7 @@ o.backupext = ".bak"
 o.equalalways = false
 o.undofile = true
 o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal,options,localoptions,winpos,resize"
+o.clipboard = "unnamedplus"
 vim.cmd([[ set backupdir=/tmp/backup ]])
 vim.cmd([[ set undodir=~/.vim/undodir ]])
 
