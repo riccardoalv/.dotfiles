@@ -90,6 +90,10 @@
         "code.desktop"
       ];
       had-bluetooth-devices-setup = false;
+      enabled-extensions = [
+        "appindicatorsupport@rgcjonas.gmail.com"
+        "gsconnect@andyholmes.github.io"
+      ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings =
