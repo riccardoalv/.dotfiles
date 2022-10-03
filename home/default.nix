@@ -18,6 +18,7 @@
       fd
       git-crypt
       stow
+      nixfmt
 
       docker-compose
       texlive.combined.scheme-full
@@ -30,6 +31,8 @@
 
       nmap
       unzip
+      figlet
+      yad
       gnumake
 
       firefox
