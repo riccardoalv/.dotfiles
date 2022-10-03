@@ -9,7 +9,7 @@ require("onedark").setup({
 	style = "darker",
 	ending_tildes = true,
 	colors = {
-		bg0 = "#171b20",
+		bg0 = "#181A21",
 	},
 })
 require("onedark").load()

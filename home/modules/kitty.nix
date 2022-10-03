@@ -40,7 +40,7 @@
       remember_window_size = true;
       listen_on = "unix:/tmp/mykitty";
 
-      background = "#171B20";
+      background = "#181A21";
       background_opacity = "0.9";
       dynamic_background_opacity = true;
       active_border_color = "#2C4D6C";
@@ -55,4 +55,3 @@
     };
   };
 }
-
