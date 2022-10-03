@@ -22,6 +22,12 @@
   # flatpak
   services.flatpak.enable = true;
 
+  # gsconnect
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
   # docker
   virtualisation.docker = {
     enable = true;

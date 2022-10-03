@@ -7,6 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./modules/packages.nix
+    ./modules/network.nix
   ];
 
   # Use the Systemd-Boot EFI boot loader.
@@ -48,12 +49,6 @@
   };
 
   services.fwupd.enable = true;
-
-  # Network
-  networking.usePredictableInterfaceNames = false;
-
-  networking.hostName = "NixOS"; # Define your hostname.
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Porto_Velho";
