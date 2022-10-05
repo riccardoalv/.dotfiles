@@ -48,15 +48,6 @@
 
     home.stateVersion = "21.05";
 
-    qt = {
-      enable = true;
-      style = {
-        name = "adwaita-dark";
-        package = pkgs.adwaita-qt;
-      };
-      platformTheme = "gnome";
-    };
-
     programs.home-manager.enable = true;
   };
 }

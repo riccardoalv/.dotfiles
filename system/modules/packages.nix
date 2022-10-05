@@ -15,7 +15,11 @@
     vim
     stow
     cifs-utils
+    qt5ct
+    libsForQt5.qtstyleplugins
   ];
+
+  environment.variables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 
   # pkgs Settings
 
@@ -89,6 +93,12 @@
     };
   };
 
+  # Wireshark
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+  };
+
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
@@ -98,6 +108,7 @@
 
   # auto-cpufreq
   services.auto-cpufreq.enable = true;
+  systemd.services.auto-cpufreq.wantedBy = [ "default.target" ];
   services.thermald.enable = true;
 
   # nix-ld
