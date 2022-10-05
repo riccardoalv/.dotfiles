@@ -46,6 +46,14 @@
       gnomeExtensions.appindicator
     ];
 
+    qt = {
+      enable = true;
+      style = {
+        name = "adwaita-dark";
+        package = pkgs.adwaita-qt;
+      };
+    };
+
     home.stateVersion = "21.05";
 
     programs.home-manager.enable = true;

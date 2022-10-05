@@ -15,11 +15,7 @@
     vim
     stow
     cifs-utils
-    qt5ct
-    libsForQt5.qtstyleplugins
   ];
-
-  environment.variables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 
   # pkgs Settings
 
@@ -52,6 +48,7 @@
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
     excludePackages = (with pkgs; [ xterm ]);
+    libinput.enable = true;
   };
   programs.xwayland.enable = true;
   programs.dconf.enable = true;
@@ -66,6 +63,23 @@
     gnome.gnome-maps
     gnome.gnome-music
   ]);
+
+  # Enable Audio
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
 
   # Android
   programs.adb.enable = true;
@@ -106,10 +120,7 @@
     drivers = with pkgs; [ hplip ];
   };
 
-  # auto-cpufreq
-  services.auto-cpufreq.enable = true;
-  systemd.services.auto-cpufreq.wantedBy = [ "default.target" ];
-  services.thermald.enable = true;
+  services.fwupd.enable = true;
 
   # nix-ld
   programs.nix-ld.enable = true;

@@ -22,7 +22,20 @@
         laptop = inputs.nixpkgs.lib.nixosSystem {
           system = system;
           specialArgs = { inherit inputs; };
-          modules = builtins.attrValues inputs.self.nixosModules;
+          modules = builtins.attrValues {
+            hardware-configuration =
+              import /etc/nixos/hardware-configuration.nix;
+            system-configuration = import ./system/laptop-configuration.nix;
+          };
+        };
+        desktop = inputs.nixpkgs.lib.nixosSystem {
+          system = system;
+          specialArgs = { inherit inputs; };
+          modules = builtins.attrValues {
+            hardware-configuration =
+              import /etc/nixos/hardware-configuration.nix;
+            system-configuration = import ./system/desktop-configuration.nix;
+          };
         };
       };
 
