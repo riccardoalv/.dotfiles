@@ -86,7 +86,7 @@ alias dj='django-admin '
 alias sshk="kitty +kitten ssh "
 alias icat="kitty +kitten icat "
 
-alias open='xdg-open > /dev/null 2>/dev/null'
+alias o='xdg-open > /dev/null 2>/dev/null'
 alias du='du -h'
 alias x='chmod +x'
 alias xargs='xargs '

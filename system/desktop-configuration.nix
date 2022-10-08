@@ -27,4 +27,10 @@
     consoleLogLevel = 0;
     initrd = { verbose = false; };
   };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/home/ricardo/.dotfiles#desktop";
+    dates = "daily";
+  };
 }
