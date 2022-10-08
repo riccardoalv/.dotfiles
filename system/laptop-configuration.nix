@@ -44,6 +44,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "/home/ricardo/.dotfiles#laptop";
+    flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "--impure" ];
     dates = "daily";
   };
 

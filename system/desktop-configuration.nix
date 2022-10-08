@@ -31,6 +31,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "/home/ricardo/.dotfiles#desktop";
+    flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "--impure" ];
     dates = "daily";
   };
 }
