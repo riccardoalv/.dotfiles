@@ -6,7 +6,6 @@
   # Use the Systemd-Boot EFI boot loader.
   boot = {
     kernel.sysctl = { "vm.vfs_cache_pressure" = 50; };
-    kernelPackages = pkgs.linuxPackages_latest;
     plymouth.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;

@@ -14,10 +14,6 @@
       username = "ricardo";
       system = "x86_64-linux";
     in {
-      nixosModules = {
-        hardware-configuration = import /etc/nixos/hardware-configuration.nix;
-        system-configuration = import ./system/configuration.nix;
-      };
       nixosConfigurations = {
         laptop = inputs.nixpkgs.lib.nixosSystem {
           system = system;

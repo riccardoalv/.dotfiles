@@ -54,8 +54,6 @@
       };
     };
 
-    home.stateVersion = "21.05";
-
     # Auto Updgrade home-manager
     systemd.user = {
       startServices = "legacy";
@@ -79,6 +77,8 @@
           '');
       };
     };
+
+    home.stateVersion = "22.05";
 
     programs.home-manager.enable = true;
   };
