@@ -41,6 +41,7 @@
       discord
       spotify
       amberol
+      fragments
       gnome.gnome-tweaks
       gnome.adwaita-icon-theme
       gnomeExtensions.appindicator
