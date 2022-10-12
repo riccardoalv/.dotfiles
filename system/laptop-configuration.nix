@@ -40,6 +40,8 @@
     };
   };
 
+  services.xserver.displayManager.autoLogin.user = "ricardo";
+
   system.autoUpgrade = {
     enable = true;
     flake = "/home/ricardo/.dotfiles#laptop";
