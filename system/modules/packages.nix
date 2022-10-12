@@ -122,6 +122,14 @@
 
   services.fwupd.enable = true;
 
+  # Add git config for root
+  programs.git.config = {
+    user = {
+      name = "root";
+      email = "root@root.com";
+    };
+  };
+
   # nix-ld
   programs.nix-ld.enable = true;
   environment.variables = {
