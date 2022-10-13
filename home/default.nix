@@ -28,6 +28,7 @@
       python3
       nodejs
       ansible
+      distrobox
 
       nmap
       unzip

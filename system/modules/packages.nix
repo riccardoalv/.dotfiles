@@ -28,15 +28,17 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
-  # docker
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    daemon.settings = { data-root = "/home/ricardo/.local/var/lib/"; };
-  };
+  virtualisation = {
+    # docker
+    docker = {
+      enable = true;
+      enableOnBoot = false;
+      daemon.settings = { data-root = "/home/ricardo/.local/var/lib/"; };
+    };
 
-  # libvirtd
-  virtualisation.libvirtd.enable = true;
+    # libvirtd
+    libvirtd.enable = true;
+  };
 
   # gnome
   services.gvfs.enable = true;
