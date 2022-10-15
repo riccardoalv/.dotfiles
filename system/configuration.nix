@@ -1,11 +1,33 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports = [ ./modules/packages.nix ./modules/network.nix ];
+
+  boot = {
+    kernel.sysctl = { "vm.vfs_cache_pressure" = 50; };
+    plymouth.enable = true;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        useOSProber = true;
+        enableCryptodisk = true;
+      };
+    };
+    kernelParams = [
+      "quiet"
+      "splash"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    consoleLogLevel = 0;
+    initrd = { verbose = false; };
+    kernelModules = [ "kvm-amd" "kvm-intel" ];
+  };
+
   # Set your time zone.
   time.timeZone = "America/Porto_Velho";
 
