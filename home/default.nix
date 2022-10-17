@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./modules/dev.nix
-    ./modules/kitty.nix
+    ./modules/alacritty.nix
     ./modules/tmux.nix
     ./modules/dconf.nix
   ];

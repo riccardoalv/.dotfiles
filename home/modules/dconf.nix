@@ -82,7 +82,7 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       favorite-apps = [
-        "kitty.desktop"
+        "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
         "brave-browser.desktop"
         "spotify.desktop"
