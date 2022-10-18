@@ -23,6 +23,9 @@
       set -g default-terminal "alacritty"
       set -ag terminal-overrides ",alacritty:RGB"
 
+      bind -n Home send Escape "OH"
+      bind -n End send Escape "OF"
+
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
       bind j split-window -v
