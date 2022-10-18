@@ -25,7 +25,6 @@
 
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-      bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
       bind j split-window -v
       bind l split-window -h
 
@@ -46,7 +45,6 @@
       set-option -g status-fg cyan
       set-option -g status-bg black
       set-option -g history-limit 60000
-      set -g mouse on
       set -g set-titles on
       set -g set-titles-string "#T"
 
