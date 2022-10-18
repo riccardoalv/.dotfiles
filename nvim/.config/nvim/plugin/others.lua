@@ -124,12 +124,5 @@ require("indent_blankline").setup({
 	buftype_exclude = { "terminal" },
 })
 
--- nvim-autopairs
-local Rule = require("nvim-autopairs.rule")
-local npairs = require("nvim-autopairs")
-
-npairs.add_rule(Rule("$$", "$$", "tex"))
-npairs.add_rule(Rule("$$", "$$", "markdown"))
-
 -- Nvim Comment
 require("nvim_comment").setup()

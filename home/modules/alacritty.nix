@@ -15,7 +15,7 @@
         size = 12;
       };
       key_bindings = [{
-        key = "n";
+        key = "N";
         mods = "Control|Shift";
         action = "SpawnNewInstance";
       }];

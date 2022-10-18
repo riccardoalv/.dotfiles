@@ -8,6 +8,11 @@ if not status1 then
 	return
 end
 
+local status2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not status2 then
+	return
+end
+
 cmp.setup({
 	experimental = {
 		ghost_text = true,
@@ -30,7 +35,7 @@ cmp.setup({
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 	},
@@ -41,3 +46,5 @@ cmp.setup({
 		{ name = "luasnip" },
 	},
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
