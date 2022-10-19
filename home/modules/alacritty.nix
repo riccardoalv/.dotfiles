@@ -14,11 +14,23 @@
         normal = { family = "Ubuntu Mono"; };
         size = 12;
       };
-      key_bindings = [{
-        key = "N";
-        mods = "Control|Shift";
-        action = "SpawnNewInstance";
-      }];
+      key_bindings = [
+        {
+          key = "N";
+          mods = "Control|Shift";
+          action = "SpawnNewInstance";
+        }
+        {
+          key = "W";
+          mods = "Control|Shift";
+          action = "Quit";
+        }
+        {
+          key = "F";
+          mods = "Control|Shift";
+          action = "ToggleFullscreen";
+        }
+      ];
       colors = {
         primary = {
           background = "#181A21";
