@@ -18,6 +18,7 @@
     };
   };
 
+  services.fprintd.enable = true;
   services.xserver.displayManager.autoLogin.user = "ricardo";
 
   system.autoUpgrade = {
