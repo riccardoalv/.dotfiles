@@ -6,7 +6,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = "/home/ricardo/.dotfiles#desktop";
-    flags = [ "--impure" ];
+    flags = [ "--commit-lock-file" "--impure" ];
     dates = "daily";
   };
 }

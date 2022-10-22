@@ -34,7 +34,7 @@ o.undofile = true
 o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal,options,localoptions,winpos,resize"
 o.clipboard = "unnamedplus"
 vim.cmd([[ set backupdir=/tmp/backup ]])
-vim.cmd([[ set undodir=~/.vim/undodir ]])
+vim.cmd([[ set undodir=~/.dotfiles/nvim/undodir ]])
 
 -- Font options
 o.gfn = "Ubuntu Mono Regular"

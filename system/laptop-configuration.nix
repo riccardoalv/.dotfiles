@@ -3,28 +3,12 @@
 {
   imports = [ ./configuration.nix ];
 
-  boot = {
-    initrd = {
-      luks.devices = [
-        {
-          name = "root";
-          device = "/disk/by-uuid/********-****-****-****-************";
-        }
-        {
-          name = "home";
-          device = "/disk/by-uuid/********-****-****-****-************";
-        }
-      ];
-    };
-  };
-
   services.fprintd.enable = true;
-  services.xserver.displayManager.autoLogin.user = "ricardo";
 
   system.autoUpgrade = {
     enable = true;
     flake = "/home/ricardo/.dotfiles#laptop";
-    flags = [ "--impure" ];
+    flags = [ "--commit-lock-file" "--impure" ];
     dates = "daily";
   };
 

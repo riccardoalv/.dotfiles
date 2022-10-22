@@ -137,6 +137,6 @@
   environment.variables = {
     NIX_LD_LIBRARY_PATH =
       lib.makeLibraryPath [ pkgs.gcc pkgs.stdenv.cc.cc pkgs.openssl pkgs.glib ];
-    NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+    NIX_LD = pkgs.binutils.dynamicLinker;
   };
 }

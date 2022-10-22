@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  imports = [ ./modules/packages.nix ./modules/network.nix ];
+  imports = [
+    ./modules/packages.nix
+    ./modules/network.nix
+    inputs.grub2-themes.nixosModule
+  ];
 
   boot = {
     kernel.sysctl = { "vm.vfs_cache_pressure" = 50; };
@@ -13,7 +17,11 @@
         efiSupport = true;
         device = "nodev";
         useOSProber = true;
-        enableCryptodisk = true;
+      };
+      grub2-theme = {
+        enable = true;
+        theme = "vimix";
+        footer = true;
       };
     };
     kernelParams = [
@@ -26,6 +34,7 @@
     consoleLogLevel = 0;
     initrd = { verbose = false; };
     kernelModules = [ "kvm-amd" "kvm-intel" ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   };
 
   # Set your time zone.
