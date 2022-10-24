@@ -4,6 +4,7 @@
   imports = [
     ./modules/packages.nix
     ./modules/network.nix
+    ./modules/gnome.nix
     inputs.grub2-themes.nixosModule
   ];
 
