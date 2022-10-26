@@ -38,5 +38,7 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.pop-shell
+    gnomeExtensions.extension-list
+    gnomeExtensions.appindicator
   ];
 }
