@@ -7,3 +7,6 @@ stylua $(find . -name "*.lua" ! -path '*/undodir/**')
 
 echo "Running nixfmt..."
 nixfmt $(find . -name "*.nix" ! -path '*/undodir/**')
+
+echo "Adding staged files"
+git add $(git diff --name-only --cached)
