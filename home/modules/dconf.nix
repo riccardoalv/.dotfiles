@@ -95,8 +95,9 @@
         "gsconnect@andyholmes.github.io"
         "dash-to-dock@micxgx.gmail.com"
         "blur-my-shell@aunetx"
-        "gnomeExtensions.extension-list"
+        "extension-list@tu.berry"
       ];
+
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings =
