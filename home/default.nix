@@ -46,6 +46,7 @@
       spotify
       amberol
       fragments
+      authenticator
     ];
 
     qt = {
