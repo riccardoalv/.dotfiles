@@ -93,10 +93,13 @@
   services.fwupd.enable = true;
 
   # Add git config for root
-  programs.git.config = {
-    user = {
-      name = "root";
-      email = "root@root.com";
+  programs.git = {
+    enable = true;
+    config = {
+      user = {
+        name = "root";
+        email = "root@root.com";
+      };
     };
   };
 

@@ -1,11 +1,11 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, grub2-themes, ... }:
 
 {
   imports = [
     ./modules/packages.nix
     ./modules/network.nix
     ./modules/gnome.nix
-    inputs.grub2-themes.nixosModule
+    grub2-themes.nixosModule
   ];
 
   boot = {

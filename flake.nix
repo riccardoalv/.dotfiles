@@ -13,38 +13,35 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs:
+  outputs = attrs@{ nixpkgs, home-manager, nixos-hardware, grub2-themes, ... }:
     let
       username = "ricardo";
       system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        laptop = inputs.nixpkgs.lib.nixosSystem {
-          system = system;
-          specialArgs = { inherit inputs; };
-          modules = builtins.attrValues {
-            hardware-configuration =
-              import /etc/nixos/hardware-configuration.nix;
-            system-configuration = import ./system/laptop-configuration.nix;
-          };
+        laptop = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = attrs;
+          modules = [
+            ./system/laptop-configuration.nix
+            /etc/nixos/hardware-configuration.nix
+          ];
         };
-        desktop = inputs.nixpkgs.lib.nixosSystem {
-          system = system;
-          specialArgs = { inherit inputs; };
-          modules = builtins.attrValues {
-            hardware-configuration =
-              import /etc/nixos/hardware-configuration.nix;
-            system-configuration = import ./system/desktop-configuration.nix;
-          };
+        desktop = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = attrs;
+          modules = [
+            ./system/desktop-configuration.nix
+            /etc/nixos/hardware-configuration.nix
+          ];
         };
       };
 
       home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
 
       homeConfigurations.${username} =
-        inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = import inputs.nixpkgs {
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
             system = system;
             config.allowUnfree = true;
           };

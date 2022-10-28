@@ -15,9 +15,8 @@
       Unit.Description = "Home Manager upgrade";
       Service.ExecStart = toString
         (pkgs.writeShellScript "home-manager-auto-upgrade" ''
-          nix-channel --update
           echo "Upgrade Home Manager"
-          home-manager --flake /home/ricardo/.dotfiles switch
+          home-manager --flake /home/ricardo/.dotfiles switch --update-input nixpkgs
         '');
     };
   };
