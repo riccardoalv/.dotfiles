@@ -2,9 +2,9 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -25,6 +25,11 @@
           modules = [
             ./system/laptop-configuration.nix
             /etc/nixos/hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.users.${username} = import ./home;
+            }
           ];
         };
         desktop = nixpkgs.lib.nixosSystem {
@@ -33,25 +38,13 @@
           modules = [
             ./system/desktop-configuration.nix
             /etc/nixos/hardware-configuration.nix
-          ];
-        };
-      };
-
-      home-manager.useGlobalPkgs = true;
-
-      homeConfigurations.${username} =
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = system;
-            config.allowUnfree = true;
-          };
-          modules = [
-            ./home
+            home-manager.nixosModules.home-manager
             {
-              home.username = username;
-              home.homeDirectory = "/home/${username}";
+              home-manager.useGlobalPkgs = true;
+              home-manager.users.${username} = import ./home;
             }
           ];
         };
+      };
     };
 }

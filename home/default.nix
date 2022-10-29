@@ -5,7 +5,6 @@
     ./modules/tmux.nix
     ./modules/dconf.nix
     ./modules/dotfiles.nix
-    ./modules/auto-upgrade.nix
   ];
   config = {
     home.packages = with pkgs; [
