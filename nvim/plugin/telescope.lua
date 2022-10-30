@@ -36,6 +36,10 @@ local f = string.format
 vim.cmd([[au FileType TelescopePrompt nmap <buffer> v <c-v>]])
 vim.cmd([[au FileType TelescopePrompt nmap <buffer> x <c-x>]])
 
+vim.cmd([[
+call Alias("t", "Telescope")
+]])
+
 -- stylua: ignore start
 keymap("n", "<leader>f", f(':lua require("telescope.builtin").git_files(%s)<cr>',    dropdown), opts)
 keymap("n", "<c-p>",     f(':lua require("telescope.builtin").find_files(%s)<cr>',   dropdown), opts)
