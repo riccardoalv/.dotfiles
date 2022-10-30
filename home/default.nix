@@ -7,40 +7,43 @@
     ./modules/dotfiles.nix
   ];
   config = {
-    home.packages = with pkgs; [
-      neovim
-      tree-sitter
-      luarocks
-      vscode
-      xclip
-      ctags
-      ripgrep
-      bat
-      fd
-      git-crypt
-      stow
-      nixfmt
+    home.packages = with pkgs;
+      [
+        obs-studio
+        firefox
+        brave
+        chromium
+        amberol
+        fragments
+        authenticator
 
-      gcc
-      rustup
-      python3
-      nodejs
-      distrobox
+      ] ++ (with unstable; [
+        neovim
+        tree-sitter
+        luarocks
+        vscode
+        xclip
+        ctags
+        ripgrep
+        bat
+        fd
+        git-crypt
+        stow
+        nixfmt
 
-      nmap
-      unzip
-      figlet
+        gcc
+        rustup
+        python3
+        nodejs
+        distrobox
 
-      obs-studio
-      firefox
-      brave
-      chromium
-      discord
-      spotify
-      amberol
-      fragments
-      authenticator
-    ];
+        nmap
+        unzip
+        figlet
+
+        discord
+        spotify
+      ]);
 
     qt = {
       enable = true;
