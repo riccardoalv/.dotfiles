@@ -21,21 +21,15 @@
       stow
       nixfmt
 
-      docker-compose
-      texlive.combined.scheme-full
-      asdf-vm
       gcc
       rustup
       python3
       nodejs
-      ansible
       distrobox
 
       nmap
       unzip
       figlet
-      yad
-      gnumake
 
       obs-studio
       firefox

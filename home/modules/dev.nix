@@ -29,7 +29,7 @@
         pager = true;
       };
     };
-    ignores = [ ".vim" "tags" "Session.vim" "shell.nix" ".envrc" ".direnv" ];
+    ignores = [ ".vim" "tags" "Session.vim" ".direnv" ];
   };
   programs.direnv = {
     enable = true;
