@@ -117,17 +117,13 @@
     "org/gnome/tweaks" = { show-extensions-notice = false; };
     "org/gnome/shell/extensions/blur-my-shell" = { brightness = 0.8; };
     "org/gnome/shell/extensions/blur-my-shell/appfolder" = { blur = true; };
-    "org/gnome/shell/extensions/blur-my-shell/applications" = {
-      customize = true;
-      opacity = 200;
-      whitelist = [ "Alacritty" ];
-    };
     "org/gnome/shell/extensions/dash-to-dock" = {
       background-color = "rgb(0,0,0)";
-      background-opacity = 0.15;
+      background-opacity = 0.3;
       show-trash = false;
       transparency-mode = "FIXED";
       show-show-apps-button = false;
+      running-indicator-style = "DASHES";
     };
     "org/gnome/shell/extensions/extension-list" = {
       del-button = false;

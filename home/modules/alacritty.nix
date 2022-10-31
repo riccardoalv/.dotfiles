@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       window = {
-        opacity = 0.95;
+        opacity = 0.8;
         decorations_theme_variant = "dark";
       };
       scrolling.history = 50000;
