@@ -11,7 +11,6 @@
       [
         obs-studio
         firefox
-        brave
         chromium
         amberol
         fragments
@@ -43,6 +42,7 @@
 
         discord
         spotify
+        google-chrome
       ]);
 
     qt = {

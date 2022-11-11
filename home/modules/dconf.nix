@@ -84,7 +84,7 @@
       favorite-apps = [
         "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
-        "brave-browser.desktop"
+        "google-chrome.desktop"
         "spotify.desktop"
         "org.gnome.Geary.desktop"
         "code.desktop"
