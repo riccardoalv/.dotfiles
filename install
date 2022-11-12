@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# install home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz home-manager 
-nix-channel --update
-
 # set dotfiles
 cd $HOME/.dotfiles
 
@@ -19,5 +15,3 @@ done
 
 ln -s $HOME/.config/nvim $HOME/.vim
 ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
-
-echo "Run home-manager switch to Finish Instalation"
