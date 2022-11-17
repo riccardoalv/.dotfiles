@@ -95,7 +95,7 @@
         "gsconnect@andyholmes.github.io"
         "dash-to-dock@micxgx.gmail.com"
         "blur-my-shell@aunetx"
-        "extension-list@tu.berry"
+        "pop-shell@system76.com"
       ];
 
     };
