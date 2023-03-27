@@ -1,6 +1,9 @@
 -- Utility functions shared between progress reports for LSP and DAP
 
-vim.notify = require("notify")
+status, vim.notify = pcall(require ,"notify")
+if not status then
+    return
+end
 
 require("notify").setup({
 	timeout = 3000,

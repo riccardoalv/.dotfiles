@@ -23,8 +23,10 @@ keymap("n", "cc", ":lua StatusClipboard()<cr>", opts)
 -- repeat last command
 keymap("n", "<A-m>", "@:", opts)
 
--- Terminal Esc
+-- Esc
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
+keymap("n", "<C-c>", "<esc>", opts)
+keymap("v", "<C-c>", "<esc>", opts)
 
 -- Disable highlight
 keymap("n", "<A-h>", ":noh<cr>", opts)

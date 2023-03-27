@@ -2,6 +2,12 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local set_var = vim.api.nvim_set_var
 
+-- octo.nvim
+require("octo").setup()
+
+-- nvim-surround
+require("nvim-surround").setup()
+
 -- vim-easy-align
 keymap("x", "ga", "<Plug>(EasyAlign)", opts)
 keymap("n", "ga", "<Plug>(EasyAlign)", opts)

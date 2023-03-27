@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
     settings = {
       add_newline = false;
       battery = { disabled = true; };
@@ -28,12 +27,14 @@
         ui = true;
         pager = true;
       };
+      difftool = { prompt = true;};
+      diff = { tool = nvimdiff;};
+      difftool_"nvimdiff" = { cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";};
     };
     ignores = [ ".vim" "tags" "Session.vim" ".direnv" ];
   };
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
     nix-direnv.enable = true;
   };
 }

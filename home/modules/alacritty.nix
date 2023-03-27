@@ -31,12 +31,33 @@
           action = "ToggleFullscreen";
         }
       ];
+
       colors = {
         primary = {
-          background = "#181A21";
-          foreground = "#f8f8f2";
+          background = "#1e2127";
+          foreground = "#abb2bf";
           bright_foreground = "#ffffff";
         };
+        bright = {
+          black   = "#5c6370";
+          red     = "#e06c75";
+          green   = "#98c379";
+          yellow  = "#d19a66";
+          blue    = "#61afef";
+          magenta = "#c678dd";
+          cyan    = "#56b6c2";
+          white   = "#e6efff";
+        }
+        dim = {
+          black   = "#1e2127"
+          red     = "#e06c75"
+          green   = "#98c379"
+          yellow  = "#d19a66"
+          blue    = "#61afef"
+          magenta = "#c678dd"
+          cyan    = "#56b6c2"
+          white   = "#828791"
+        }
         search = {
           matches = {
             foreground = "#44475a";
@@ -63,13 +84,13 @@
         };
         selection.background = "#44475a";
         normal = {
-          black = "#21222c";
-          red = "#ff5555";
-          green = "#50fa7b";
-          yellow = "#f1fa8c";
-          blue = "#bd93f9";
-          magenta = "#ff79c6";
-          cyan = "#8be9fd";
+          black = "#1e2127";
+          red = "#e06c75";
+          green = "#98c379";
+          yellow = "#d19a66";
+          blue = "#61afef";
+          magenta = "#c678dd";
+          cyan = "#65b6c2";
           white = "#f8f8f2";
         };
       };

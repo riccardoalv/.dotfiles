@@ -13,13 +13,19 @@ if not status2 then
 	return
 end
 
+local status3, luasnip = pcall(require, "luasnip")
+if not status3 then
+	return
+end
+
+
 cmp.setup({
 	experimental = {
 		ghost_text = true,
 	},
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	formatting = {

@@ -30,6 +30,13 @@ local on_attach = function(client, bufnr)
 	keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", bufopts)
 	keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
 	keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+	keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
+	keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
+	keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+	keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+	keymap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+	keymap("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+	keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -50,22 +57,33 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
-	virtual_text = {
-		prefix = "● ",
-	},
+	signs = true,
 	severity_sort = true,
 	float = {
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
 		source = "always",
+		header = "",
+		prefix = "",
 	},
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
 })
 
 signature.setup({
 	handler_opts = { border = "single" },
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

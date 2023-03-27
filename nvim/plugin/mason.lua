@@ -17,12 +17,7 @@ mason.setup({})
 
 lspconfig.setup({
 	ensure_installed = {
-		"dockerls",
 		"sumneko_lua",
-		"rust_analyzer",
-		"pyright",
-		"tsserver",
-		"texlab",
 		"rnix",
 	},
 	automatic_installation = true,
@@ -30,9 +25,6 @@ lspconfig.setup({
 
 installer.setup({
 	ensure_installed = {
-		"hadolint",
-		"stylua",
-		"autopep8",
 		"luacheck",
 	},
 })

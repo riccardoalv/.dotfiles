@@ -26,10 +26,15 @@ telescope.setup({
 	},
 	extensions = {
 		["ui-select"] = require("telescope.themes").get_dropdown({}),
+		undo = {
+			side_by_side = true,
+			layout_strategy = "vertical",
+		},
 	},
 })
 
 telescope.load_extension("ui-select")
+telescope.load_extension("undo")
 
 local f = string.format
 

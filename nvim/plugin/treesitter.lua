@@ -11,7 +11,6 @@ treesitter.setup({
 		enable = true,
 		disable = {},
 		use_languagetree = true,
-		additional_vim_regex_highlighting = true,
 	},
 	textobjects = {
 		select = {

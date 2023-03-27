@@ -10,39 +10,27 @@
     home.packages = with pkgs;
       [
         obs-studio
-        firefox
-        chromium
         amberol
         fragments
-        authenticator
 
       ] ++ (with unstable; [
         neovim
         tree-sitter
-        luarocks
         vscode
         xclip
         ctags
         ripgrep
         bat
         fd
-        git-crypt
         stow
         nixfmt
-
-        gcc
-        rustup
-        python3
-        nodejs
         distrobox
-
         nmap
-        unzip
-        figlet
-
         discord
         spotify
         google-chrome
+        obsidian
+        insync
       ]);
 
     qt = {

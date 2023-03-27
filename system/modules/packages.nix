@@ -53,11 +53,11 @@
   # Android
   programs.adb.enable = true;
 
-  # zsh
-  programs.zsh.enable = true;
+  # fish
+  programs.fish.enable = true;
 
-  environment.shells = with pkgs; [ zsh ];
-  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ fish ];
+  users.defaultUserShell = pkgs.fish;
 
   # Editor
   programs.neovim.defaultEditor = true;

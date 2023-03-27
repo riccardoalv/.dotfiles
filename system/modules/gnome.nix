@@ -35,8 +35,6 @@
     gnome.gnome-tweaks
     gnome.adwaita-icon-theme
     gnomeExtensions.appindicator
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.dash-to-dock
     gnomeExtensions.pop-shell
   ];
 }
