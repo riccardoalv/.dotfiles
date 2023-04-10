@@ -61,7 +61,6 @@ packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         requires = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            "nvim-treesitter/playground",
             "nvim-treesitter/nvim-treesitter-context",
         },
     })
@@ -78,24 +77,7 @@ packer.startup(function(use)
     use("mfussenegger/nvim-dap")
     use("theHamsta/nvim-dap-virtual-text")
     use("nvim-telescope/telescope-dap.nvim")
-    use({
-        "nvim-neotest/neotest",
-        requires = {
-            "haydenmeade/neotest-jest",
-            "nvim-neotest/neotest-python",
-        },
-    })
-
-    -- preview plugins
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function()
-            vim.fn["mkdp#util#install"]()
-        end,
-        requires = {
-            "iamcco/mathjax-support-for-mkdp",
-        },
-    })
+    use( "nvim-neotest/neotest")
 
     -- Lsp/auto Complete
     use("neovim/nvim-lspconfig")

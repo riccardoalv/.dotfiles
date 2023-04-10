@@ -23,11 +23,6 @@ else
 	vim.cmd("silent! source " .. GitDir() .. "/.vim")
 end
 
--- Backup directory
-if vim.fn.isdirectory("/tmp/backup/") == 0 then
-	os.execute("mkdir /tmp/backup")
-end
-
 -- Alias
 vim.cmd([[
 fun! Alias(from, to)
