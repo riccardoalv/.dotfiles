@@ -17,11 +17,7 @@ function GitDir()
 	return result
 end
 
-if vim.fn.filereadable(".vim") == 1 then
-	vim.cmd([[ source .vim ]])
-else
-	vim.cmd("silent! source " .. GitDir() .. "/.vim")
-end
+vim.cmd("silent! source " .. GitDir() .. "/.nvim.lua")
 
 -- Alias
 vim.cmd([[
@@ -34,7 +30,6 @@ endfun
 
 -- commands
 vim.cmd([[ command W w ]])
-vim.cmd([[ cnoreabbrev as AsyncTask ]])
 
 -- filetype plugin
 vim.cmd([[filetype plugin on]])

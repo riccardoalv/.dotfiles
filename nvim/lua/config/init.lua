@@ -1,7 +1,7 @@
 local init_modules = {
-	"ricardo.basic",
-	"ricardo.keymaps",
-	"ricardo.options",
+	"config.basic",
+	"config.keymaps",
+	"config.options",
 }
 
 for _, module in ipairs(init_modules) do

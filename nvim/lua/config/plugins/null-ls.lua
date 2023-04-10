@@ -1,7 +1,8 @@
-local status, null_ls = pcall(require, "null-ls")
-if not status then
-	return
-end
+return {
+"jose-elias-alvarez/null-ls.nvim",
+
+config = function()
+local null_ls = require("null-ls")
 
 null_ls.setup({
 	sources = {
@@ -10,3 +11,6 @@ null_ls.setup({
 		null_ls.builtins.code_actions.gitsigns,
 	},
 })
+end
+
+}

@@ -1,15 +1,20 @@
+
+return {
+    {
+        "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+"windwp/nvim-ts-autotag",
+        },
+
+config = function()
+
 local o = vim.o
-
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-	return
-end
-
--- nvim tree sitter
-treesitter.setup({
+require("treesitter").setup({
 	highlight = {
 		enable = true,
-		disable = {},
 		use_languagetree = true,
 	},
 	textobjects = {
@@ -26,9 +31,6 @@ treesitter.setup({
 				["oi"] = "@conditional.outer",
 			},
 		},
-	},
-	matchup = {
-		enable = true,
 	},
 	autotag = {
 		enable = true,
@@ -50,7 +52,12 @@ end
 vim.cmd([[autocmd FileType * :lua ensure_treesitter_language_installed()]])
 
 o.foldexpr = "nvim_treesitter#foldexpr()"
+end
+},
 
+{
+"nvim-treesitter/nvim-treesitter-context",
+config = function()
 require("treesitter-context").setup({
 	patterns = {
 		default = {
@@ -65,3 +72,6 @@ require("treesitter-context").setup({
 		},
 	},
 })
+end
+}
+}

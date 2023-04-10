@@ -1,14 +1,9 @@
 local keymap = vim.api.nvim_set_keymap
 
-local status, lspconfig = pcall(require, "lspconfig")
-if not status then
-	return
-end
-
-local status1, signature = pcall(require, "lsp_signature")
-if not status1 then
-	return
-end
+return {
+"neovim/nvim-lspconfig",
+config = function()
+local lspconfig = require("lspconfig")
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
@@ -77,38 +72,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-signature.setup({
-	handler_opts = { border = "single" },
-})
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lspconfig.lua_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.dockerls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.pyright.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.rust_analyzer.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.texlab.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -117,3 +83,6 @@ lspconfig.rnix.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+end
+
+}
