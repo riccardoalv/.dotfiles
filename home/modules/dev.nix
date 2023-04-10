@@ -31,10 +31,6 @@
       diff = { tool = nvimdiff;};
       difftool_"nvimdiff" = { cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";};
     };
-    ignores = [ ".vim" "tags" "Session.vim" ".direnv" ];
-  };
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
+    ignores = [ "tags" "Session.vim" ];
   };
 }
