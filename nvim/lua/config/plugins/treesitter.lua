@@ -10,7 +10,7 @@ return {
 
 		config = function()
 			local o = vim.o
-			require("treesitter").setup({
+			require("nvim-treesitter").setup({
 				highlight = {
 					enable = true,
 					use_languagetree = true,
