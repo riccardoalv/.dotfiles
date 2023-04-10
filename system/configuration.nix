@@ -19,12 +19,6 @@
         device = "nodev";
         useOSProber = true;
       };
-      grub2-theme = {
-        enable = true;
-        theme = "vimix";
-        footer = true;
-      };
-    };
     kernelParams = [
       "quiet"
       "splash"

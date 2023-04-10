@@ -9,13 +9,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    grub2-themes = {
-      url = "github:vinceliuice/grub2-themes";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs = attrs@{ nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware
-    , grub2-themes, ... }:
+    , ... }:
     let
       username = "ricardo";
       system = "x86_64-linux";

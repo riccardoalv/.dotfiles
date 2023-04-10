@@ -6,16 +6,6 @@
     escapeTime = 0;
     keyMode = "vi";
     prefix = "M-w";
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = "set -g @continuum-restore 'on'";
-      }
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-    ];
     extraConfig = ''
       unbind C-b
       set-option -g focus-events on
