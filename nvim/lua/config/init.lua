@@ -1,5 +1,5 @@
 local init_modules = {
-	"config.basic",
+	"config.autocmd",
 	"config.keymaps",
 	"config.options",
 }

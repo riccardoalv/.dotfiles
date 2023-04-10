@@ -199,25 +199,4 @@ return {
 			}
 		end,
 	},
-
-	{
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("toggleterm").setup({
-				open_mapping = [[<A-i>]],
-				highlights = {
-					FloatBorder = {
-						guibg = "NONE",
-					},
-				},
-				direction = "float",
-				float_opts = {
-					border = "rounded",
-					winblend = 10,
-					width = math.ceil(0.55 * vim.o.columns),
-					height = math.ceil(0.55 * vim.o.lines),
-				},
-			})
-		end,
-	},
 }

@@ -1,6 +1,51 @@
 local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
 
 return {
+    {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    config = function()
+        require("lspsaga").setup({})
+
+-- LSP finder - Find the symbol's definition
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+-- Code action
+keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+keymap("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+-- Rename all occurrences of the hovered word for the entire file
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+-- Peek definition
+keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
+-- Go to definition
+keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+-- Peek type definition
+keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts)
+-- Show line diagnostics
+keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics ++unfocus<CR>", opts)
+-- Show buffer diagnostics
+keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
+-- Show workspace diagnostics
+keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics<CR>",opts )
+-- Show cursor diagnostics
+keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+-- Diagnostic jump
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+-- Toggle outline
+keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>", opts)
+-- Hover Doc
+keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", opts)
+-- Call hierarchy
+keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
+keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
+-- Floating terminal
+keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+keymap("t", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+    end,
+},
+{
 	"neovim/nvim-lspconfig",
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -18,20 +63,6 @@ return {
 
 		local on_attach = function(client, bufnr)
 			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-			local bufopts = { noremap = true, silent = true }
-			keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
-			keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", bufopts)
-			keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", bufopts)
-			keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
-			keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-			keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
-			keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
-			keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
-			keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-			keymap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-			keymap("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
-			keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 			if client.supports_method("textDocument/formatting") then
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -84,4 +115,5 @@ return {
 			capabilities = capabilities,
 		})
 	end,
+}
 }

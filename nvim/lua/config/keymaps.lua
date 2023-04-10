@@ -49,6 +49,8 @@ keymap("n", "<A-j>", ":m .+1<cr>==", opts)
 keymap("n", "<A-k>", ":m .-2<cr>==", opts)
 keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", opts)
+keymap("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", opts)
+keymap("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", opts)
 keymap("n", "<space><tab>", "i<cr><esc>", opts)
 keymap("n", "<space><space>", "i<space><esc>", opts)
 
@@ -57,7 +59,12 @@ keymap("n", "<A-,>", "<ap", opts)
 keymap("n", "<A-.>", ">ap", opts)
 
 -- Fast editing and reloading of vimrc configs
-keymap("n", "<leader>e", ":vs " .. GitDir() .. "/.vim<cr>", opts)
+keymap("n", "<leader>e", ":vs " .. GitDir() .. "/.nvim.lua<cr>", opts)
+
+-- Add undo break-points
+keymap("i", ",", ",<c-g>u", opts)
+keymap("i", ".", ".<c-g>u", opts)
+keymap("i", ";", ";<c-g>u", opts)
 
 -- Switch CWD to the directory of the open buffer
 keymap("n", "cd", ":cd %:p:h<cr>:pwd<cr>", opts)
