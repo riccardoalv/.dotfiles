@@ -48,7 +48,6 @@ keymap("n", "<A-q>",     '<cmd>lua require("telescope.builtin").quickfix()<cr>',
 keymap("n", "<space>b",  '<cmd>lua require("telescope.builtin").buffers()<cr>',       opts)
 keymap("n", "<leader>g", '<cmd>lua require("telescope.builtin").live_grep()<cr>',     opts)
 keymap("n", "<A-t>",     '<cmd>lua require("telescope.builtin").treesitter()<cr>',    opts)
-keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>",                    opts)
 		-- stylua: ignore end
 	end,
 }
