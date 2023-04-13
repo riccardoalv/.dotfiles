@@ -39,7 +39,6 @@ return {
 		vim.cmd([[au FileType TelescopePrompt nmap <buffer> v <c-v>]])
 		vim.cmd([[au FileType TelescopePrompt nmap <buffer> x <c-x>]])
 
--- stylua: ignore start
 keymap("n", "<leader>f", '<cmd>lua require("telescope.builtin").git_files()<cr>',     opts)
 keymap("n", "<c-p>",     '<cmd>lua require("telescope.builtin").find_files()<cr>',    opts)
 keymap("n", "<leader>s", '<cmd>lua require("telescope.builtin").git_status()<cr>',    opts)
@@ -48,6 +47,5 @@ keymap("n", "<A-q>",     '<cmd>lua require("telescope.builtin").quickfix()<cr>',
 keymap("n", "<space>b",  '<cmd>lua require("telescope.builtin").buffers()<cr>',       opts)
 keymap("n", "<leader>g", '<cmd>lua require("telescope.builtin").live_grep()<cr>',     opts)
 keymap("n", "<A-t>",     '<cmd>lua require("telescope.builtin").treesitter()<cr>',    opts)
-		-- stylua: ignore end
 	end,
 }

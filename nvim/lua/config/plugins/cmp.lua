@@ -2,7 +2,7 @@ return {
 
 	{
 		"L3MON4D3/LuaSnip",
-		dependecies = {
+		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
 
