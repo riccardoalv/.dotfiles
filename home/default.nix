@@ -15,8 +15,11 @@
         tree-sitter
         vscode
         xclip
-        ctags
         ripgrep
+        zoxide
+        fzf
+        lazygit
+        tokei
         bat
         fd
         stow

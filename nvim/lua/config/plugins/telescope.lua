@@ -35,6 +35,7 @@ return {
 		})
 
 		telescope.load_extension("undo")
+        telescope.load_extension("notify")
 
 		vim.cmd([[au FileType TelescopePrompt nmap <buffer> v <c-v>]])
 		vim.cmd([[au FileType TelescopePrompt nmap <buffer> x <c-x>]])
