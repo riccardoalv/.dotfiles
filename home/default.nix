@@ -1,8 +1,5 @@
 { config, pkgs, ... }: {
   imports = [
-    ./modules/dev.nix
-    ./modules/alacritty.nix
-    ./modules/tmux.nix
     ./modules/dconf.nix
     ./modules/dotfiles.nix
   ];
@@ -18,13 +15,10 @@
         tree-sitter
         vscode
         xclip
+        ctags
         ripgrep
         bat
         fd
-        tokei
-        zoxide
-        fzf
-        lazygit
         stow
         nixfmt
         distrobox
@@ -42,6 +36,11 @@
         name = "adwaita-dark";
         package = pkgs.adwaita-qt;
       };
+    };
+
+    programs.gh = {
+        enable = true;
+        settings = { git_protocol = "ssh"; };
     };
 
     home.stateVersion = "22.05";

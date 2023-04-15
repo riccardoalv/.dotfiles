@@ -1,0 +1,12 @@
+[user]
+	email = ricardcpu@gmail.com
+	name = Ricardo Alves da Silva
+[credential]
+    helper = store
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    intersctive = auto
+    ui = true
+    pager = true
