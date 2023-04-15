@@ -5,4 +5,5 @@
   home.file.".tmux.conf".source = ../../dotfiles/tmux.conf;
   home.file.".gitconfig".source = ../../dotfiles/gitconfig;
   home.file.".npmrc".source = ../../dotfiles/npmrc;
+  home.file.".config/lazygit/config.yml".source = ../../dotfiles/config.yml;
 }
