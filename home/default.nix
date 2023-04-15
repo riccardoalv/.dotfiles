@@ -18,10 +18,13 @@
         tree-sitter
         vscode
         xclip
-        ctags
         ripgrep
         bat
         fd
+        tokei
+        zoxide
+        fzf
+        lazygit
         stow
         nixfmt
         distrobox
