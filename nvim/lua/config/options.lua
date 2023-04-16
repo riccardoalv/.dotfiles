@@ -80,7 +80,7 @@ o.visualbell = false
 
 -- Specify the behavior when switching between buffers
 o.switchbuf = "useopen,usetab,newtab"
-o.stal = 0
+o.stal = 1
 
 -- Always show the status line
 o.laststatus = 2
