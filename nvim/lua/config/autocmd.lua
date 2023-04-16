@@ -1,19 +1,19 @@
--- .vim file functions
-function GitDir()
-	local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
-	local result = handle:read("*a")
-	handle:close()
-	result = result:gsub("[\n\r]", "")
-	return result
-end
+local Job = require("plenary.job")
 
 local function augroup(name)
 	return vim.api.nvim_create_augroup("autocmd_" .. name, { clear = true })
 end
 
-vim.cmd("silent! source " .. GitDir() .. "/.nvim.lua")
+git_dir = ""
 
-vim.cmd([[au FocusGained,BufEnter * checktime]])
+Job:new({
+	command = "git",
+	args = { "rev-parse", "--show-toplevel" },
+	on_stdout = function(_, return_val)
+		git_dir = return_val
+		vim.cmd("cd " .. git_dir)
+	end,
+}):sync()
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {

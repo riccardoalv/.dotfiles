@@ -14,7 +14,7 @@ return {
 		local actions = require("telescope.actions")
 		telescope.setup({
 			defaults = {
-				find_command = { "rg", "--ignore", "--hidden", "--files", GitDir() },
+				find_command = { "rg", "--ignore", "--hidden", "--files", git_dir },
 				winblend = 20,
 				mappings = {
 					n = {

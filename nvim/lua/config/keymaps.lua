@@ -59,7 +59,7 @@ keymap("n", "<A-,>", "<ap", opts)
 keymap("n", "<A-.>", ">ap", opts)
 
 -- Fast editing and reloading of vimrc configs
-keymap("n", "<leader>e", ":vs " .. GitDir() .. "/.nvim.lua<cr>", opts)
+keymap("n", "<leader>e", ":vs " .. git_dir .. "/.nvim.lua<cr>", opts)
 
 -- Add undo break-points
 keymap("i", ",", ",<c-g>u", opts)
