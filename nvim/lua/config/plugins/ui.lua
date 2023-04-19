@@ -45,6 +45,7 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("gitsigns").setup({ current_line_blame = true })
 		end,
@@ -52,6 +53,7 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("indent_blankline").setup({
 				show_current_context = true,
@@ -60,12 +62,14 @@ return {
 			})
 		end,
 	},
-	"kyazdani42/nvim-web-devicons",
+	{ "kyazdani42/nvim-web-devicons", lazy = true },
 	{
 		"kyazdani42/nvim-tree.lua",
+		keys = {
+			{ "<leader>nn", "<cmd>NvimTreeToggle<cr>" },
+		},
 		config = function()
 			require("nvim-tree").setup({ view = { side = "right" } })
-			keymap("n", "<leader>nn", ":NvimTreeToggle<cr>", opts)
 		end,
 	},
 	{
@@ -92,6 +96,7 @@ return {
 	},
 	{
 		"folke/noice.nvim",
+        event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},

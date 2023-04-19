@@ -72,7 +72,6 @@ o.wildmenu = true
 -- Ignore compiled files
 o.wildignore = "*.so, *.dll, *.swp, .egg, *.jar, *.class, *.pyc, *.pyo, *.bin, *.dex, node_modules"
 o.path = ".,,,**"
-vim.cmd("set path+=" .. git_dir)
 o.exrc = true
 
 -- No annoying sound on errors
