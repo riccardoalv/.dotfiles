@@ -4,16 +4,8 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("autocmd_" .. name, { clear = true })
 end
 
-git_dir = ""
-
-Job:new({
-	command = "git",
-	args = { "rev-parse", "--show-toplevel" },
-	on_stdout = function(_, return_val)
-		git_dir = return_val
-		vim.cmd("cd " .. git_dir)
-	end,
-}):sync()
+git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
+vim.cmd("cd " .. git_dir)
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
