@@ -30,7 +30,7 @@
         spotify
         google-chrome
         obsidian
-        insync
+        rclone
       ]);
 
     qt = {
