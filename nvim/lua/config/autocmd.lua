@@ -7,6 +7,14 @@ end
 git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
 vim.cmd("cd " .. git_dir)
 
+-- Git Dir
+vim.api.nvim_create_autocmd("DirChanged", {
+	group = augroup("git_dir"),
+	callback = function()
+        git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
+	end,
+})
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),
