@@ -20,7 +20,14 @@ return {
 			end,
 		})
 
-		require("lspsaga").setup({})
+		require("lspsaga").setup({
+			lightbulb = {
+				enable = false,
+			},
+			ui = {
+				winblend = 10,
+			},
+		})
 
 		-- LSP finder - Find the symbol's definition
 		keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
@@ -35,17 +42,9 @@ return {
 		keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
 		-- Peek type definition
 		keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts)
-		-- Show line diagnostics
-		keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics ++unfocus<CR>", opts)
-		-- Show buffer diagnostics
-		keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
-		-- Show workspace diagnostics
-		keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts)
-		-- Show cursor diagnostics
-		keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 		-- Diagnostic jump
-		keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-		keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+		keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+		keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 		-- Toggle outline
 		keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
 		-- Hover Doc
