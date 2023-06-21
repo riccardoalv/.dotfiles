@@ -3,7 +3,9 @@ local function augroup(name)
 end
 
 git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
-vim.cmd("cd " .. git_dir)
+if git_dir == "" then
+	vim.cmd("cd " .. git_dir)
+end
 
 -- Git Dir
 vim.api.nvim_create_autocmd("DirChanged", {
