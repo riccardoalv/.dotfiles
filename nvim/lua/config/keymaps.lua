@@ -33,10 +33,6 @@ keymap("n", "<A-h>", ":noh<cr>", opts)
 
 -- copy
 keymap("n", "Y", "y$", opts)
-keymap("n", "d", '"cd', opts)
-keymap("n", "c", '"cc', opts)
-keymap("n", "x", '"cx', opts)
-keymap("n", "P", '"cp', opts)
 
 -- text-objectis quotes
 keymap("o", "ix", [[i']], opts)

@@ -30,7 +30,6 @@ o.backupext = ".bak"
 o.equalalways = false
 o.undofile = true
 o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal,options,localoptions,winpos,resize"
-o.clipboard = "unnamedplus"
 vim.cmd([[ set undodir=~/.dotfiles/nvim/undodir ]])
 
 -- Font options
@@ -45,9 +44,9 @@ o.winblend = 10
 -- Use spaces instead of tabs
 o.expandtab = true
 o.smarttab = true
-o.shiftwidth = 4
-o.tabstop = 4
-o.softtabstop = 4
+o.shiftwidth = 2
+o.tabstop = 2
+o.softtabstop = 2
 o.ai = true
 o.si = true
 o.wrap = false
