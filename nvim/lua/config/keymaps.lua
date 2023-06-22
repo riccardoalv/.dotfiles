@@ -5,6 +5,9 @@ local keymap = vim.api.nvim_set_keymap
 vim.api.nvim_set_var("mapleader", ",")
 vim.api.nvim_set_var("localmapleader", [[\]])
 
+-- movement
+keymap("n", "0", "^", opts)
+
 -- toggle theme
 keymap("n", "<leader>cs", ":lua require('onedark').toggle()<cr>", opts)
 
@@ -16,9 +19,6 @@ keymap("n", "<space>n", ":bn<cr>", opts)
 keymap("n", "<space>p", ":bp<cr>", opts)
 keymap("n", "cn", ":cn<cr>", opts)
 keymap("n", "cp", ":cp<cr>", opts)
-
--- set system clipboard
-keymap("n", "cc", ":lua StatusClipboard()<cr>", opts)
 
 -- repeat last command
 keymap("n", "<A-m>", "@:", opts)
