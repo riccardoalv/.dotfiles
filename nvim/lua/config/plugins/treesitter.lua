@@ -10,7 +10,7 @@ return {
 
 		config = function()
 			local o = vim.o
-			require("nvim-treesitter").setup({
+			require("nvim-treesitter.configs").setup({
 				highlight = {
 					enable = true,
 					use_languagetree = true,
@@ -18,6 +18,7 @@ return {
 				textobjects = {
 					select = {
 						enable = true,
+						lookahead = true,
 						keymaps = {
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",

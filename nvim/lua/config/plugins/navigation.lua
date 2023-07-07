@@ -20,6 +20,10 @@ return {
 			keymap("n", "<f2>", ':lua require("harpoon.ui").nav_file(2)<cr>', opts)
 			keymap("n", "<f3>", ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
 			keymap("n", "<f4>", ':lua require("harpoon.ui").nav_file(4)<cr>', opts)
+			keymap("n", "<f5>", ':lua require("harpoon.ui").nav_file(5)<cr>', opts)
+			keymap("n", "<f6>", ':lua require("harpoon.ui").nav_file(6)<cr>', opts)
+			keymap("n", "<f7>", ':lua require("harpoon.ui").nav_file(7)<cr>', opts)
+			keymap("n", "<f8>", ':lua require("harpoon.ui").nav_file(8)<cr>', opts)
 		end,
 	},
 
