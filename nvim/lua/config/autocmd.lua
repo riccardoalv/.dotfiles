@@ -3,7 +3,7 @@ local function augroup(name)
 end
 
 git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
-if git_dir == "" then
+if git_dir ~= "" then
 	vim.cmd("cd " .. git_dir)
 end
 
