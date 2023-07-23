@@ -40,8 +40,6 @@ return {
 		keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
 		-- Go to definition
 		keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-		-- Peek type definition
-		keymap("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts)
 		-- Diagnostic jump
 		keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 		keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
