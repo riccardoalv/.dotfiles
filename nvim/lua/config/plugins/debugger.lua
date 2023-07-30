@@ -3,6 +3,11 @@ local keymap = vim.api.nvim_set_keymap
 
 return {
 	"mfussenegger/nvim-dap",
+	cond = function()
+		if vim.bo.filetype == "cpp" then
+			return false
+		end
+	end,
 	dependencies = {
 		"theHamsta/nvim-dap-virtual-text",
 		"nvim-telescope/telescope-dap.nvim",

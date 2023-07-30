@@ -3,6 +3,11 @@ local opts = { noremap = true, silent = true }
 
 return {
 	"neovim/nvim-lspconfig",
+	cond = function()
+		if vim.bo.filetype == "cpp" then
+			return false
+		end
+	end,
 	dependencies = {
 		"jose-elias-alvarez/null-ls.nvim",
 		"glepnir/lspsaga.nvim",

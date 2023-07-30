@@ -2,6 +2,11 @@ return {
 
 	{
 		"L3MON4D3/LuaSnip",
+		cond = function()
+			if vim.bo.filetype == "cpp" then
+				return false
+			end
+		end,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
@@ -21,6 +26,11 @@ return {
 
 	{
 		"hrsh7th/nvim-cmp",
+		cond = function()
+			if vim.bo.filetype == "cpp" then
+				return false
+			end
+		end,
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
