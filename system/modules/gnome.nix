@@ -14,14 +14,14 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
-    excludePackages = (with pkgs; [ xterm ]);
+    excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
   };
   programs.xwayland.enable = true;
   programs.dconf.enable = true;
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     epiphany
     gnome-user-docs
@@ -29,7 +29,7 @@
     gnome.gnome-weather
     gnome.gnome-maps
     gnome.gnome-music
-  ]);
+  ];
 
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks

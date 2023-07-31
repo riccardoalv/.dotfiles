@@ -1,15 +1,13 @@
 { config, pkgs, ... }: {
   imports = [
     ./modules/dconf.nix
-    ./modules/dotfiles.nix
   ];
   config = {
     home.packages = with pkgs;
       [
+        alacritty
         obs-studio
-        amberol
-        fragments
-
+        tmux
       ] ++ (with unstable; [
         neovim
         tree-sitter
@@ -45,6 +43,8 @@
         enable = true;
         settings = { git_protocol = "ssh"; };
     };
+
+    programs.starship.enable = true;
 
     home.stateVersion = "22.05";
 

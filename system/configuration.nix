@@ -1,11 +1,10 @@
-{ config, pkgs, grub2-themes, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./modules/packages.nix
     ./modules/network.nix
     ./modules/gnome.nix
-    grub2-themes.nixosModule
   ];
 
   boot = {
@@ -19,6 +18,7 @@
         device = "nodev";
         useOSProber = true;
       };
+    };
     kernelParams = [
       "quiet"
       "splash"
@@ -26,10 +26,6 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
-    consoleLogLevel = 0;
-    initrd = { verbose = false; };
-    kernelModules = [ "kvm-amd" "kvm-intel" ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   };
 
   # Set your time zone.

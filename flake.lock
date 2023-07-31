@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "grub2-themes": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1667144942,
-        "narHash": "sha256-nh8SYElm/RH9R0J2Ap5s8aBv8GnjHAUuy4PwO0fVpRg=",
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "rev": "7033bb66e5bc5e015e98b232c46deb5d915b01a4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -27,16 +7,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1667469118,
-        "narHash": "sha256-2YrDEmeYKCDOCuDDrjHoaUOVO3hyh9cIrWAJET1HPg8=",
+        "lastModified": 1687871164,
+        "narHash": "sha256-bBFlPthuYX322xOlpJvkjUBz0C+MOBjZdDOOJJ+G2jU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d78b3488a76d251701ab58a9b7f0dd092b806c1e",
+        "rev": "07c347bb50994691d7b0095f45ebd8838cf6bc38",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-22.05",
+        "ref": "release-23.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -58,16 +38,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1668718654,
-        "narHash": "sha256-4R4hejD1de5K9oVc1WdDeKyQcV0zh0Tk351X+jLR9qM=",
+        "lastModified": 1690726002,
+        "narHash": "sha256-cACz6jCJZtsZHGCJAN4vMobxzH5s6FCOTZHMrh/Hu0M=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8cc081471e3a25e1f2493a3c02cbfa975443914b",
+        "rev": "391e8db1f06c3f74c2d313a73135515023af3993",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-22.05",
+        "ref": "nixos-23.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -90,7 +70,6 @@
     },
     "root": {
       "inputs": {
-        "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",

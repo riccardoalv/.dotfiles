@@ -101,12 +101,4 @@
       };
     };
   };
-
-  # nix-ld
-  programs.nix-ld.enable = true;
-  environment.variables = {
-    NIX_LD_LIBRARY_PATH =
-      lib.makeLibraryPath [ pkgs.gcc pkgs.stdenv.cc.cc pkgs.openssl pkgs.glib ];
-    NIX_LD = pkgs.binutils.dynamicLinker;
-  };
 }
