@@ -45,11 +45,6 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
-		cond = function()
-			if vim.bo.filetype == "cpp" then
-				return false
-			end
-		end,
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("gitsigns").setup({ current_line_blame = true })
@@ -95,11 +90,6 @@ return {
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
-		cond = function()
-			if vim.bo.filetype == "cpp" then
-				return false
-			end
-		end,
 		config = function()
 			require("colorizer").setup()
 		end,
