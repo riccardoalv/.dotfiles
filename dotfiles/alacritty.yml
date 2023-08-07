@@ -5,6 +5,8 @@ shell:
   args:
     - -c
     - tmux
+window:
+  opacity: 0.5
 colors:
   primary:
     background: "#1E1E2E" # base
