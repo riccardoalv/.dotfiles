@@ -50,6 +50,7 @@ o.softtabstop = 2
 o.ai = true
 o.si = true
 o.wrap = false
+vim.g.editorconfig = false
 
 -- History
 o.history = 500
