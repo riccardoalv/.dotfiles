@@ -63,6 +63,7 @@ return {
 				null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.autopep8,
+        null_ls.builtins.formatting.djhtml,
         null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.stylelint,
         null_ls.builtins.code_actions.gitsigns,
