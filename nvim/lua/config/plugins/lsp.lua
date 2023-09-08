@@ -30,7 +30,7 @@ return {
 		})
 
 		-- LSP finder - Find the symbol's definition
-		keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+		keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
 		-- Code action
 		keymap("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
 		keymap("v", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
