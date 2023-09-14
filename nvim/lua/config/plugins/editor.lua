@@ -3,7 +3,15 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 return {
-
+  {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup()
+  end,
+  },
 	{
 		"echasnovski/mini.pairs",
 		event = "VeryLazy",
