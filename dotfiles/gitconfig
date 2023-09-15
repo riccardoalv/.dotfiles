@@ -16,3 +16,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/nix/store/hhyxwxi3y7hd4ywmhnb1i9dv3qjpmkhq-gh-2.29.0/bin/gh auth git-credential
+[core]
+	editor = nvim
