@@ -7,6 +7,27 @@ return {
 		"jose-elias-alvarez/null-ls.nvim",
 		"glepnir/lspsaga.nvim",
 	},
+	opts = {
+		diagnostics = {
+			underline = false,
+			update_in_insert = false,
+			virtual_text = {
+				spacing = 4,
+				source = "if_many",
+				prefix = "●",
+			},
+			severity_sort = true,
+		},
+		inlay_hints = {
+			enabled = false,
+		},
+		autoformat = true,
+		format_notify = false,
+		format = {
+			formatting_options = nil,
+			timeout_ms = nil,
+		},
+	},
 	config = function()
 		local lspconfig = require("lspconfig")
 
@@ -61,12 +82,10 @@ return {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.nixfmt,
 				null_ls.builtins.formatting.clang_format,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.autopep8,
-        null_ls.builtins.formatting.djhtml,
-        null_ls.builtins.diagnostics.pylint,
-        null_ls.builtins.diagnostics.stylelint,
-        null_ls.builtins.code_actions.gitsigns,
+				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.autopep8,
+				null_ls.builtins.formatting.djhtml,
+				null_ls.builtins.code_actions.gitsigns,
 			},
 		})
 

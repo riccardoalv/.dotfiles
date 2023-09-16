@@ -2,8 +2,33 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 return {
-
-	"catppuccin/nvim",
+	{
+		"catppuccin/nvim",
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+				show_end_of_buffer = true,
+				custom_highlights = function(colors)
+					return {
+						DiagnosticVirtualTextError = { bg = colors.none },
+						DiagnosticVirtualTextWarn = { bg = colors.none },
+						DiagnosticVirtualTextInfo = { bg = colors.none },
+						DiagnosticVirtualTextHint = { bg = colors.none },
+					}
+				end,
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					nvimtree = true,
+					treesitter = true,
+					notify = true,
+					harpoon = true,
+					hop = true,
+					lsp_saga = true,
+				},
+			})
+		end,
+	},
 	{
 		"rcarriga/nvim-notify",
 		dependencies = {
