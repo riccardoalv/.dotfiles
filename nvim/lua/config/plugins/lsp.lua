@@ -14,7 +14,6 @@ return {
 			virtual_text = {
 				spacing = 4,
 				source = "if_many",
-				prefix = "●",
 			},
 			severity_sort = true,
 		},

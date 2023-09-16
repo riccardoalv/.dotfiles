@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 require("config")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

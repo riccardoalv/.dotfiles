@@ -28,41 +28,42 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 		},
 
-    config = function()
-      local cmp = require("cmp")
+		config = function()
+			local cmp = require("cmp")
+			local defaults = require("cmp.config.default")()
 
-      cmp.setup({
-        vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-        local defaults = require("cmp.config.default")()
-        sorting = defaults.sorting,
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        mapping = {
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-          ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        },
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "luasnip" },
-        },
-      })
-    end,
+			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+
+			cmp.setup({
+				sorting = defaults.sorting,
+				experimental = {
+					ghost_text = {
+						hl_group = "CmpGhostText",
+					},
+				},
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				mapping = {
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+					["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+				},
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "buffer" },
+					{ name = "path" },
+					{ name = "luasnip" },
+				},
+			})
+		end,
 	},
 }
