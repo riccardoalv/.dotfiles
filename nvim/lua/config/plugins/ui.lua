@@ -77,15 +77,11 @@ return {
 	},
 
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("indent_blankline").setup({
-				show_current_context = true,
-				show_current_context_start = true,
-				buftype_exclude = { "terminal", "help" },
-			})
-		end,
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    config = function()
+      require("ibl").setup()
+    end,
 	},
 	{ "kyazdani42/nvim-web-devicons", lazy = true },
 	{
