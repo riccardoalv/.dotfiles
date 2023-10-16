@@ -1,5 +1,9 @@
 local o = vim.o
 
+-- leader keys
+vim.api.nvim_set_var("mapleader", ",")
+vim.api.nvim_set_var("localmapleader", [[\]])
+
 -- Set general options
 o.cursorline = true
 o.ruler = true

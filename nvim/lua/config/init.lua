@@ -1,6 +1,5 @@
 local init_modules = {
 	"config.autocmd",
-	"config.keymaps",
 	"config.options",
 }
 

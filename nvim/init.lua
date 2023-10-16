@@ -15,4 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("config.plugins")
 
+require("config.keymaps")
+
 vim.cmd.colorscheme("catppuccin-mocha")

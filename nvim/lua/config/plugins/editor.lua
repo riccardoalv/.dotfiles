@@ -3,19 +3,19 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 return {
-  {
-    'mattn/emmet-vim',
-    ft = "html",
-  },
-  {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  config = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require("which-key").setup()
-  end,
-  },
+	{
+		"mattn/emmet-vim",
+		ft = "html",
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup()
+		end,
+	},
 	{
 		"echasnovski/mini.pairs",
 		event = "VeryLazy",
@@ -68,12 +68,10 @@ return {
 			set_var("submode_keep_leaving_key", 1)
 			set_var("submode_timeout", 0)
 
-			vim.cmd([[
-fun! Submode_alias(map, key, exec, mode)
-  call submode#enter_with('mode', a:mode, '', a:map, a:exec)
-  call submode#map('mode',        a:mode, '', a:key, a:exec)
-endf
-]])
+			vim.fn.Submode = function(mode, map, key, exec)
+				vim.cmd(string.format("call submode#enter_with('%s', 'n', '', '%s', '%s')", mode, map, exec))
+				vim.cmd(string.format("call submode#map('%s', 'n', '', '%s', '%s')", mode, key, exec))
+			end
 		end,
 	},
 	"tpope/vim-repeat",

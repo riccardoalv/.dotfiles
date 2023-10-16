@@ -1,15 +1,8 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
--- leader keys
-vim.api.nvim_set_var("mapleader", ",")
-vim.api.nvim_set_var("localmapleader", [[\]])
-
 -- movement
 keymap("n", "0", "^", opts)
-
--- toggle theme
-keymap("n", "<leader>cs", ":lua require('onedark').toggle()<cr>", opts)
 
 -- select all
 keymap("n", "aa", "ggVG", opts)
@@ -19,6 +12,12 @@ keymap("n", "<space>n", ":bn<cr>", opts)
 keymap("n", "<space>p", ":bp<cr>", opts)
 keymap("n", "cn", ":cn<cr>", opts)
 keymap("n", "cp", ":cp<cr>", opts)
+
+-- resize splits
+vim.fn.Submode("resize", "<c-w>+", "+", "<c-w>+")
+vim.fn.Submode("resize", "<c-w>-", "-", "<c-w>-")
+vim.fn.Submode("resize", "<c-w>>", ">", "<c-w>>")
+vim.fn.Submode("resize", "<c-w><", "<", "<c-w><")
 
 -- repeat last command
 keymap("n", "<A-m>", "@:", opts)
@@ -55,7 +54,7 @@ keymap("n", "<A-,>", "<ap", opts)
 keymap("n", "<A-.>", ">ap", opts)
 
 -- Fast editing and reloading of vimrc configs
-keymap("n", "<leader>e", ":vs " .. git_dir .. "/.nvim.lua<cr>", opts)
+keymap("n", "<leader>e", ":vs " .. git_dir .. "/.nvim.lua<cr><cr>", opts)
 
 -- Add undo break-points
 keymap("i", ",", ",<c-g>u", opts)
