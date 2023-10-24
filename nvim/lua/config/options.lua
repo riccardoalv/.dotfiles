@@ -6,6 +6,7 @@ vim.api.nvim_set_var("localmapleader", [[\]])
 
 -- Set general options
 o.cursorline = true
+o.mouse = false
 o.ruler = true
 o.hidden = true
 o.backspace = "indent,eol,start"
