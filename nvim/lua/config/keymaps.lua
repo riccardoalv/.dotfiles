@@ -1,6 +1,16 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+function ToggleMouse()
+  if vim.o.mouse == "a" then
+    vim.o.mouse = ""
+  else
+    vim.o.mouse = "a"
+  end
+end
+
+keymap("n", "<space>m", "<cmd>lua ToggleMouse()<cr>", opts)
+
 -- movement
 keymap("n", "0", "^", opts)
 
