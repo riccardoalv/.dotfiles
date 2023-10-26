@@ -38,7 +38,7 @@ return {
 			vim.notify = require("notify")
 
 			vim.notify.setup({
-				timeout = 3000,
+				timeout = 500,
 				max_width = function()
 					return math.ceil(math.max(vim.opt.columns:get() / 3, 10))
 				end,

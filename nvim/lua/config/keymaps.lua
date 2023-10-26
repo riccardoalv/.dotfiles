@@ -1,15 +1,31 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+-- Toggle mouse
 function ToggleMouse()
   if vim.o.mouse == "a" then
     vim.o.mouse = ""
+    vim.notify("Mouse OFF")
   else
     vim.o.mouse = "a"
+    vim.notify("Mouse ON")
   end
 end
 
 keymap("n", "<space>m", "<cmd>lua ToggleMouse()<cr>", opts)
+
+-- Toggle clipboard
+function ToggleClipboard()
+  if vim.o.clipboard == "unnamedplus" then
+    vim.o.clipboard = ""
+    vim.notify("Clipboard OFF")
+  else
+    vim.o.clipboard = "unnamedplus"
+    vim.notify("Clipboard ON")
+  end
+end
+
+keymap("n", "<space>c", "<cmd>lua ToggleClipboard()<cr>", opts)
 
 -- movement
 keymap("n", "0", "^", opts)
