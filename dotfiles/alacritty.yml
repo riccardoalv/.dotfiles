@@ -6,7 +6,7 @@ shell:
     - -c
     - tmux
 window:
-  opacity: 0.5
+  opacity: 0.8
 colors:
   primary:
     background: "#1E1E2E" # base
