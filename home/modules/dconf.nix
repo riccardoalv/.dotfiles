@@ -31,9 +31,9 @@
       color-shading-type = "solid";
       picture-options = "zoom";
       picture-uri =
-        "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+        "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
       picture-uri-dark =
-        "file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
+        "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
       primary-color = "#3465a4";
       secondary-color = "#000000";
     };
@@ -55,7 +55,7 @@
       color-shading-type = "solid";
       picture-options = "zoom";
       picture-uri =
-        "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+        "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
       primary-color = "#3465a4";
       secondary-color = "#000000";
     };
@@ -93,38 +93,15 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
-        "dash-to-dock@micxgx.gmail.com"
-        "blur-my-shell@aunetx"
         "pop-shell@system76.com"
       ];
 
     };
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings =
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
-      {
-        binding = "<Shift><Super>m";
-        command = "geary";
-        name = "Launch geary";
-      };
-    "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
     "org/gnome/todo" = {
       default-provider = "local";
       style-variant = "dark";
     };
     "org/gnome/tweaks" = { show-extensions-notice = false; };
-    "org/gnome/shell/extensions/blur-my-shell" = { brightness = 0.8; };
-    "org/gnome/shell/extensions/blur-my-shell/appfolder" = { blur = true; };
-    "org/gnome/shell/extensions/dash-to-dock" = {
-      background-color = "rgb(0,0,0)";
-      background-opacity = 0.3;
-      show-trash = false;
-      transparency-mode = "FIXED";
-      show-show-apps-button = false;
-      running-indicator-style = "DASHES";
-    };
     "org/gnome/shell/extensions/extension-list" = {
       del-button = false;
       dis-button = false;

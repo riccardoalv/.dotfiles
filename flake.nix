@@ -10,11 +10,18 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
-  outputs = attrs@{ nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware
-    , ... }:
+  outputs =
+    attrs@{ nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
     let
       username = "ricardo";
       system = "x86_64-linux";
+
+      overlay = final: prev: {
+        unstable = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
 
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
@@ -24,7 +31,9 @@
       };
       defaultModules = [
         /etc/nixos/hardware-configuration.nix
-        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+        ({ config, pkgs, ... }: {
+          nixpkgs.overlays = [ overlay-unstable overlay ];
+        })
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

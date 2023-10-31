@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./modules/packages.nix
-    ./modules/network.nix
-    ./modules/gnome.nix
-  ];
+  imports =
+    [ ./modules/packages.nix ./modules/network.nix ./modules/gnome.nix ];
 
   boot = {
-    kernel.sysctl = { "vm.vfs_cache_pressure" = 50; };
+    kernel.sysctl = {
+      "vm.vfs_cache_pressure" = 50;
+      "vm.swappiness" = 90;
+    };
     plymouth.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;

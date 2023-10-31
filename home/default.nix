@@ -1,14 +1,8 @@
 { config, pkgs, ... }: {
-  imports = [
-    ./modules/dconf.nix
-  ];
+  imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
-      [
-        alacritty
-        obs-studio
-        tmux
-      ] ++ (with unstable; [
+      [ alacritty obs-studio tmux ] ++ (with unstable; [
         neovim
         tree-sitter
         vscode
@@ -22,13 +16,13 @@
         fd
         stow
         nixfmt
+        rnix-lsp
         distrobox
         nmap
         discord
         spotify
         google-chrome
         obsidian
-        rclone
       ]);
 
     qt = {
@@ -40,8 +34,8 @@
     };
 
     programs.gh = {
-        enable = true;
-        settings = { git_protocol = "ssh"; };
+      enable = true;
+      settings = { git_protocol = "ssh"; };
     };
 
     programs.starship.enable = true;

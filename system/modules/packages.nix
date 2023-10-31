@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     binutils
+    sqlite
     bintools
     coreutils-full
     file
