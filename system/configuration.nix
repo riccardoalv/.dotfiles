@@ -35,7 +35,7 @@
   users.users.ricardo = {
     isNormalUser = true;
     home = "/home/ricardo";
-    description = "Ricardo Alves da Silva";
+    description = "Ricardo";
     extraGroups = [
       "wheel"
       "networkmanager"
