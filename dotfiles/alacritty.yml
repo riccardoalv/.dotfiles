@@ -2,9 +2,6 @@ env:
   TERM: xterm-256color
 shell:
   program: fish
-  args:
-    - -c
-    - tmux
 window:
   opacity: 0.8
 colors:
