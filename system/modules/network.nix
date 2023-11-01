@@ -4,7 +4,7 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 443 631 3000 8000 57621 ];
+      allowedTCPPorts = [ 22 80 443 631 3000 8000 57621 8081 ];
       allowedUDPPorts = [ 631 ];
     };
     usePredictableInterfaceNames = false;
