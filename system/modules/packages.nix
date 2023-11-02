@@ -27,7 +27,6 @@
     docker = {
       enable = true;
       enableOnBoot = false;
-      daemon.settings = { data-root = "/home/ricardo/.local/var/lib/"; };
     };
 
     # libvirtd

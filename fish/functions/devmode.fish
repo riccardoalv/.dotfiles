@@ -4,48 +4,45 @@ function devmode
     echo '
 local null_ls = require("null-ls")
 local lspconfig = require("lspconfig")
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-lspconfig.clangd.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.clang_format,
-    },
-})
-    ' >> .nvim.lua
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap' >> .nvim.lua
 
     echo '
-{ pkgs ? import <nixpkgs> { } }:
-with pkgs;
+{
+  description = "NixOS environment";
 
-mkShell {
-  name = "$GIT_REPOSITORY";
-
-  # Add executable packages to the nix-shell environment.
-  packages = with pkgs; [
-    gnumake
-  ];
-
-  # Bash statements that are executed by nix-shell.
-  shellHook = ''
-      export DEBUG=1
-  '';
-
-  MY_ENVIRONMENT_VARIABLE = "world";
-
-  # nix-ld
-  programs.nix-ld.enable = true;
-  environment.variables = {
-    NIX_LD_LIBRARY_PATH = lib.makeLibraryPath packages;
-    NIX_LD = pkgs.binutils.dynamicLinker;
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
-}
-    ' >> shell.nix
 
-    echo "Remember to Edit shell.nix"
+  outputs = {
+    self,
+    nixpkgs,
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+  in {
+    devShell.${system} = with pkgs;
+
+      mkShell rec {
+        packages = [
+          openssl
+          pkg-config
+        ];
+        shellHook = ''
+        export PRISMA_SCHEMA_ENGINE_BINARY="${prisma-engines}/bin/schema-engine"
+        export PRISMA_QUERY_ENGINE_BINARY="${prisma-engines}/bin/query-engine"
+        export PRISMA_QUERY_ENGINE_LIBRARY="${prisma-engines}/lib/libquery_engine.node"
+        export PRISMA_FMT_BINARY="${prisma-engines}/bin/prisma-fmt"
+        '';
+      };
+
+  };
+}' >> flake.nix
+
+    echo "Remember to Edit flake.nix"
 end
