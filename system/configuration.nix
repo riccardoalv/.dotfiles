@@ -7,7 +7,7 @@
   boot = {
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
-      "vm.swappiness" = 90;
+      "vm.swappiness" = 10;
     };
     plymouth.enable = true;
     loader = {

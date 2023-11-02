@@ -20,7 +20,7 @@ local keymap = vim.api.nvim_set_keymap' >> .nvim.lua
     nixpkgs,
   }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs-unstable {
+    pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
