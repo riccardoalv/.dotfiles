@@ -27,16 +27,6 @@
       name = "X-GNOME-Utilities.directory";
       translate = true;
     };
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri =
-        "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
-      picture-uri-dark =
-        "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
-      primary-color = "#3465a4";
-      secondary-color = "#000000";
-    };
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "caps:swapescape" ];
     };
