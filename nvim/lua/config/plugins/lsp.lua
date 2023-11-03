@@ -53,7 +53,7 @@ return {
 				enable = false,
 			},
 			ui = {
-				winblend = 10,
+				-- winblend = 10,
 			},
 		})
 

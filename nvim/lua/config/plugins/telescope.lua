@@ -15,7 +15,7 @@ return {
 		telescope.setup({
 			defaults = {
 				find_command = { "rg", "--ignore", "--hidden", "--files", git_dir },
-				winblend = 20,
+				-- winblend = 20,
 				mappings = {
 					n = {
 						["<C-q>"] = actions.send_to_qflist,
