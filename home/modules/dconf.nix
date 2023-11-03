@@ -85,7 +85,10 @@
         "gsconnect@andyholmes.github.io"
         "pop-shell@system76.com"
       ];
-
+    };
+    "org/gnome/shell/extensions/pop-shell" = {
+      gap-inner = 2;
+      gap-outer = 4;
     };
     "org/gnome/todo" = {
       default-provider = "local";
