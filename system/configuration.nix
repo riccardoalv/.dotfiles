@@ -63,5 +63,7 @@
     options = "--delete-older-than 4d";
   };
 
-  system.stateVersion = "22.05";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  system.stateVersion = "23.05";
 }
