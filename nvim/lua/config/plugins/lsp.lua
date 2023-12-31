@@ -1,6 +1,3 @@
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -18,7 +15,6 @@ return {
   opts = {
     diagnostics = {
       underline = false,
-      update_in_insert = false,
       virtual_text = {
         spacing = 4,
         source = "if_many",
@@ -29,11 +25,6 @@ return {
       enabled = false,
     },
     autoformat = true,
-    format_notify = false,
-    format = {
-      formatting_options = nil,
-      timeout_ms = nil,
-    },
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -52,35 +43,37 @@ return {
       lightbulb = {
         enable = false,
       },
-      ui = {
-        -- winblend = 10,
-      },
     })
 
-    -- LSP finder - Find the symbol's definition
-    keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
-    -- Code action
-    keymap("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
-    keymap("v", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
-    -- Rename all occurrences of the hovered word for the entire file
-    keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
-    -- Peek definition
-    keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
-    -- Go to definition
-    keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-    -- Diagnostic jump
-    keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-    keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-    -- Toggle outline
-    keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
-    -- Hover Doc
-    keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", opts)
-    -- Call hierarchy
-    keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
-    keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
-    -- Floating terminal
-    keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
-    keymap("t", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+    function on_attach()
+      local keymap = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+
+      -- LSP finder - Find the symbol's definition
+      keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
+      -- Code action
+      keymap("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
+      keymap("v", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
+      -- Rename all occurrences of the hovered word for the entire file
+      keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+      -- Peek definition
+      keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
+      -- Go to definition
+      keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+      -- Diagnostic jump
+      keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+      keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+      -- Toggle outline
+      keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
+      -- Hover Doc
+      keymap("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", opts)
+      -- Call hierarchy
+      keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
+      keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
+      -- Floating terminal
+      keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+      keymap("t", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+    end
 
     local null_ls = require("null-ls")
 
@@ -101,26 +94,31 @@ return {
       },
     })
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     lspconfig.rnix.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     lspconfig.pyright.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     lspconfig.tsserver.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     lspconfig.clangd.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     })
   end,
 }
