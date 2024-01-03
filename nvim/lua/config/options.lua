@@ -4,6 +4,10 @@ local o = vim.o
 vim.api.nvim_set_var("mapleader", ",")
 vim.api.nvim_set_var("localmapleader", [[\]])
 
+-- variables
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set general options
 o.cursorline = true
 o.mouse = false
