@@ -14,8 +14,10 @@ return {
 
 			harpoon.setup()
 
-			keymap("n", "<leader>n", ':lua require("harpoon.mark").add_file()<cr>', opts)
+			keymap("n", "<leader><leader>", ':lua require("harpoon.mark").add_file()<cr>', opts)
 			keymap("n", "<leader><space>", ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
+			keymap("n", "<c-l>", ':lua require("harpoon.ui").nav_next()<cr>', {})
+			keymap("n", "<c-h>", ':lua require("harpoon.ui").nav_prev()<cr>', {})
 			keymap("n", "<f1>", ':lua require("harpoon.ui").nav_file(1)<cr>', opts)
 			keymap("n", "<f2>", ':lua require("harpoon.ui").nav_file(2)<cr>', opts)
 			keymap("n", "<f3>", ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
