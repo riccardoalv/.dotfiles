@@ -8,6 +8,7 @@
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 10;
+      "net.ipv4.tcp_congestion_control" = "bbr";
     };
     plymouth.enable = true;
     loader = {
@@ -19,6 +20,11 @@
         useOSProber = true;
       };
     };
+    kernelModules = [
+      "tcp_bbr"
+      "kvm-amd"
+      "netconsole"
+    ];
     kernelParams = [
       "quiet"
       "splash"
