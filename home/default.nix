@@ -9,6 +9,7 @@
         xclip
         ripgrep
         zoxide
+        cz-cli
         fzf
         lazygit
         tokei
