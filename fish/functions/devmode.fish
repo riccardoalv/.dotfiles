@@ -5,7 +5,7 @@ function devmode
 local null_ls = require("null-ls")
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap' >> .nvim.lua
+local keymap = vim.keymap.set' >> .nvim.lua
 
     echo '
 {

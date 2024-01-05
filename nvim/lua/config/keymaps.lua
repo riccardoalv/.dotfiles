@@ -1,31 +1,31 @@
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Toggle mouse
 function ToggleMouse()
-	if vim.o.mouse == "a" then
-		vim.o.mouse = ""
-		vim.notify("Mouse OFF")
-	else
-		vim.o.mouse = "a"
-		vim.notify("Mouse ON")
-	end
+  if vim.o.mouse == "a" then
+    vim.o.mouse = ""
+    vim.notify("Mouse OFF")
+  else
+    vim.o.mouse = "a"
+    vim.notify("Mouse ON")
+  end
 end
 
-keymap("n", "<space>m", "<cmd>lua ToggleMouse()<cr>", opts)
+keymap("n", "<space>m", ToggleMouse)
 
 -- Toggle clipboard
 function ToggleClipboard()
-	if vim.o.clipboard == "unnamedplus" then
-		vim.o.clipboard = ""
-		vim.notify("Clipboard OFF")
-	else
-		vim.o.clipboard = "unnamedplus"
-		vim.notify("Clipboard ON")
-	end
+  if vim.o.clipboard == "unnamedplus" then
+    vim.o.clipboard = ""
+    vim.notify("Clipboard OFF")
+  else
+    vim.o.clipboard = "unnamedplus"
+    vim.notify("Clipboard ON")
+  end
 end
 
-keymap("n", "<space>c", "<cmd>lua ToggleClipboard()<cr>", opts)
+keymap("n", "<space>c", ToggleClipboard)
 
 -- movement
 keymap("n", "0", "^", opts)
@@ -54,7 +54,7 @@ keymap("n", "<C-c>", "<esc>", opts)
 keymap("v", "<C-c>", "<esc>", opts)
 
 -- Disable highlight
-keymap("n", "<A-h>", ":noh<cr>", opts)
+keymap("n", "<leader>h", ":noh<cr>", opts)
 
 -- copy
 keymap("n", "Y", "y$", opts)

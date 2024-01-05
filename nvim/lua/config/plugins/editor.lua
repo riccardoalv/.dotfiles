@@ -1,6 +1,6 @@
 local set_var = vim.api.nvim_set_var
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 return {
   {
@@ -74,22 +74,14 @@ return {
     config = function()
       require("telescope").load_extension("refactoring")
 
-      keymap(
-        "v",
-        "<space>rt",
-        "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-        { noremap = true }
-      )
+      keymap("v", "<space>rt", require("telescope").extensions.refactoring.refactors, { noremap = true })
 
-      keymap(
-        "n",
-        "<space>rp",
-        ":lua require('refactoring').debug.printf({below = false})<CR>",
-        { noremap = true }
-      )
+      keymap("n", "<space>rp", function()
+        require("refactoring").debug.printf({ below = false })
+      end, { noremap = true })
 
-      keymap("v", "<space>rp", ":lua require('refactoring').debug.print_var({})<CR>", { noremap = true })
-      keymap("n", "<space>rc", ":lua require('refactoring').debug.cleanup({})<CR>", { noremap = true })
+      keymap("v", "<space>rp", require("refactoring").debug.print_var)
+      keymap("n", "<space>rc", require("refactoring").debug.cleanup)
     end,
   },
 }

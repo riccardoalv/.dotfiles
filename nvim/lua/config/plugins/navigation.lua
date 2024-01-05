@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 return {
   "christoomey/vim-tmux-navigator",
@@ -14,18 +14,34 @@ return {
 
       harpoon.setup()
 
-      keymap("n", "<leader><leader>", ':lua require("harpoon.mark").add_file()<cr>', opts)
-      keymap("n", "<leader><space>", ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
-      keymap("n", "<M-l>", ':lua require("harpoon.ui").nav_next()<cr>', {})
-      keymap("n", "<M-h>", ':lua require("harpoon.ui").nav_prev()<cr>', {})
-      keymap("n", "<f1>", ':lua require("harpoon.ui").nav_file(1)<cr>', opts)
-      keymap("n", "<f2>", ':lua require("harpoon.ui").nav_file(2)<cr>', opts)
-      keymap("n", "<f3>", ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
-      keymap("n", "<f4>", ':lua require("harpoon.ui").nav_file(4)<cr>', opts)
-      keymap("n", "<f5>", ':lua require("harpoon.ui").nav_file(5)<cr>', opts)
-      keymap("n", "<f6>", ':lua require("harpoon.ui").nav_file(6)<cr>', opts)
-      keymap("n", "<f7>", ':lua require("harpoon.ui").nav_file(7)<cr>', opts)
-      keymap("n", "<f8>", ':lua require("harpoon.ui").nav_file(8)<cr>', opts)
+      keymap("n", "<leader><leader>", require("harpoon.mark").add_file)
+      keymap("n", "<leader><space>", require("harpoon.ui").toggle_quick_menu)
+      keymap("n", "<M-l>", require("harpoon.ui").nav_next)
+      keymap("n", "<M-h>", require("harpoon.ui").nav_prev)
+      keymap("n", "<f1>", function()
+        require("harpoon.ui").nav_file(1)
+      end)
+      keymap("n", "<f2>", function()
+        require("harpoon.ui").nav_file(2)
+      end)
+      keymap("n", "<f3>", function()
+        require("harpoon.ui").nav_file(3)
+      end)
+      keymap("n", "<f4>", function()
+        require("harpoon.ui").nav_file(4)
+      end)
+      keymap("n", "<f5>", function()
+        require("harpoon.ui").nav_file(5)
+      end)
+      keymap("n", "<f6>", function()
+        require("harpoon.ui").nav_file(6)
+      end)
+      keymap("n", "<f7>", function()
+        require("harpoon.ui").nav_file(7)
+      end)
+      keymap("n", "<f8>", function()
+        require("harpoon.ui").nav_file(8)
+      end)
     end,
   },
 

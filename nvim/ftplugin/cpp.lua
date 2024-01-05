@@ -10,7 +10,7 @@ o.si = true
 o.wrap = false
 o.syntax = true
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 vim.o.makeprg = "g++ -x c++ -g -O2 -Wall -std=gnu++20 '%'"
