@@ -3,26 +3,26 @@ local keymap = vim.keymap.set
 
 -- Toggle mouse
 function ToggleMouse()
-	if vim.o.mouse == "a" then
-		vim.o.mouse = ""
-		vim.notify("Mouse OFF")
-	else
-		vim.o.mouse = "a"
-		vim.notify("Mouse ON")
-	end
+  if vim.o.mouse == "a" then
+    vim.o.mouse = ""
+    vim.notify("Mouse OFF")
+  else
+    vim.o.mouse = "a"
+    vim.notify("Mouse ON")
+  end
 end
 
 keymap("n", "<space>m", ToggleMouse)
 
 -- Toggle clipboard
 function ToggleClipboard()
-	if vim.o.clipboard == "unnamedplus" then
-		vim.o.clipboard = ""
-		vim.notify("Clipboard OFF")
-	else
-		vim.o.clipboard = "unnamedplus"
-		vim.notify("Clipboard ON")
-	end
+  if vim.o.clipboard == "unnamedplus" then
+    vim.o.clipboard = ""
+    vim.notify("Clipboard OFF")
+  else
+    vim.o.clipboard = "unnamedplus"
+    vim.notify("Clipboard ON")
+  end
 end
 
 keymap("n", "<space>c", ToggleClipboard)

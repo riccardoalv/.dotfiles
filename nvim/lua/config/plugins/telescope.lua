@@ -33,7 +33,6 @@ return {
     })
 
     telescope.load_extension("undo")
-    telescope.load_extension("notify")
     telescope.load_extension("git_worktree")
 
     vim.cmd([[au FileType TelescopePrompt nmap <buffer> v <c-v>]])
