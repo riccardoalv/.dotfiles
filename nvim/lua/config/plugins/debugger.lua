@@ -2,19 +2,19 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 return {
-  "mfussenegger/nvim-dap",
-  dependencies = {
-    "theHamsta/nvim-dap-virtual-text",
-    "nvim-telescope/telescope-dap.nvim",
-  },
-  config = function()
-    local dap = require("dap")
+	"mfussenegger/nvim-dap",
+	dependencies = {
+		"theHamsta/nvim-dap-virtual-text",
+		"nvim-telescope/telescope-dap.nvim",
+	},
+	config = function()
+		local dap = require("dap")
 
-    require("nvim-dap-virtual-text").setup()
+		require("nvim-dap-virtual-text").setup()
 
-    vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+		vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
-    vim.g.dap_virtual_text = "all frames"
+		vim.g.dap_virtual_text = "all frames"
 
     -- stylua: ignore start
     keymap("n", "<F12>", require('dap').continue)
@@ -45,5 +45,5 @@ return {
 
     dap.configurations.c = dap.configurations.cpp
     dap.configurations.rust = dap.configurations.cpp
-  end,
+	end,
 }
