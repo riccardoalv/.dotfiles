@@ -21,7 +21,6 @@ o.ignorecase = true
 o.smartcase = true
 o.hlsearch = true
 o.incsearch = true
-o.inccommand = "split"
 o.magic = true
 o.showmatch = true
 o.mat = 2
