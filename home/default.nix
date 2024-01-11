@@ -24,6 +24,7 @@
         spotify
         google-chrome
         obsidian
+        docker-compose
       ]);
 
     qt = {
