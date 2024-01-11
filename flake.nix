@@ -47,12 +47,6 @@
           specialArgs = attrs;
           modules = [
           ./system/laptop-configuration.nix
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-amd
-          nixos-hardware.nixosModules.nixos-hardware.nixosModules.common-pc-laptop
-          nixos-hardware.nixosModules.common-pc-laptop-acpi_call
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
           ] ++ defaultModules;
         };
 
