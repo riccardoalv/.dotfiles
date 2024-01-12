@@ -29,6 +29,8 @@
     };
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "caps:swapescape" ];
+      mru-sources = [ "('xkb', 'us')" ];
+      sources = [ "('xkb', 'us')" "('xkb', 'br')" ];
     };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;
@@ -40,14 +42,8 @@
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       two-finger-scrolling-enabled = true;
-    };
-    "org/gnome/desktop/screensaver" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri =
-        "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
-      primary-color = "#3465a4";
-      secondary-color = "#000000";
+      click-method = "areas";
+      tap-to-click = true;
     };
     "org/gnome/epiphany" = { ask-for-default = false; };
     "org/gnome/mutter" = {
@@ -55,6 +51,7 @@
       workspaces-only-on-primary = true;
       attach-modal-dialogs = true;
       center-new-windows = true;
+      edge-tiling = true;
     };
     "org/gnome/nautilus/icon-view" = { default-zoom-level = "standard"; };
     "org/gnome/nautilus/preferences" = {
@@ -65,7 +62,7 @@
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
       power-button-action = "suspend";
-      power-saver-profile-on-low-battery = false;
+      power-saver-profile-on-low-battery = true;
       sleep-inactive-ac-type = "nothing";
       sleep-inactive-battery-type = "nothing";
     };
@@ -77,9 +74,8 @@
         "google-chrome.desktop"
         "spotify.desktop"
         "org.gnome.Geary.desktop"
-        "code.desktop"
+        "obsidian.desktop"
       ];
-      had-bluetooth-devices-setup = false;
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
@@ -101,6 +97,12 @@
       ext-button = false;
       pin-button = false;
       url-button = false;
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      move-to-workspace-left = [ "<Shift><Control><Alt>h" ];
+      move-to-workspace-right = [ "<Shift><Control><Alt>l" ];
+      switch-to-workspace-left = [ "<Control><Alt>h" ];
+      switch-to-workspace-right = [ "<Control><Alt>l" ];
     };
   };
 }
