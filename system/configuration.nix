@@ -39,5 +39,8 @@
     options = "--delete-older-than 4d";
   };
 
+  environment.sessionVariables.EDITOR = "nvim";
+  environment.sessionVariables.VISUAL = "nvim";
+
   system.stateVersion = "23.05";
 }

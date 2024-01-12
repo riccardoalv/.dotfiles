@@ -16,7 +16,6 @@
     displayManager.gdm.wayland = true;
     excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
-    videoDrivers = [ "modesetting" ];
   };
   programs.xwayland.enable = true;
   programs.dconf.enable = true;

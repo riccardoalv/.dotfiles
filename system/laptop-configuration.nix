@@ -21,7 +21,7 @@
       };
     };
     kernelModules =
-      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" "acpi_call" ];
+      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "acpi_call" ];
     kernelParams = [
       "quiet"
       "splash"
