@@ -9,7 +9,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Set general options
-o.cursorline = true
+o.cursorline = false
 o.mouse = false
 o.ruler = true
 o.hidden = true
