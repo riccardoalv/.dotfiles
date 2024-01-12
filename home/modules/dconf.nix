@@ -74,7 +74,7 @@
         "google-chrome.desktop"
         "spotify.desktop"
         "org.gnome.Geary.desktop"
-        "obsidian.desktop"
+        "md.obsidian.Obsidian.desktop"
       ];
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
