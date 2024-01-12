@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, unstable, ... }: {
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
@@ -9,7 +9,6 @@
         xclip
         ripgrep
         zoxide
-        cz-cli
         fzf
         lazygit
         tokei
