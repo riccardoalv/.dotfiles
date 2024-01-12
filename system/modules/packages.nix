@@ -19,18 +19,17 @@
 
   # pkgs Settings
 
-  # flatpak
   services.flatpak.enable = true;
 
   virtualisation = {
-    # docker
     docker = {
       enable = true;
       enableOnBoot = false;
     };
 
-    # libvirtd
     libvirtd.enable = true;
+
+    waydroid.enable = true;
   };
 
   # Enable Audio
