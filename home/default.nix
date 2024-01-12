@@ -22,7 +22,6 @@
         discord
         spotify
         google-chrome
-        obsidian
         docker-compose
       ]);
 
