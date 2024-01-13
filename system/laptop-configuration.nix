@@ -9,6 +9,8 @@
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 10;
       "net.ipv4.tcp_congestion_control" = "bbr";
+      "initcall_blacklist" = "acpi_cpufreq_init";
+      "amd_pstate" = "active";
     };
     plymouth.enable = true;
     loader = {
@@ -21,7 +23,7 @@
       };
     };
     kernelModules =
-      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "acpi_call" ];
+      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "acpi_call" "amdgpu" ];
     kernelParams = [
       "quiet"
       "splash"
@@ -62,9 +64,5 @@
     device = "/var/lib/swapfile";
     size = 2 * 1024;
   }];
-
-  # auto-cpufreq
-  services.auto-cpufreq.enable = true;
-  systemd.services.auto-cpufreq.after = [ "power-profiles-daemon.service" ];
-  services.thermald.enable = true;
+  services.power-profiles-daemon.enable = true;
 }
