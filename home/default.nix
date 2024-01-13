@@ -21,6 +21,7 @@
         nmap
         discord
         spotify
+        transmission-gtk
         google-chrome
         docker-compose
       ]);

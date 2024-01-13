@@ -8,12 +8,19 @@
   services.gvfs.enable = true;
   services.gnome.sushi.enable = true;
   services.colord.enable = true;
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+      autoLogin = {
+        enable = true;
+        user = "ricardo";
+      };
+    };
     excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
   };
