@@ -8,7 +8,6 @@
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 10;
-      "vm.watermark_scale_factor" = 1000;
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
     plymouth.enable = true;
@@ -21,15 +20,13 @@
         useOSProber = true;
       };
     };
-    kernelModules =
-      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "acpi_call" "amdgpu" ];
+    kernelModules = [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" ];
     kernelParams = [
       "quiet"
       "splash"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
-      "initcall_blacklist=acpi_cpufreq_init"
       "amd_pstate=active"
     ];
   };
@@ -63,5 +60,6 @@
     device = "/var/lib/swapfile";
     size = 2 * 1024;
   }];
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.auto-cpufreq.enable = true;
 }
