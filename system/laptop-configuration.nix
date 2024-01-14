@@ -8,9 +8,8 @@
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 10;
+      "vm.watermark_scale_factor" = 1000;
       "net.ipv4.tcp_congestion_control" = "bbr";
-      "initcall_blacklist" = "acpi_cpufreq_init";
-      "amd_pstate" = "active";
     };
     plymouth.enable = true;
     loader = {
