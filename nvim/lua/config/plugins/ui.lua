@@ -60,7 +60,7 @@ return {
       require("ibl").setup()
     end,
   },
-  { "kyazdani42/nvim-web-devicons", lazy = true },
+  "kyazdani42/nvim-web-devicons",
   {
     "kyazdani42/nvim-tree.lua",
     config = function()
@@ -70,7 +70,6 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    lazy = true,
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
