@@ -28,8 +28,6 @@
     };
 
     libvirtd.enable = true;
-
-    waydroid.enable = true;
   };
 
   # Enable Audio
