@@ -28,9 +28,9 @@
       translate = true;
     };
     "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "caps:swapescape" ];
-      mru-sources = [ "('xkb', 'us')" ];
+      mru-sources = "@a(ss) []";
       sources = [ "('xkb', 'us')" "('xkb', 'br')" ];
+      xkb-options = [ "caps:swapescape" ];
     };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;
@@ -72,9 +72,9 @@
         "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
         "google-chrome.desktop"
-        "com.spotify.Client.desktop"
+        "spotify.desktop"
         "org.gnome.Geary.desktop"
-        "md.obsidian.Obsidian.desktop"
+        "obsidian.desktop"
       ];
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"

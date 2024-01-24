@@ -19,6 +19,9 @@
         rnix-lsp
         distrobox
         nmap
+        discord
+        spotify
+        obsidian
         transmission-gtk
         google-chrome
         docker-compose
