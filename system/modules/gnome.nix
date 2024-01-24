@@ -8,6 +8,7 @@
   services.gvfs.enable = true;
   services.gnome.sushi.enable = true;
   services.colord.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
