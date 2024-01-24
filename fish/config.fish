@@ -1,6 +1,5 @@
 if status is-interactive
 	starship init fish | source
-  any-nix-shell fish --info-right | source
 	zoxide init fish | source
 end
 

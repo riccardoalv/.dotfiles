@@ -14,6 +14,10 @@
         tokei
         bat
         fd
+        jq
+        lua-language-server
+        stylua
+        scrcpy
         stow
         nixfmt
         rnix-lsp
