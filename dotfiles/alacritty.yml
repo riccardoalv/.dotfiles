@@ -80,3 +80,5 @@ colors:
             white: "#BAC2DE" # subtext1
 key_bindings:
     - { key: N, mods: Control|Shift, action: CreateNewWindow}
+mouse:
+  hide_when_typing: false

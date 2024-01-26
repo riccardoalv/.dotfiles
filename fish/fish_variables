@@ -2,15 +2,6 @@
 # VERSION: 3.0
 SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dcolor\x3dbg\x2b\x3a\x23313244\x2cbg\x3a\x231e1e2e\x2cspinner\x3a\x23f5e0dc\x2chl\x3a\x23f38ba8\x20\x2d\x2dcolor\x3dfg\x3a\x23cdd6f4\x2cheader\x3a\x23f38ba8\x2cinfo\x3a\x23cba6f7\x2cpointer\x3a\x23f5e0dc\x20\x2d\x2dcolor\x3dmarker\x3a\x23f5e0dc\x2cfg\x2b\x3a\x23cdd6f4\x2cprompt\x3a\x23cba6f7\x2chl\x2b\x3a\x23f38ba8
 SETUVAR __fish_initialized:3400
-SETUVAR _fish_abbr_clip:xclip\x20\x2dselection\x20clipboard
-SETUVAR _fish_abbr_d:docker
-SETUVAR _fish_abbr_dc:docker\x2dcompose
-SETUVAR _fish_abbr_vi:nvim\x20\x2du\x20\x24HOME/\x2edotfiles/nvim/ftplugin/cpp\x2elua
-SETUVAR _fish_abbr_vim:nvim
-SETUVAR _fish_abbr_za:zoxide\x20add
-SETUVAR _fish_abbr_zq:zoxide\x20query
-SETUVAR _fish_abbr_zqi:zoxide\x20query\x20\x2di
-SETUVAR _fish_abbr_zr:zoxide\x20remove
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue
