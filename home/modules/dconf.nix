@@ -74,7 +74,7 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
-        "pop-shell@system76.com"
+        # "pop-shell@system76.com"
       ];
     };
     "org/gnome/shell/extensions/pop-shell" = {

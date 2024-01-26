@@ -42,6 +42,6 @@
     gnome.gnome-tweaks
     gnome.adwaita-icon-theme
     gnomeExtensions.appindicator
-    # gnomeExtensions.pop-shell
+    gnomeExtensions.pop-shell
   ];
 }
