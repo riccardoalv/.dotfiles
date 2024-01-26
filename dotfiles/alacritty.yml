@@ -3,7 +3,7 @@ env:
 shell:
   program: fish
 window:
-  opacity: 0.8
+  opacity: 0.9
 colors:
   primary:
     background: "#1E1E2E" # base
