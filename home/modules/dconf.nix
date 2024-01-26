@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, lib, ... }:
 
-{
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/Geary" = { startup-notifications = true; };
     "org/gnome/desktop/app-folders/folders/Utilities" = {
@@ -27,6 +27,10 @@
       name = "X-GNOME-Utilities.directory";
       translate = true;
     };
+    "org/gnome/desktop/input-sources" = {
+      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "br" ]) ];
+      xkb-options = [ "caps:swapescape" ];
+    };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;
       show-battery-percentage = true;
@@ -40,13 +44,11 @@
       click-method = "areas";
       tap-to-click = true;
     };
-    "org/gnome/epiphany" = { ask-for-default = false; };
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
       workspaces-only-on-primary = true;
       attach-modal-dialogs = true;
       center-new-windows = true;
-      edge-tiling = true;
     };
     "org/gnome/nautilus/icon-view" = { default-zoom-level = "standard"; };
     "org/gnome/nautilus/preferences" = {
@@ -74,12 +76,14 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
-        # "pop-shell@system76.com"
+        "pop-shell@system76.com"
       ];
     };
     "org/gnome/shell/extensions/pop-shell" = {
       gap-inner = 2;
       gap-outer = 4;
+      smart-gaps = true;
+      tile-by-default = false;
     };
     "org/gnome/todo" = {
       default-provider = "local";
