@@ -94,7 +94,7 @@ return {
         null_ls.builtins.diagnostics.eslint,
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.code_actions.eslint,
-        null_ls.builtins.formatting.astyle
+        null_ls.builtins.formatting.astyle,
       },
     })
 
@@ -121,11 +121,6 @@ return {
     })
 
     lspconfig.clangd.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.arduino_language_server.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })

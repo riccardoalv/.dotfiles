@@ -27,11 +27,6 @@
       name = "X-GNOME-Utilities.directory";
       translate = true;
     };
-    "org/gnome/desktop/input-sources" = {
-      mru-sources = "@a(ss) []";
-      sources = [ "('xkb', 'us')" "('xkb', 'br')" ];
-      xkb-options = [ "caps:swapescape" ];
-    };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;
       show-battery-percentage = true;
