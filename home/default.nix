@@ -2,32 +2,42 @@
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
-      [ alacritty obs-studio tmux ] ++ (with unstable; [
+      [ alacritty obs-studio ] ++ (with unstable; [
+
+        # neovim
         neovim
         tree-sitter
-        vscode
         xclip
+        lua-language-server
+        rnix-lsp
+        nixfmt
+        stylua
+
+        # Terminal apps
+        tmux
+        fzf
         ripgrep
         zoxide
-        fzf
         lazygit
         tokei
         bat
+        vscode
         fd
         jq
-        lua-language-server
-        stylua
-        scrcpy
         stow
-        nixfmt
-        rnix-lsp
-        distrobox
-        nmap
+        entr
+
+        # Web
         discord
         spotify
         obsidian
-        transmission-gtk
         google-chrome
+
+        # Utils
+        scrcpy
+        distrobox
+        nmap
+        transmission-gtk
         docker-compose
       ]);
 
