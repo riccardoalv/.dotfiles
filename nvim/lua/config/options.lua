@@ -1,11 +1,11 @@
 local o = vim.o
 vim.api.nvim_set_var("localmapleader", [[\]])
 vim.api.nvim_set_var("mapleader", ",")
-vim.cmd([[ set undodir=~/.dotfiles/nvim/undodir ]])
 vim.g.editorconfig = false
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+o.undodir = vim.fn.expand(vim.fn.stdpath("state") .. "/undodir/")
 o.ai = true
 o.autoread = true
 o.background = "dark"

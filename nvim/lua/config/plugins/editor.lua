@@ -3,6 +3,15 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 return {
+  "tpope/vim-repeat",
+
+  {
+    "folke/persistence.nvim",
+    config = function()
+      require("persistence").setup()
+      vim.api.nvim_set_keymap("n", "<space>s", [[<cmd>lua require("persistence").load()<cr>]], {})
+    end,
+  },
   {
     "mattn/emmet-vim",
     ft = { "html", "css" },
@@ -21,7 +30,6 @@ return {
       require("mini.pairs").setup(opts)
     end,
   },
-
   {
     "kylechui/nvim-surround",
     config = function()
@@ -43,7 +51,6 @@ return {
       require("mini.comment").setup(opts)
     end,
   },
-
   {
     "junegunn/vim-easy-align",
     config = function()
@@ -51,7 +58,6 @@ return {
       keymap("n", "ga", "<Plug>(EasyAlign)", opts)
     end,
   },
-
   {
     "kana/vim-submode",
     config = function()
@@ -64,8 +70,6 @@ return {
       end
     end,
   },
-  "tpope/vim-repeat",
-
   {
     "ThePrimeagen/refactoring.nvim",
     config = function()
