@@ -8,6 +8,7 @@
         neovim
         tree-sitter
         xclip
+        wl-clipboard
         lua-language-server
         rnix-lsp
         nixfmt
