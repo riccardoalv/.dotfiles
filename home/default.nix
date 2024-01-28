@@ -16,6 +16,7 @@
 
         # Terminal apps
         tmux
+        gitmux
         fzf
         ripgrep
         zoxide
@@ -24,7 +25,7 @@
         bat
         vscode
         fd
-        jq
+        yq
         stow
         entr
 
