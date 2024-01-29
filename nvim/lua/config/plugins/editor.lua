@@ -8,7 +8,19 @@ return {
   {
     "folke/persistence.nvim",
     config = function()
-      require("persistence").setup()
+      require("persistence").setup({
+        options = {
+          "buffers",
+          "curdir",
+          "tabpages",
+          "winsize",
+          "tabpages",
+          "folds",
+          "terminal",
+          "options",
+          "localoptions",
+        },
+      })
       vim.api.nvim_set_keymap("n", "<space>s", [[<cmd>lua require("persistence").load()<cr>]], {})
     end,
   },
