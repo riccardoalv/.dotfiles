@@ -77,6 +77,7 @@ return {
 
     -- Floating terminal
     keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+    keymap("n", "<A-g>", "<cmd>Lspsaga term_toggle<CR>lazygit<cr>", opts)
     keymap("t", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
 
     local null_ls = require("null-ls")
