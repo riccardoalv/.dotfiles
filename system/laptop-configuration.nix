@@ -9,6 +9,7 @@
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 10;
       "net.ipv4.tcp_congestion_control" = "bbr";
+      "vm.overcommit_memory" = 1;
     };
     plymouth.enable = true;
     loader = {
