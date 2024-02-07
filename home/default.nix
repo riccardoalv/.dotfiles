@@ -26,6 +26,7 @@
         vscode
         fd
         yq
+        jq
         stow
         entr
 
