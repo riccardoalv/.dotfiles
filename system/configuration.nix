@@ -33,12 +33,6 @@
     auto-optimise-store = true;
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 4d";
-  };
-
   environment.sessionVariables.EDITOR = "nvim";
   environment.sessionVariables.VISUAL = "nvim";
 
