@@ -19,7 +19,7 @@
         useOSProber = true;
       };
     };
-    kernelModules = [ "tcp_bbr" "kvm-amd" "netconsole" ];
+    kernelModules = [ "tcp_bbr" "kvm-amd" "netconsole" "v4l2loopback" ];
     kernelParams = [
       "quiet"
       "splash"
@@ -27,7 +27,12 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
   };
+
+  security.polkit.enable = true;
 
   system.autoUpgrade = {
     enable = true;

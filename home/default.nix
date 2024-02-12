@@ -42,6 +42,7 @@
         nmap
         transmission-gtk
         docker-compose
+        gparted
       ]);
 
     qt = {

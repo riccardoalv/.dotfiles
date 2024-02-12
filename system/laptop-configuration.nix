@@ -21,7 +21,8 @@
         useOSProber = true;
       };
     };
-    kernelModules = [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" ];
+    kernelModules =
+      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" "v4l2loopback" ];
     kernelParams = [
       "quiet"
       "splash"
@@ -30,7 +31,12 @@
       "udev.log_priority=3"
       "amd_pstate=active"
     ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
   };
+
+  security.polkit.enable = true;
 
   hardware = {
     cpu.amd.updateMicrocode = true;
