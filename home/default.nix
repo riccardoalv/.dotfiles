@@ -35,6 +35,7 @@
         spotify
         obsidian
         google-chrome
+        firefox
 
         # Utils
         scrcpy
