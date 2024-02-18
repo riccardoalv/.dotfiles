@@ -67,6 +67,4 @@
     device = "/var/lib/swapfile";
     size = 2 * 1024;
   }];
-  services.power-profiles-daemon.enable = false;
-  services.auto-cpufreq.enable = true;
 }
