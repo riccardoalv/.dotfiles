@@ -58,6 +58,7 @@
 
   # Editor
   programs.neovim.defaultEditor = true;
+  environment.variables.EDITOR = "nvim";
 
   # Avahi
   services.avahi = {
@@ -71,12 +72,6 @@
       userServices = true;
       workstation = true;
     };
-  };
-
-  # Wireshark
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark-qt;
   };
 
   # Enable CUPS to print documents.

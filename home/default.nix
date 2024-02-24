@@ -35,7 +35,6 @@
         spotify
         obsidian
         google-chrome
-        firefox
 
         # Utils
         scrcpy
@@ -58,6 +57,8 @@
       enable = true;
       settings = { git_protocol = "ssh"; };
     };
+
+    programs.firefox.enable = true;
 
     programs.starship.enable = true;
 
