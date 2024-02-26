@@ -91,6 +91,7 @@ return {
         null_ls.builtins.formatting.autopep8,
         null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.eslint,
+        null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.diagnostics.stylelint,
         null_ls.builtins.diagnostics.eslint,
         null_ls.builtins.code_actions.gitsigns,
@@ -124,6 +125,18 @@ return {
     lspconfig.clangd.setup({
       capabilities = capabilities,
       on_attach = on_attach,
+    })
+
+    lspconfig.rust_analyzer.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        ["rust-analyzer"] = {
+          diagnostics = {
+            enable = true,
+          },
+        },
+      },
     })
   end,
 }
