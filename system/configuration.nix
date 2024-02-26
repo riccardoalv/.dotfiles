@@ -36,5 +36,5 @@
   environment.sessionVariables.EDITOR = "nvim";
   environment.sessionVariables.VISUAL = "nvim";
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }

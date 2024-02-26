@@ -67,4 +67,17 @@
     device = "/var/lib/swapfile";
     size = 2 * 1024;
   }];
+  services.power-profiles-daemon.enable = false;
+  services.thermald.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
 }
