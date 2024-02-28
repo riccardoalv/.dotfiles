@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }: {
+{ config, pkgs, unstable, lib, ... }: {
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
@@ -41,6 +41,37 @@
         name = "adwaita-dark";
         package = pkgs.adwaita-qt;
       };
+    };
+
+    home.activation = {
+      linkFishDir = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/fish $HOME/.config/
+      '';
+      linkNeovimDir = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/nvim $HOME/.config/
+      '';
+      linkTmuxFile = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/dotfiles/tmux.conf $HOME/.tmux.conf
+      '';
+      linkGitConfig = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/dotfiles/gitconfig $HOME/.gitconfig
+      '';
+      linkStarship = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/dotfiles/starship.toml $HOME/.config/
+      '';
+      linkLazyGit = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/dotfiles/config.yml $HOME/.config/lazygit/
+      '';
+      linkGitmux = ''
+        ln -s -v -f \
+            $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
+      '';
     };
 
     programs.neovim = {
