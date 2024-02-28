@@ -3,17 +3,6 @@
   config = {
     home.packages = with pkgs;
       [ alacritty obs-studio ] ++ (with unstable; [
-
-        # neovim
-        neovim
-        tree-sitter
-        xclip
-        wl-clipboard
-        lua-language-server
-        rnix-lsp
-        nixfmt
-        stylua
-
         # Terminal apps
         tmux
         gitmux
@@ -29,6 +18,7 @@
         jq
         stow
         entr
+        gh
 
         # Web
         discord
@@ -53,9 +43,21 @@
       };
     };
 
-    programs.gh = {
+    programs.neovim = {
       enable = true;
-      settings = { git_protocol = "ssh"; };
+      defaultEditor = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+      plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
+      extraPackages = with pkgs; [
+        xclip
+        wl-clipboard
+        lua-language-server
+        rnix-lsp
+        nixfmt
+        stylua
+      ];
     };
 
     programs.firefox.enable = true;

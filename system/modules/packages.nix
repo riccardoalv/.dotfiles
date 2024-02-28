@@ -56,10 +56,6 @@
   environment.shells = with pkgs; [ fish ];
   users.defaultUserShell = pkgs.fish;
 
-  # Editor
-  programs.neovim.defaultEditor = true;
-  environment.variables.EDITOR = "nvim";
-
   # Avahi
   services.avahi = {
     enable = true;
