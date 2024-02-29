@@ -50,6 +50,9 @@ keymap("n", "<A-m>", "@:", opts)
 
 -- Esc
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
+keymap("t", "<C-c>", [[<C-\><C-n>]], opts)
+keymap("n", "<C-c>", "<esc>", opts)
+keymap("x", "<C-c>", "<esc>", opts)
 keymap("n", "<C-c>", "<esc>", opts)
 keymap("v", "<C-c>", "<esc>", opts)
 

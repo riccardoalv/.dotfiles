@@ -18,9 +18,11 @@ return {
           n = {
             ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
             ["d"] = actions.delete_buffer,
+            ["<C-c>"] = actions.close,
           },
           i = {
             ["<C-q>"] = actions.send_to_qflist,
+            ["<C-c>"] = false,
           },
         },
       },
