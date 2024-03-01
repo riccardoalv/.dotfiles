@@ -29,7 +29,7 @@ with lib.hm.gvariant; {
     };
     "org/gnome/desktop/input-sources" = {
       sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "br" ]) ];
-      xkb-options = [ "caps:swapescape" ];
+      xkb-options = [ "ctrl:swapcaps" "mod_led:compose" ];
     };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;
@@ -102,6 +102,7 @@ with lib.hm.gvariant; {
       move-to-workspace-right = [ "<Shift><Control><Alt>l" ];
       switch-to-workspace-left = [ "<Control><Alt>h" ];
       switch-to-workspace-right = [ "<Control><Alt>l" ];
+      switch-windows = [ "<Alt>Tab" ];
     };
   };
 }
