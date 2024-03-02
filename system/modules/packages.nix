@@ -15,6 +15,7 @@
     vim
     stow
     cifs-utils
+    btrfs-progs
   ];
 
   # pkgs Settings
