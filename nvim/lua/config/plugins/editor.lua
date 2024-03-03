@@ -17,8 +17,6 @@ return {
           "tabpages",
           "folds",
           "terminal",
-          "options",
-          "localoptions",
         },
       })
       vim.api.nvim_set_keymap("n", "<space>s", [[<cmd>lua require("persistence").load()<cr>]], {})

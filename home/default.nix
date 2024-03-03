@@ -19,6 +19,8 @@
         stow
         entr
         gh
+        xclip
+        wl-clipboard
 
         # Web
         discord
@@ -80,14 +82,7 @@
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
-      extraPackages = with pkgs; [
-        xclip
-        wl-clipboard
-        lua-language-server
-        rnix-lsp
-        nixfmt
-        stylua
-      ];
+      extraPackages = with pkgs; [ lua-language-server rnix-lsp nixfmt stylua ];
     };
 
     programs.firefox.enable = true;
