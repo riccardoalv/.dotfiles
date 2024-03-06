@@ -91,7 +91,22 @@
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
-      extraPackages = with pkgs; [ lua-language-server rnix-lsp nixfmt stylua ];
+      extraPackages = with pkgs; [
+        lua-language-server
+        rnix-lsp
+        nixfmt
+        stylua
+        clang
+        prettierd
+        yapf
+        djhtml
+        rustfmt
+        rust-analyzer
+        astyle
+        nodePackages.pyright
+        nodePackages.eslint
+        nodePackages.typescript-language-server
+      ];
     };
 
     programs.firefox.enable = true;
