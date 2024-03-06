@@ -48,6 +48,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Android
+  programs.adb.enable = true;
+
   # fish
   programs.fish.enable = true;
 
