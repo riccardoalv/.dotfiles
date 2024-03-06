@@ -30,7 +30,6 @@
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
-    epiphany
     gnome-user-docs
     gnome.gnome-software
     gnome.gnome-weather

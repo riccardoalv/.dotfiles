@@ -67,12 +67,21 @@
             $HOME/.dotfiles/dotfiles/starship.toml $HOME/.config/
       '';
       linkLazyGit = ''
+        mkdir -p $HOME/.config/lazygit/
         ln -s -v -f \
             $HOME/.dotfiles/dotfiles/config.yml $HOME/.config/lazygit/
       '';
       linkGitmux = ''
         ln -s -v -f \
             $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
+      '';
+      InstallTPM = ''
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+      '';
+      linkAlacritty = ''
+        mkdir -p $HOME/.config/alacritty/
+        ln -s -v -f \
+            /home/ricardo/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
       '';
     };
 
