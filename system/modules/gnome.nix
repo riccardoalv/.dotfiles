@@ -24,7 +24,7 @@
     excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
   };
-  programs.xwayland.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.dconf.enable = true;
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
