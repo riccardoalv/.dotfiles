@@ -8,6 +8,7 @@
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 5;
+      "vm.watermark_scale_factor" = 1000;
       "net.ipv4.tcp_congestion_control" = "bbr";
       "vm.overcommit_memory" = 1;
     };
