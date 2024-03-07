@@ -97,15 +97,6 @@
         nixfmt
         stylua
         clang
-        prettierd
-        yapf
-        djhtml
-        rustfmt
-        rust-analyzer
-        astyle
-        nodePackages.pyright
-        nodePackages.eslint
-        nodePackages.typescript-language-server
       ];
     };
 
