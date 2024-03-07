@@ -164,22 +164,23 @@ return {
 
     local null_ls = require("null-ls")
 
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.nixfmt,
-        null_ls.builtins.formatting.clang_format,
-        null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.formatting.autopep8,
-        null_ls.builtins.formatting.yapf,
-        null_ls.builtins.formatting.djhtml,
-        null_ls.builtins.formatting.rustfmt,
-        null_ls.builtins.diagnostics.stylelint,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.code_actions.gitsigns,
-        null_ls.builtins.code_actions.eslint,
-        null_ls.builtins.formatting.astyle,
+    if not vim.fn.filereadable(".nvim.lua") then
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.nixfmt,
+          null_ls.builtins.diagnostics.stylelint,
+          null_ls.builtins.code_actions.gitsigns,
+        },
+      })
+    end
+
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        spacing = 5,
+        severity_limit = "Warning",
       },
+      update_in_insert = true,
     })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -192,33 +193,6 @@ return {
     lspconfig.rnix.setup({
       capabilities = capabilities,
       on_attach = on_attach,
-    })
-
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.tsserver.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.clangd.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.rust_analyzer.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = {
-        ["rust-analyzer"] = {
-          diagnostics = {
-            enable = true,
-          },
-        },
-      },
     })
   end,
 }
