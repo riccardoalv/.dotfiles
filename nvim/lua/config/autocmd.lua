@@ -61,6 +61,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  buffer = buffer,
+  callback = function()
+    vim.lsp.buf.format { async = true }
+  end
+})
+
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),

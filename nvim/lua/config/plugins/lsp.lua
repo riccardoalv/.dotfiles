@@ -13,7 +13,6 @@ return {
       },
       severity_sort = true,
     },
-    autoformat = true,
     inlay_hints = { enabled = false },
     servers = {
       tsserver = {
