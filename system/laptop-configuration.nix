@@ -8,7 +8,7 @@
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 5;
-      "vm.watermark_scale_factor" = 1000;
+      "vm.watermark_scale_factor" = 500;
       "net.ipv4.tcp_congestion_control" = "bbr";
       "vm.overcommit_memory" = 1;
     };
@@ -22,8 +22,16 @@
         useOSProber = true;
       };
     };
-    kernelModules =
-      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" "v4l2loopback" ];
+    kernelModules = [
+      "tcp_bbr"
+      "kvm-amd"
+      "netconsole"
+      "amd-pstate"
+      "amdgpu"
+      "v4l2loopback"
+      "v4l2loopback-dc"
+      "snd-aloop"
+    ];
     kernelParams = [
       "quiet"
       "splash"
@@ -32,8 +40,9 @@
       "udev.log_priority=3"
       "amd_pstate=active"
     ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
     extraModprobeConfig = ''
-      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     '';
   };
 
