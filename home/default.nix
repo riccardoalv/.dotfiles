@@ -24,7 +24,6 @@
 
         # Web
         discord
-        spotify
         obsidian
         google-chrome
 
