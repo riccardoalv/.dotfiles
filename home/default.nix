@@ -80,7 +80,7 @@
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
         ln -s -v -f \
-            /home/ricardo/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
+            $HOME/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
       '';
     };
 

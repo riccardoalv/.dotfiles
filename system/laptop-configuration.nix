@@ -74,8 +74,8 @@
     dates = "daily";
   };
   swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 2 * 1024;
+    device = "/swapfile";
+    size = 6 * 1024;
   }];
   services.power-profiles-daemon.enable = false;
   services.thermald.enable = true;
