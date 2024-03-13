@@ -2,7 +2,18 @@
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
-      [ alacritty obs-studio ] ++ (with unstable; [
+      [
+        alacritty
+        obs-studio
+        # Web
+        discord
+        obsidian
+        google-chrome
+        distrobox
+        transmission-gtk
+        docker-compose
+        gparted
+      ] ++ (with unstable; [
         # Terminal apps
         tmux
         gitmux
@@ -22,18 +33,12 @@
         xclip
         wl-clipboard
 
-        # Web
-        discord
-        obsidian
-        google-chrome
+        #web
+        vesktop
 
         # Utils
         scrcpy
-        distrobox
         nmap
-        transmission-gtk
-        docker-compose
-        gparted
       ]);
 
     qt = {
@@ -103,7 +108,7 @@
 
     programs.starship.enable = true;
 
-    home.stateVersion = "22.05";
+    home.stateVersion = "22.11";
 
     programs.home-manager.enable = true;
   };

@@ -24,6 +24,7 @@
     excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
   programs.dconf.enable = true;
