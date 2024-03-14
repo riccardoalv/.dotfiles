@@ -18,6 +18,10 @@
         device = "nodev";
         useOSProber = true;
       };
+      grub2-theme = {
+        enable = true;
+        theme = "vimix";
+      };
     };
     kernelModules = [ "tcp_bbr" "kvm-amd" "netconsole" "v4l2loopback" ];
     kernelParams = [
