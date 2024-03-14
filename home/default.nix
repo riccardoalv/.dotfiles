@@ -7,7 +7,6 @@
         obs-studio
         # Web
         discord
-        obsidian
         google-chrome
         distrobox
         transmission-gtk
@@ -32,6 +31,7 @@
         gh
         xclip
         wl-clipboard
+        obsidian
 
         #web
         vesktop
