@@ -80,7 +80,7 @@
             $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
       '';
       InstallTPM = ''
-        test -d ~/.tmux/plguins/tpm && git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        run [ ! -d "~/.tmux/plugins/tpm" ] && mkdir -p ~/.tmux/plugins/tpm && git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
       '';
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
