@@ -16,10 +16,6 @@
         enable = true;
         wayland = true;
       };
-      autoLogin = {
-        enable = true;
-        user = "ricardo";
-      };
     };
     excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
