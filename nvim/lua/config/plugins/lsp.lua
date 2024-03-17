@@ -174,14 +174,6 @@ return {
       })
     end
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = {
-        spacing = 5,
-        severity_limit = "Warning",
-      },
-      update_in_insert = true,
-    })
-
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     lspconfig.lua_ls.setup({
