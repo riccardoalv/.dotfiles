@@ -85,6 +85,10 @@
     device = "/swapfile";
     size = 6 * 1024;
   }];
+  services.xserver.displayManager.autoLogin = {
+    enable = true;
+    user = "ricardo";
+  };
   services.power-profiles-daemon.enable = false;
   services.thermald.enable = true;
   services.auto-cpufreq.enable = true;
