@@ -104,5 +104,12 @@ with lib.hm.gvariant; {
       switch-to-workspace-right = [ "<Control><Alt>l" ];
       switch-windows = [ "<Alt>Tab" ];
     };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      logout = [ ];
+      next = [ "<Alt><Super>Right" ];
+      play = [ "Pause" ];
+      previous = [ "<Alt><Super>Left" ];
+      screensaver = [ "<Control><Alt>Delete" ];
+    };
   };
 }
