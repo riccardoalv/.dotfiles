@@ -12,6 +12,7 @@
         transmission-gtk
         docker-compose
         gparted
+        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
       ] ++ (with unstable; [
         # Terminal apps
         tmux
@@ -31,10 +32,10 @@
         gh
         xclip
         wl-clipboard
-        obsidian
 
         #web
         vesktop
+        obsidian
 
         # Utils
         scrcpy
@@ -101,6 +102,7 @@
         nixfmt
         stylua
         clang
+        gcc
       ];
     };
 
