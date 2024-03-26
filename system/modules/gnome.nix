@@ -38,6 +38,7 @@
 
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
+    gnome.nautilus-python
     gnome.adwaita-icon-theme
     gnomeExtensions.appindicator
     gnomeExtensions.pop-shell
