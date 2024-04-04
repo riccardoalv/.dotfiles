@@ -11,7 +11,6 @@
     wget
     curl
     killall
-    virt-manager
     vim
     stow
     cifs-utils
@@ -30,6 +29,7 @@
 
     libvirtd.enable = true;
   };
+  programs.virt-manager.enable = true;
 
   # Enable Audio
   hardware.pulseaudio.enable = false;
