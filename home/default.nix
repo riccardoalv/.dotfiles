@@ -88,6 +88,11 @@
         ln -s -v -f \
             $HOME/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
       '';
+      linkDockerStatus = ''
+        mkdir -p $HOME/.tmux/plugins/tmux/custom/
+        ln -s -v -f \
+            $HOME/.dotfiles/dotfiles/docker_status.sh $HOME/.tmux/plugins/tmux/custom/
+      '';
     };
 
     programs.neovim = {
