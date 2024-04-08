@@ -77,4 +77,5 @@ key_bindings:
     - { key: N, mods: Control|Shift, action: CreateNewWindow}
     - { key: N, mods: Control|Alt, command: { program: "alacritty", args: ["msg", "config", "window.opacity=1.0"] }}
     - { key: T, mods: Control|Alt, command: { program: "alacritty", args: ["msg", "config", "window.opacity=0.9"] }}
+    - { key: F11, mods: Alt, action: ToggleFullScreen }
 
