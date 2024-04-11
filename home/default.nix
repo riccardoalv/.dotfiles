@@ -12,6 +12,8 @@
         transmission-gtk
         docker-compose
         gparted
+        piper
+        wine
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
       ] ++ (with unstable; [
         # Terminal apps
