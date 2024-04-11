@@ -37,7 +37,6 @@
 
         #web
         vesktop
-        obsidian
 
         # Utils
         scrcpy
