@@ -2,7 +2,12 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("autocmd_" .. name, { clear = true })
 end
 
-git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
+local function get_git_dir()
+  return vim.fn.system("git rev-parse --show-toplevel 2>/dev/null"):sub(1, -2)
+end
+
+git_dir = get_git_dir()
+
 if git_dir ~= "" then
   vim.cmd("cd " .. git_dir)
 end
@@ -11,7 +16,7 @@ end
 vim.api.nvim_create_autocmd("DirChanged", {
   group = augroup("git_dir"),
   callback = function()
-    git_dir = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null")
+    git_dir = get_git_dir()
   end,
 })
 
