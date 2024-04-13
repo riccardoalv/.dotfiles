@@ -71,7 +71,7 @@ with lib.hm.gvariant; {
         "google-chrome.desktop"
         "com.spotify.Client.desktop"
         "org.gnome.Geary.desktop"
-        "md.obsidian.Obsidian.desktop"
+        "obsidian.desktop"
       ];
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"

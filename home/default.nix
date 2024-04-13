@@ -36,6 +36,7 @@
         wl-clipboard
 
         #web
+        obsidian
         vesktop
 
         # Utils
