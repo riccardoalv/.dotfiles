@@ -39,12 +39,6 @@ keymap("n", "<space>p", ":bp<cr>", opts)
 keymap("n", "cn", ":cn<cr>", opts)
 keymap("n", "cp", ":cp<cr>", opts)
 
--- resize splits
-vim.fn.Submode("resize", "<c-w>+", "+", "<c-w>+")
-vim.fn.Submode("resize", "<c-w>-", "-", "<c-w>-")
-vim.fn.Submode("resize", "<c-w>>", ">", "<c-w>>")
-vim.fn.Submode("resize", "<c-w><", "<", "<c-w><")
-
 -- repeat last command
 keymap("n", "<A-m>", "@:", opts)
 
