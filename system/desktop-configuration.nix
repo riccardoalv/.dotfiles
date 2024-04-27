@@ -35,19 +35,4 @@
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
   };
-
-  security.polkit.enable = true;
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/ricardo/.dotfiles#desktop";
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--update-input"
-      "nixpkgs-unstable"
-      "--impure"
-    ];
-    dates = "daily";
-  };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, unstable, lib, ... }: {
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
@@ -6,14 +6,12 @@
         alacritty
         obs-studio
         # Web
-        discord
         distrobox
-        transmission-gtk
+        fragments
         docker-compose
         gparted
         piper
         wine
-        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
 
         # Terminal apps
         tmux
@@ -33,15 +31,17 @@
         gh
         xclip
         wl-clipboard
-
-        #web
-        obsidian
-        vesktop
+        appimage-run
 
         # Utils
         scrcpy
         nmap
-      ];
+        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
+      ] ++ (with unstable; [
+        obsidian
+        # google-chrome
+        vesktop
+      ]);
 
     qt = {
       enable = true;

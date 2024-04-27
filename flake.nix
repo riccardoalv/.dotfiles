@@ -3,17 +3,23 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = { url = "github:nix-community/home-manager/release-23.11"; };
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
   };
-  outputs = { nixpkgs, home-manager, grub2-themes, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, grub2-themes, ... }:
     let
       username = "ricardo";
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -29,6 +35,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.users.${username} = import ./home;
+              home-manager.extraSpecialArgs = { inherit unstable; };
             }
             grub2-themes.nixosModules.default
           ];
@@ -44,6 +51,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.users.${username} = import ./home;
+              home-manager.extraSpecialArgs = { inherit unstable; };
             }
             grub2-themes.nixosModules.default
 

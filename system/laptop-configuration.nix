@@ -69,18 +69,6 @@
   services.hdapsd.enable = true;
   services.fstrim.enable = true;
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/ricardo/.dotfiles#laptop";
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--update-input"
-      "nixpkgs-unstable"
-      "--impure"
-    ];
-    dates = "daily";
-  };
   swapDevices = [{
     device = "/swapfile";
     size = 6 * 1024;
