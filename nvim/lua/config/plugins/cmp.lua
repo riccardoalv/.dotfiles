@@ -20,12 +20,34 @@ return {
 
 
       local modified_priority = {
-        [types.lsp.CompletionItemKind.Variable] = types.lsp.CompletionItemKind.Method,
-        [types.lsp.CompletionItemKind.Variable] = types.lsp.CompletionItemKind.Field,
-        [types.lsp.CompletionItemKind.Keyword] = 0,  -- top
-        [types.lsp.CompletionItemKind.Snippet] = 10, -- top
-        [types.lsp.CompletionItemKind.Text] = 100,   -- bottom
+        [types.lsp.CompletionItemKind.Variable]      = 1,
+        [types.lsp.CompletionItemKind.Method]        = 2,
+        [types.lsp.CompletionItemKind.Function]      = 3,
+        [types.lsp.CompletionItemKind.Constructor]   = 4,
+        [types.lsp.CompletionItemKind.Field]         = 5,
+        [types.lsp.CompletionItemKind.Class]         = 7,
+        [types.lsp.CompletionItemKind.Interface]     = 8,
+        [types.lsp.CompletionItemKind.Module]        = 9,
+        [types.lsp.CompletionItemKind.Property]      = 10,
+        [types.lsp.CompletionItemKind.Unit]          = 11,
+        [types.lsp.CompletionItemKind.Value]         = 12,
+        [types.lsp.CompletionItemKind.Enum]          = 13,
+        [types.lsp.CompletionItemKind.Keyword]       = 14,
+        [types.lsp.CompletionItemKind.Color]         = 16,
+        [types.lsp.CompletionItemKind.File]          = 17,
+        [types.lsp.CompletionItemKind.Reference]     = 18,
+        [types.lsp.CompletionItemKind.Folder]        = 19,
+        [types.lsp.CompletionItemKind.EnumMember]    = 20,
+        [types.lsp.CompletionItemKind.Constant]      = 21,
+        [types.lsp.CompletionItemKind.Struct]        = 22,
+        [types.lsp.CompletionItemKind.Event]         = 23,
+        [types.lsp.CompletionItemKind.Operator]      = 24,
+        [types.lsp.CompletionItemKind.TypeParameter] = 25,
+        [types.lsp.CompletionItemKind.Snippet]       = 26,
+        [types.lsp.CompletionItemKind.Text]          = 100,
       }
+
+
       local function modified_kind(kind)
         return modified_priority[kind] or kind
       end
