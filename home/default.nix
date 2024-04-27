@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
@@ -7,7 +7,6 @@
         obs-studio
         # Web
         discord
-        google-chrome
         distrobox
         transmission-gtk
         docker-compose
@@ -15,7 +14,7 @@
         piper
         wine
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
-      ] ++ (with unstable; [
+
         # Terminal apps
         tmux
         gitmux
@@ -42,7 +41,7 @@
         # Utils
         scrcpy
         nmap
-      ]);
+      ];
 
     qt = {
       enable = true;
@@ -55,32 +54,32 @@
     home.activation = {
       linkFishDir = ''
         ln -s -v -f \
-            $HOME/.dotfiles/fish $HOME/.config/
+        $HOME/.dotfiles/fish $HOME/.config/
       '';
       linkNeovimDir = ''
         ln -s -v -f \
-            $HOME/.dotfiles/nvim $HOME/.config/
+        $HOME/.dotfiles/nvim $HOME/.config/
       '';
       linkTmuxFile = ''
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/tmux.conf $HOME/.tmux.conf
+        $HOME/.dotfiles/dotfiles/tmux.conf $HOME/.tmux.conf
       '';
       linkGitConfig = ''
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/gitconfig $HOME/.gitconfig
+        $HOME/.dotfiles/dotfiles/gitconfig $HOME/.gitconfig
       '';
       linkStarship = ''
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/starship.toml $HOME/.config/
+        $HOME/.dotfiles/dotfiles/starship.toml $HOME/.config/
       '';
       linkLazyGit = ''
         mkdir -p $HOME/.config/lazygit/
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/config.yml $HOME/.config/lazygit/
+        $HOME/.dotfiles/dotfiles/config.yml $HOME/.config/lazygit/
       '';
       linkGitmux = ''
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
+        $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
       '';
       InstallTPM = ''
         run [ ! -d "~/.tmux/plugins/tpm" ] && mkdir -p ~/.tmux/plugins/tpm && git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -88,12 +87,12 @@
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
+        $HOME/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
       '';
       linkDockerStatus = ''
         mkdir -p $HOME/.tmux/plugins/tmux/custom/
         ln -s -v -f \
-            $HOME/.dotfiles/dotfiles/docker_status.sh $HOME/.tmux/plugins/tmux/custom/
+        $HOME/.dotfiles/dotfiles/docker_status.sh $HOME/.tmux/plugins/tmux/custom/
       '';
     };
 

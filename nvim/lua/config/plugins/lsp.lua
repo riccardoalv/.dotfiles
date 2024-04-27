@@ -103,16 +103,6 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
 
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format({ async = false })
-      end,
-    })
-
     require("lspsaga").setup({
       ui = {
         kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
@@ -129,7 +119,7 @@ return {
     local keymap = vim.keymap.set
     local opts = { noremap = true, silent = true }
 
-    function on_attach()
+    function on_attach(client, bufnr)
       -- LSP finder - Find the symbol's definition
       keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
       -- Code action
@@ -163,7 +153,6 @@ return {
         sources = {
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.nixfmt,
-          null_ls.builtins.diagnostics.stylelint,
           null_ls.builtins.code_actions.gitsigns,
         },
       })
