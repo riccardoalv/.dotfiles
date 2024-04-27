@@ -3,8 +3,10 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 return {
-  "tpope/vim-repeat",
-
+  {
+    "tpope/vim-repeat",
+    event = "BufReadPost",
+  },
   {
     "folke/persistence.nvim",
     config = function()
@@ -36,20 +38,24 @@ return {
   },
   {
     "echasnovski/mini.pairs",
+    event = "BufReadPost",
     config = function()
       require("mini.pairs").setup(opts)
     end,
   },
   {
     "kylechui/nvim-surround",
+    event = "BufReadPost",
     config = function()
       require("nvim-surround").setup()
     end,
   },
-  -- comments
-  "JoosepAlviste/nvim-ts-context-commentstring",
   {
     "echasnovski/mini.comment",
+    dependecies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    event = "BufReadPost",
     opts = {
       hooks = {
         pre = function()
@@ -63,25 +69,15 @@ return {
   },
   {
     "junegunn/vim-easy-align",
+    event = "BufReadPost",
     config = function()
       keymap("x", "ga", "<Plug>(EasyAlign)", opts)
       keymap("n", "ga", "<Plug>(EasyAlign)", opts)
     end,
   },
   {
-    "kana/vim-submode",
-    config = function()
-      set_var("submode_keep_leaving_key", 1)
-      set_var("submode_timeout", 0)
-
-      vim.fn.Submode = function(mode, map, key, exec)
-        vim.cmd(string.format("call submode#enter_with('%s', 'n', '', '%s', '%s')", mode, map, exec))
-        vim.cmd(string.format("call submode#map('%s', 'n', '', '%s', '%s')", mode, key, exec))
-      end
-    end,
-  },
-  {
     "ThePrimeagen/refactoring.nvim",
+    event = "BufReadPost",
     config = function()
       require("telescope").load_extension("refactoring")
       keymap("v", "<space>rt", require("telescope").extensions.refactoring.refactors, { noremap = true })

@@ -1,5 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
+  event = "BufReadPost",
   dependencies = {
     "nvimtools/none-ls.nvim",
     "glepnir/lspsaga.nvim",
@@ -139,6 +140,19 @@ return {
       -- Call hierarchy
       keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
       keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
+
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
+      if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = augroup,
+          buffer = bufnr,
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+          end,
+        })
+      end
     end
 
     -- Floating terminal
@@ -150,6 +164,7 @@ return {
 
     if not vim.fn.filereadable(".nvim.lua") then
       null_ls.setup({
+        on_attach = on_attach,
         sources = {
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.nixfmt,

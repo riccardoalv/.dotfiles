@@ -2,11 +2,23 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "debugloop/telescope-undo.nvim",
+    "nvim-lua/plenary.nvim",
+    "ThePrimeagen/git-worktree.nvim",
   },
-
+  keys = {
+   {"<leader>f", "<cmd>lua require('telescope.builtin').git_files<cr>"   },
+   {"<c-p>",     "<cmd>lua require('telescope.builtin').find_files<cr>"  },
+   {"<leader>s", "<cmd>lua require('telescope.builtin').git_status<cr>"  },
+   {"<A-b>",     "<cmd>lua require('telescope.builtin').git_branches<cr>"},
+   {"<A-q>",     "<cmd>lua require('telescope.builtin').quickfix<cr>"    },
+   {"<space>b",  "<cmd>lua require('telescope.builtin').buffers<cr>"     },
+   {"<leader>g", "<cmd>lua require('telescope.builtin').live_grep<cr>"   },
+   {"<leader>d", "<cmd>lua require('telescope.builtin').diagnostics<cr>" },
+   {"<A-t>",     "<cmd>lua require('telGscope.builtin').treesitter<cr>"  },
+   {"<leader>u", "<cmd>lua require('telescope').extensions.undo.undo<cr>"},
+  },
   config = function()
     local keymap = vim.keymap.set
-    local opts = { noremap = true, silent = true }
 
     local telescope = require("telescope")
 
