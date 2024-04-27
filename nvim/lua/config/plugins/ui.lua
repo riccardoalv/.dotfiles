@@ -21,31 +21,12 @@ return {
           harpoon = true,
           hop = true,
           lsp_saga = true,
-          fidget = true,
           octo = true,
           which_key = true,
         },
       })
     end,
   },
-  {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("fidget").setup({
-        notification = {
-          override_vim_notify = true,
-          window = {
-            winblend = 0,
-          },
-        },
-      })
-    end,
-  },
-
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPost", "BufNewFile" },
