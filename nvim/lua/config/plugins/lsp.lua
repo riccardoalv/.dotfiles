@@ -47,51 +47,16 @@ return {
         },
       },
       lua_ls = {
-        single_file_support = true,
         settings = {
           Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            },
             workspace = {
               checkThirdParty = false,
-            },
-            completion = {
-              workspaceWord = true,
-              callSnippet = "Both",
-            },
-            hint = {
-              enable = true,
-              setType = false,
-              paramType = true,
-              paramName = "Disable",
-              semicolon = "Disable",
-              arrayIndex = "Disable",
-            },
-            doc = {
-              privateName = { "^_" },
-            },
-            type = {
-              castNumberToInteger = true,
-            },
-            diagnostics = {
-              disable = { "incomplete-signature-doc", "trailing-space" },
-              groupSeverity = {
-                strong = "Warning",
-                strict = "Warning",
-              },
-              groupFileStatus = {
-                ["ambiguity"] = "Opened",
-                ["await"] = "Opened",
-                ["codestyle"] = "None",
-                ["duplicate"] = "Opened",
-                ["global"] = "Opened",
-                ["luadoc"] = "Opened",
-                ["redefined"] = "Opened",
-                ["strict"] = "Opened",
-                ["strong"] = "Opened",
-                ["type-check"] = "Opened",
-                ["unbalanced"] = "Opened",
-                ["unused"] = "Opened",
-              },
-              unusedLocalExclude = { "_*" },
+              library = vim.api.nvim_get_runtime_file("", true),
+              maxPreload = 1000,
+              preloadFileSize = 1000,
             },
             format = {
               enable = false,

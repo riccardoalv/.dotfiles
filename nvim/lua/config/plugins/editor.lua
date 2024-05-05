@@ -52,7 +52,7 @@ return {
   },
   {
     "echasnovski/mini.comment",
-    dependecies = {
+    dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
     event = "BufReadPost",

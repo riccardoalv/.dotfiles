@@ -20,7 +20,7 @@ return {
         }
       })
 
-      keymap("n", "<leader><leader>", function() harpoon:list():append() end)
+      keymap("n", "<leader><leader>", function() harpoon:list():add() end)
       keymap("n", "<leader><space>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
       keymap("n", "<M-h>", function() harpoon:list():prev() end)
       keymap("n", "<M-l>", function() harpoon:list():next() end)
