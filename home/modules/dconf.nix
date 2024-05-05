@@ -76,7 +76,6 @@ with lib.hm.gvariant; {
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
-        "pop-shell@system76.com"
       ];
     };
     "org/gnome/shell/extensions/pop-shell" = {
@@ -109,7 +108,6 @@ with lib.hm.gvariant; {
       next = [ "<Alt><Super>Right" ];
       play = [ "Pause" ];
       previous = [ "<Alt><Super>Left" ];
-      screensaver = [ "<Control><Alt>Delete" ];
     };
   };
 }
