@@ -39,7 +39,7 @@
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
       ] ++ (with unstable; [
         obsidian
-        # google-chrome
+        google-chrome
         vesktop
       ]);
 
@@ -109,6 +109,7 @@
         stylua
         clang
         gcc
+        gnumake
       ];
     };
 
