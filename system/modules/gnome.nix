@@ -41,6 +41,5 @@
     gnome.nautilus-python
     gnome.adwaita-icon-theme
     gnomeExtensions.appindicator
-    gnomeExtensions.pop-shell
   ];
 }

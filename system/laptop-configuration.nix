@@ -53,6 +53,7 @@
   security.polkit.enable = true;
 
   hardware = {
+    enableAllFirmware = true;
     cpu.amd.updateMicrocode = true;
     opengl = {
       enable = true;

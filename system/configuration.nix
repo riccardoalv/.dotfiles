@@ -36,8 +36,5 @@
   environment.sessionVariables.EDITOR = "nvim";
   environment.sessionVariables.VISUAL = "nvim";
 
-  services.hardware.openrgb.enable = true;
-  services.ratbagd.enable = true;
-
   system.stateVersion = "23.11";
 }
