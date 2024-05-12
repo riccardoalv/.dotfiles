@@ -8,6 +8,7 @@
   services.gvfs.enable = true;
   services.gnome.sushi.enable = true;
   services.colord.enable = true;
+  programs.xwayland.enable = true;
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
@@ -20,7 +21,19 @@
     excludePackages = with pkgs; [ xterm ];
     libinput.enable = true;
   };
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+      ];
+    };
+  };
+
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
   programs.dconf.enable = true;
