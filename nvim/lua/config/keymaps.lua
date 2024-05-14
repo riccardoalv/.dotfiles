@@ -45,6 +45,7 @@ keymap("n", "<A-m>", "@:", opts)
 -- Esc
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
 keymap("t", "<C-c>", [[<C-\><C-n>]], opts)
+keymap("i", "<C-c>", "<esc>", opts)
 keymap("n", "<C-c>", "<esc>", opts)
 keymap("x", "<C-c>", "<esc>", opts)
 keymap("n", "<C-c>", "<esc>", opts)

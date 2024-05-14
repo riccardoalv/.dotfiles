@@ -57,11 +57,13 @@
   # Enable Audio
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  sound.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   programs.gnupg.agent = {
@@ -84,7 +86,7 @@
   # Avahi
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     publish = {
       enable = true;
       addresses = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
@@ -36,12 +36,13 @@
         # Utils
         scrcpy
         nmap
+        easyeffects
+        eyedropper
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
-      ] ++ (with unstable; [
         obsidian
         google-chrome
         vesktop
-      ]);
+      ];
 
     qt = {
       enable = true;
@@ -104,8 +105,8 @@
       withRuby = true;
       extraPackages = with pkgs; [
         lua-language-server
-        rnix-lsp
-        nixfmt
+        nil
+        nixfmt-classic
         stylua
         clang
         gcc

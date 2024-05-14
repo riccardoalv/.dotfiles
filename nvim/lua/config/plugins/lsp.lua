@@ -114,11 +114,22 @@ return {
           group = augroup,
           buffer = bufnr,
           callback = function()
-            vim.lsp.buf.format({ async = false })
+            vim.lsp.buf.format()
           end,
         })
       end
     end
+
+    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics,
+      {
+        virtual_text = {
+          spacing = 5,
+          severity_limit = 'Warning',
+        },
+        update_in_insert = true,
+      }
+    )
 
     -- Floating terminal
     keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
@@ -145,7 +156,7 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig.rnix.setup({
+    lspconfig.nil_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })

@@ -74,7 +74,7 @@
     device = "/swapfile";
     size = 6 * 1024;
   }];
-  services.xserver.displayManager.autoLogin = {
+  services.displayManager.autoLogin = {
     enable = true;
     user = "ricardo";
   };
