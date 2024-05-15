@@ -36,7 +36,6 @@
         # Utils
         scrcpy
         nmap
-        easyeffects
         eyedropper
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
         obsidian
@@ -83,7 +82,7 @@
         $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
       '';
       InstallTPM = ''
-        run [ ! -d "~/.tmux/plugins/tpm" ] && mkdir -p ~/.tmux/plugins/tpm && git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        run [ ! -d ~/.tmux/plugins/tpm ] && mkdir -p ~/.tmux/plugins/tpm && nix-shell -p git --run "git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
       '';
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
@@ -113,6 +112,8 @@
         gnumake
       ];
     };
+
+    services.easyeffects.enable = true;
 
     programs.firefox.enable = true;
 
