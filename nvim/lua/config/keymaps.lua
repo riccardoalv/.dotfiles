@@ -73,9 +73,11 @@ keymap("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", opts)
 keymap("n", "<space><tab>", "i<cr><esc>", opts)
 keymap("n", "<space><space>", "i<space><esc>", opts)
 
--- Shiftwidth
-keymap("n", "<A-,>", "<ap", opts)
-keymap("n", "<A-.>", ">ap", opts)
+-- resize splits
+keymap("n", "<A-0>", "<cmd>res -1<cr>", opts)
+keymap("n", "<A-->", "<cmd>res +1<cr>", opts)
+keymap("n", "<A-,>", "<cmd>vertical res -1<cr>", opts)
+keymap("n", "<A-.>", "<cmd>vertical res +1<cr>", opts)
 
 -- Fast editing and reloading of vimrc configs
 keymap("n", "<leader>e", "<cmd>vs " .. git_dir .. "/.nvim.lua<cr>")
