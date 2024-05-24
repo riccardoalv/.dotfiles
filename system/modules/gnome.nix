@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # gsconnect
   programs.kdeconnect = {
     enable = true;
@@ -43,17 +43,24 @@
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
-    gnome-user-docs
-    gnome.gnome-software
-    gnome.gnome-weather
-    gnome.gnome-maps
-    gnome.yelp
+      gnome-user-docs
+      gnome.gnome-software
+      gnome.gnome-weather
+      gnome.gnome-maps
+      gnome.yelp
   ];
 
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
-    gnome.nautilus-python
-    gnome.adwaita-icon-theme
-    gnomeExtensions.appindicator
+    amberol
+      gnome.gnome-tweaks
+      gnome.nautilus-python
+      gnome.adwaita-icon-theme
+      gnomeExtensions.appindicator
   ];
+  environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
+      gst-plugins-good
+      gst-plugins-bad
+      gst-plugins-ugly
+      gst-libav
+  ]);
 }
