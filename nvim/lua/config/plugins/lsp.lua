@@ -54,7 +54,7 @@ return {
             },
             workspace = {
               checkThirdParty = false,
-              library = vim.api.nvim_get_runtime_file("", true),
+              library = { vim.env.RUNTIME },
               maxPreload = 1000,
               preloadFileSize = 1000,
             },
