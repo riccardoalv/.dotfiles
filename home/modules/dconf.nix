@@ -101,10 +101,10 @@ with lib.hm.gvariant; {
       move-to-workspace-right = [ "<Shift><Control><Alt>l" ];
       switch-to-workspace-left = [ "<Control><Alt>h" ];
       switch-to-workspace-right = [ "<Control><Alt>l" ];
-      switch-windows = [ "<Alt>Tab" ];
+      cycle-windows= ["<Alt>Tab"];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      logout = [ ];
+       logout = [ ];
       next = [ "<Alt><Super>Right" ];
       play = [ "Pause" ];
       previous = [ "<Alt><Super>Left" ];

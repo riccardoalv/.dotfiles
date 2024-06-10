@@ -115,6 +115,8 @@
 
     services.easyeffects.enable = true;
 
+    gtk.theme.name = "Adawaita";
+
     programs.firefox.enable = true;
 
     programs.starship.enable = true;
