@@ -41,6 +41,7 @@
         obsidian
         google-chrome
         vesktop
+        spotify
       ];
 
     qt = {

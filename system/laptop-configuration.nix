@@ -72,7 +72,7 @@
 
   swapDevices = [{
     device = "/swapfile";
-    size = 6 * 1024;
+    size = 24 * 1024;
   }];
   services.displayManager.autoLogin = {
     enable = true;

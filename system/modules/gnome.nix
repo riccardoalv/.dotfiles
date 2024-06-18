@@ -52,10 +52,10 @@
 
   environment.systemPackages = with pkgs; [
     amberol
-      gnome.gnome-tweaks
-      gnome.nautilus-python
-      gnome.adwaita-icon-theme
-      gnomeExtensions.appindicator
+    gnome.gnome-tweaks
+    gnome.nautilus-python
+    gnome.adwaita-icon-theme
+    gnomeExtensions.appindicator
   ];
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
       gst-plugins-good

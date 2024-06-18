@@ -3,6 +3,7 @@ return {
   event = "BufReadPost",
   dependencies = {
     "nvimtools/none-ls.nvim",
+    "nvimtools/none-ls-extras.nvim",
     "glepnir/lspsaga.nvim",
   },
   opts = {
