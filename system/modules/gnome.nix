@@ -43,15 +43,16 @@
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
-      gnome-user-docs
-      gnome.gnome-software
-      gnome.gnome-weather
-      gnome.gnome-maps
-      gnome.yelp
+    gnome-user-docs
+    gnome.gnome-software
+    gnome.gnome-weather
+    gnome.gnome-maps
+    gnome.yelp
   ];
 
   environment.systemPackages = with pkgs; [
     amberol
+    smartmontools
     deja-dup
     gnome.gnome-tweaks
     gnome.nautilus-python
