@@ -52,6 +52,7 @@
 
   environment.systemPackages = with pkgs; [
     amberol
+    deja-dup
     gnome.gnome-tweaks
     gnome.nautilus-python
     gnome.adwaita-icon-theme
