@@ -69,7 +69,7 @@ with lib.hm.gvariant; {
         "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
         "google-chrome.desktop"
-        "spotify.desktop"
+        "com.spotify.Client.desktop"
         "org.gnome.Geary.desktop"
         "obsidian.desktop"
       ];

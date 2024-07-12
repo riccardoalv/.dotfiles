@@ -12,6 +12,7 @@
         gparted
         piper
         wine
+        qmk
 
         # Terminal apps
         tmux
@@ -22,6 +23,7 @@
         lazygit
         tokei
         bat
+        delta
         vscode
         fd
         yq
@@ -41,7 +43,6 @@
         obsidian
         google-chrome
         vesktop
-        spotify
       ];
 
     qt = {
