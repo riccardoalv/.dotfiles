@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, unstable, ... }: {
   imports = [ ./modules/dconf.nix ];
   config = {
     home.packages = with pkgs;
@@ -10,7 +10,6 @@
         fragments
         docker-compose
         gparted
-        piper
         wine
         qmk
 

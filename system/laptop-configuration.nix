@@ -80,14 +80,16 @@
   };
   services.power-profiles-daemon.enable = false;
   services.thermald.enable = true;
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
+
+  programs.auto-cpufreq.enable = true;
+  programs.auto-cpufreq.settings = {
     charger = {
       governor = "performance";
+      turbo = "auto";
+    };
+
+    battery = {
+      governor = "powersave";
       turbo = "auto";
     };
   };

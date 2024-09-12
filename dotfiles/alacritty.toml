@@ -23,7 +23,7 @@ key = "T"
 mods = "Control|Alt"
 
 [keyboard.bindings.command]
-args = ["msg", "config", "window.opacity=0.9"]
+args = ["msg", "config", "window.opacity=0.8"]
 program = "alacritty"
 
 [[keyboard.bindings]]
