@@ -90,7 +90,7 @@
 
     battery = {
       governor = "powersave";
-      turbo = "auto";
+      turbo = "never";
     };
   };
 }
