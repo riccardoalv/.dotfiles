@@ -93,4 +93,6 @@
       turbo = "never";
     };
   };
+
+  networking.hostName = "NixOS-Laptop";
 }

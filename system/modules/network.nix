@@ -17,7 +17,6 @@
     };
     usePredictableInterfaceNames = false;
 
-    hostName = "NixOS"; # Define your hostname.
     networkmanager.enable = true;
   };
   services.tailscale.enable = true;

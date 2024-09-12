@@ -77,6 +77,8 @@ with lib.hm.gvariant; {
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
+        "GPaste@gnome-shell-extensions.gnome.org"
+        "tailscale@joaophi.github.com"
       ];
     };
     "org/gnome/shell/extensions/pop-shell" = {
