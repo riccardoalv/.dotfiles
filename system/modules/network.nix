@@ -18,6 +18,11 @@
     usePredictableInterfaceNames = false;
 
     networkmanager.enable = true;
+
+    extraHosts = ''
+      192.168.1.1 router.local
+    '';
   };
+
   services.tailscale.enable = true;
 }

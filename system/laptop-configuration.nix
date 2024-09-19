@@ -11,6 +11,8 @@
       "vm.watermark_scale_factor" = 500;
       "net.ipv4.tcp_congestion_control" = "bbr";
       "vm.overcommit_memory" = 1;
+      "net.ipv4.ip_forwarding" = 1;
+      "net.ipv6.conf.all.forwarding" = 1;
     };
     plymouth.enable = true;
     loader = {

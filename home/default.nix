@@ -97,6 +97,22 @@
       '';
     };
 
+    systemd.user.services.backup = {
+      Unit = {
+        Description="Mount Backup using gio";
+        After=["network.target"];
+      };
+      Service = {
+        Type = "oneshot";
+        PassEnvironment = "DISPLAY";
+        ExecStart = "${pkgs.glib-networking}/bin/gio mount dav://ricardo@100.117.44.18:10081/remote.php/webdav";
+        wantedBy = [ "default.target" ];
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+
     programs.neovim = {
       enable = true;
       defaultEditor = true;
