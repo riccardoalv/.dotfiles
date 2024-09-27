@@ -107,7 +107,7 @@
         Restart = "on-failure";
         Type = "oneshot";
         PassEnvironment = "DISPLAY";
-        ExecStart = "/run/current-system/sw/bin/gio mount dav://ricardo@100.117.44.18:10081/remote.php/webdav";
+        ExecStart = "/run/current-system/sw/bin/gio mount smb://100.117.44.18/Backups/";
       };
       Install = {
         WantedBy = [ "default.target" ];
