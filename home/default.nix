@@ -97,22 +97,53 @@
       '';
     };
 
-    systemd.user.services.backup = {
-      Unit = {
-        Description = "Mount Backup using gio";
-        After = ["network.target"];
-        Wants = ["network-online.target"];
+    systemd.user.services = {
+      backup = {
+        Unit = {
+          Description = "Mount Backup using gio";
+          After = ["network.target"];
+          Wants = ["network-online.target"];
+        };
+        Service = {
+          Restart = "on-failure";
+          Type = "oneshot";
+          PassEnvironment = "DISPLAY";
+          ExecStart = "/run/current-system/sw/bin/gio mount smb://ubuntu-server/Backups/";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
-      Service = {
-        Restart = "on-failure";
-        Type = "oneshot";
-        PassEnvironment = "DISPLAY";
-        ExecStart = "/run/current-system/sw/bin/gio mount smb://100.117.44.18/Backups/";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
+
+      organizer = {
+        Unit = {
+          Description = "Automatic organize Downloads dir";
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = "%h/organizer.sh";
+        };
       };
     };
+
+    systemd.user.timers = {
+      organizer = {
+        Unit = {
+          Description = "Schedule Automatic organization of Downloads dir";
+        };
+        Timer = {
+          OnCalendar = "monthly";
+          Persistent = true;
+        };
+        Install = {
+          WantedBy = ["timers.target"];
+        };
+      };
+    };
+
+    systemd.user.tmpfiles.rules = [
+      "d %h/TEMP 0755 - - 7d"
+    ];
 
     programs.neovim = {
       enable = true;
