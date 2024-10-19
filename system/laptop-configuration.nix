@@ -14,7 +14,21 @@
       "net.ipv4.ip_forwarding" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
     };
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "circle_hud";
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+         selected_themes = [ "circle_hud" ];
+         })
+      ];
+    };
+    consoleLogLevel = 0;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
+
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -45,6 +59,8 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "amd_pstate=active"
+      "boot.shell_on_fail"
+      "loglevel=3"
     ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
     extraModprobeConfig = ''
