@@ -16,6 +16,7 @@
     cifs-utils
     btrfs-progs
     gnome-network-displays
+    sbctl
   ];
 
   # pkgs Settings

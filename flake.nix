@@ -3,17 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = { url = "github:nix-community/home-manager/release-24.05"; };
-    grub2-themes = {
-      url = "github:vinceliuice/grub2-themes";
-    };
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, grub2-themes, auto-cpufreq, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, auto-cpufreq, lanzaboote, ... }:
     let
       username = "ricardo";
       system = "x86_64-linux";
@@ -42,7 +43,7 @@
               home-manager.users.${username} = import ./home;
               home-manager.extraSpecialArgs = { inherit unstable; };
             }
-            grub2-themes.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
           ];
         };
 
@@ -58,8 +59,7 @@
               home-manager.users.${username} = import ./home;
               home-manager.extraSpecialArgs = { inherit unstable; };
             }
-            grub2-themes.nixosModules.default
-
+            lanzaboote.nixosModules.lanzaboote
           ];
         };
       };

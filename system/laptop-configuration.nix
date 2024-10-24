@@ -29,17 +29,20 @@
       systemd.enable = true;
     };
 
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+
     loader = {
+      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
+
       grub = {
-        enable = true;
-        efiSupport = true;
+        enable = false;
+        efiSupport = false;
         device = "nodev";
         useOSProber = true;
-      };
-      grub2-theme = {
-        enable = true;
-        theme = "vimix";
       };
     };
     kernelModules = [
