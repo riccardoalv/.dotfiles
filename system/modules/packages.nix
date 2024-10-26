@@ -111,6 +111,7 @@
 
   # Add git config for root
   programs.git = {
+    lfs.enable = true;
     enable = true;
     config = {
       user = {
