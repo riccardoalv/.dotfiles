@@ -142,7 +142,7 @@
     };
 
     systemd.user.tmpfiles.rules = [
-      "d %h/TEMP 0755 - - 20s"
+      "d %h/TEMP 0755 - - 7d"
     ];
 
     programs.neovim = {
