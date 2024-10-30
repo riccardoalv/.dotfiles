@@ -77,10 +77,11 @@
         extraConfig = ''
           set -g @dracula-show-flags true
           set -g @dracula-cpu-usage-colors "pink dark_gray"
-          set -g @dracula-show-powerline false
           set -g @dracula-show-left-sep ""
           set -g @dracula-show-right-sep ""
 
+          set -g @dracula-show-left-icon " "
+          set -g @dracula-show-powerline true
           set -g @dracula-plugins "git ssh-session"
           set -g @dracula-show-ssh-session-port true
           '';
