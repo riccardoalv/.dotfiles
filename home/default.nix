@@ -1,5 +1,5 @@
 { config, pkgs, lib, unstable, ... }: {
-  imports = [ ./modules/dconf.nix ];
+  imports = [ ./modules/dconf.nix ./modules/tmux.nix ];
   config = {
     home.packages = with pkgs;
       [
@@ -15,7 +15,6 @@
 
         # Terminal apps
         tmux
-        gitmux
         fzf
         ripgrep
         zoxide
@@ -61,10 +60,6 @@
         ln -s -v -f \
         $HOME/.dotfiles/nvim $HOME/.config/
       '';
-      linkTmuxFile = ''
-        ln -s -v -f \
-        $HOME/.dotfiles/dotfiles/tmux.conf $HOME/.tmux.conf
-      '';
       linkGitConfig = ''
         ln -s -v -f \
         $HOME/.dotfiles/dotfiles/gitconfig $HOME/.gitconfig
@@ -78,22 +73,10 @@
         ln -s -v -f \
         $HOME/.dotfiles/dotfiles/config.yml $HOME/.config/lazygit/
       '';
-      linkGitmux = ''
-        ln -s -v -f \
-        $HOME/.dotfiles/dotfiles/gitmux.conf $HOME/.gitmux.conf
-      '';
-      InstallTPM = ''
-        run [ ! -d ~/.tmux/plugins/tpm ] && mkdir -p ~/.tmux/plugins/tpm && nix-shell -p git --run "git clone -q https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
-      '';
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
         ln -s -v -f \
         $HOME/.dotfiles/dotfiles/alacritty.yml $HOME/.config/alacritty/
-      '';
-      linkDockerStatus = ''
-        mkdir -p $HOME/.tmux/plugins/tmux/custom/
-        ln -s -v -f \
-        $HOME/.dotfiles/dotfiles/docker_status.sh $HOME/.tmux/plugins/tmux/custom/
       '';
     };
 

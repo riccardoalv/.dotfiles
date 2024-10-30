@@ -34,15 +34,15 @@
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./system/laptop-configuration.nix
-            /etc/nixos/hardware-configuration.nix
-            auto-cpufreq.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.users.${username} = import ./home;
               home-manager.extraSpecialArgs = { inherit unstable; };
             }
+            ./system/laptop-configuration.nix
+            /etc/nixos/hardware-configuration.nix
+            auto-cpufreq.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
           ];
         };
