@@ -15,6 +15,7 @@
 
         # Terminal apps
         tmux
+        atuin
         fzf
         ripgrep
         zoxide

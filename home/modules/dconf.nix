@@ -113,7 +113,7 @@ with lib.hm.gvariant; {
       previous = [ "<Alt><Super>Left" ];
     };
     "org/gnome/deja-dup" = {
-      exclude-list=["$TRASH" "/home/ricardo/.android" "/home/ricardo/.arduino15" "/home/ricardo/.conda" "/home/ricardo/.cups" "/home/ricardo/.docker" "/home/ricardo/.expo" "/home/ricardo/.gnupg" "/home/ricardo/.ipython" "/home/ricardo/.java" "/home/ricardo/.jssc" "/home/ricardo/.minecraft" "/home/ricardo/.mozilla" "/home/ricardo/.nix-defexpr" "/home/ricardo/.nix-profile" "/home/ricardo/.npm" "/home/ricardo/.tlauncher" "/home/ricardo/.yarn" "/home/ricardo/Android" "/home/ricardo/Arduino" "/home/ricardo/.local" "/home/ricardo/Documents/ISOs" "/home/ricardo/**/node_modules" "/home/ricardo/**/__pycache__" "/home/ricardo/**/*.pyc"];
+      exclude-list=["$TRASH" "/home/ricardo/.android" "/home/ricardo/.arduino15" "/home/ricardo/.conda" "/home/ricardo/.cups" "/home/ricardo/.docker" "/home/ricardo/.expo" "/home/ricardo/.gnupg" "/home/ricardo/.ipython" "/home/ricardo/.java" "/home/ricardo/.jssc" "/home/ricardo/.minecraft" "/home/ricardo/.mozilla" "/home/ricardo/.nix-defexpr" "/home/ricardo/.nix-profile" "/home/ricardo/.npm" "/home/ricardo/.tlauncher" "/home/ricardo/.yarn" "/home/ricardo/Android" "/home/ricardo/Arduino" "/home/ricardo/.local" "/home/ricardo/Documents/ISOs" "/home/ricardo/Projects/*/node_modules"];
     };
   };
 }
