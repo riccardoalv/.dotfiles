@@ -7,14 +7,10 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = { url = "github:nix-community/home-manager/release-24.05"; };
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, auto-cpufreq, lanzaboote, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, lanzaboote, ... }:
     let
       username = "ricardo";
       system = "x86_64-linux";
@@ -42,7 +38,6 @@
             }
             ./system/laptop-configuration.nix
             /etc/nixos/hardware-configuration.nix
-            auto-cpufreq.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
           ];
         };

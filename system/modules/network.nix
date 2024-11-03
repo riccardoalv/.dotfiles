@@ -22,6 +22,8 @@
     extraHosts = ''
       192.168.1.1 router.local
     '';
+
+    hostName = "NixOS-Laptop";
   };
 
   services.tailscale.enable = true;
