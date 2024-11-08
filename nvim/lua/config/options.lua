@@ -10,6 +10,7 @@ o.ai = true
 o.autoread = true
 o.background = "dark"
 o.backspace = "indent,eol,start"
+o.breakindent = true
 o.backupext = ".bak"
 o.completeopt = "menu,menuone,noselect"
 o.cursorline = false

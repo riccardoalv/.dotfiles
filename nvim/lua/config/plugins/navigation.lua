@@ -33,7 +33,6 @@ return {
 
   {
     "smoka7/hop.nvim",
-    event = "BufReadPost",
     config = function()
       require("hop").setup()
       keymap("n", "<space>w", ":HopWord<cr>", opts)
@@ -42,18 +41,10 @@ return {
 
   {
     "AckslD/nvim-neoclip.lua",
-    event = "BufReadPost",
     config = function()
       require("neoclip").setup()
       keymap("n", "<leader>c", [[:Telescope neoclip ]], {})
       keymap("n", "<A-y>", require("telescope").extensions.neoclip.default)
-    end,
-  },
-  {
-    "pwntester/octo.nvim",
-    cmd = "Octo",
-    config = function()
-      require("octo").setup()
     end,
   },
 }

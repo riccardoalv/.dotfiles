@@ -5,7 +5,6 @@ local keymap = vim.keymap.set
 return {
   {
     "tpope/vim-repeat",
-    event = "BufReadPost",
   },
   {
     "folke/persistence.nvim",
@@ -29,23 +28,13 @@ return {
     ft = { "html", "css" },
   },
   {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup()
-    end,
-  },
-  {
     "echasnovski/mini.pairs",
-    event = "BufReadPost",
     config = function()
       require("mini.pairs").setup(opts)
     end,
   },
   {
     "kylechui/nvim-surround",
-    event = "BufReadPost",
     config = function()
       require("nvim-surround").setup()
     end,
@@ -55,7 +44,6 @@ return {
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
-    event = "BufReadPost",
     opts = {
       hooks = {
         pre = function()
@@ -69,7 +57,6 @@ return {
   },
   {
     "junegunn/vim-easy-align",
-    event = "BufReadPost",
     config = function()
       keymap("x", "ga", "<Plug>(EasyAlign)", opts)
       keymap("n", "ga", "<Plug>(EasyAlign)", opts)
@@ -77,7 +64,6 @@ return {
   },
   {
     "ThePrimeagen/refactoring.nvim",
-    event = "BufReadPost",
     config = function()
       require("telescope").load_extension("refactoring")
       keymap("v", "<space>rt", require("telescope").extensions.refactoring.refactors, { noremap = true })

@@ -3,7 +3,6 @@ local keymap = vim.keymap.set
 
 return {
   "mfussenegger/nvim-dap",
-  event = "LspAttach",
   ft = { "c", "cpp", "rust" },
   dependencies = {
     "theHamsta/nvim-dap-virtual-text",

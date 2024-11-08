@@ -21,15 +21,12 @@ return {
           harpoon = true,
           hop = true,
           lsp_saga = true,
-          octo = true,
-          which_key = true,
         },
       })
     end,
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("gitsigns").setup({ current_line_blame = true })
     end,
@@ -37,7 +34,6 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPost",
     main = "ibl",
     config = function()
       require("ibl").setup()
@@ -48,10 +44,8 @@ return {
     dependencies = {
       "kyazdani42/nvim-web-devicons",
     },
-    keys = {
-      { "<leader>nn", "<cmd>NvimTreeToggle<cr>", opts }
-    },
     config = function()
+      keymap("n", "<leader>nn", "<cmd>NvimTreeToggle<cr>", opts)
       require("nvim-tree").setup({ view = { side = "right" } })
     end,
   },
@@ -72,7 +66,6 @@ return {
   },
   {
     "echasnovski/mini.hipatterns",
-    event = "BufReadPost",
     config = function()
       local hipatterns = require("mini.hipatterns")
       hipatterns.setup({
