@@ -35,7 +35,10 @@
     };
 
     loader = {
-      systemd-boot.enable = lib.mkForce false;
+      systemd-boot = {
+        enable = lib.mkForce false;
+        configurationLimit = 5;
+      };
       efi.canTouchEfiVariables = true;
 
       grub = {
@@ -76,11 +79,8 @@
   hardware = {
     enableAllFirmware = true;
     cpu.amd.updateMicrocode = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      setLdLibraryPath = true;
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl

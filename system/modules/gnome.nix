@@ -39,24 +39,24 @@
   systemd.services."autovt@tty1".enable = false;
   programs.dconf.enable = true;
   programs.gpaste.enable = true;
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
   services.dbus.packages = with pkgs; [ gnome2.GConf ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-user-docs
-    gnome.gnome-software
-    gnome.gnome-weather
-    gnome.gnome-maps
-    gnome.yelp
+    gnome-software
+    gnome-weather
+    gnome-maps
+    yelp
   ];
 
   environment.systemPackages = with pkgs; [
     amberol
     smartmontools
     deja-dup
-    gnome.gnome-tweaks
-    gnome.nautilus-python
-    gnome.adwaita-icon-theme
+    gnome-tweaks
+    nautilus-python
+    adwaita-icon-theme
     gnomeExtensions.appindicator
     gnomeExtensions.tailscale-qs
   ];
