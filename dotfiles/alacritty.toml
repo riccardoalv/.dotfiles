@@ -107,7 +107,7 @@ text = "#1E1E2E"
 cursor = "#B4BEFE"
 text = "#1E1E2E"
 
-[shell]
+[terminal.shell]
 program = "fish"
 
 [window]
