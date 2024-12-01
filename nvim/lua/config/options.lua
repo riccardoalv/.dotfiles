@@ -1,6 +1,4 @@
 local o = vim.o
-vim.api.nvim_set_var("localmapleader", [[\]])
-vim.api.nvim_set_var("mapleader", ",")
 vim.g.editorconfig = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

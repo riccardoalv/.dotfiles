@@ -143,6 +143,10 @@
         clang
         gcc
         gnumake
+        typescript-language-server
+        ruff
+        prettierd
+        eslint
       ];
     };
 
@@ -154,7 +158,7 @@
 
     programs.starship.enable = true;
 
-    home.stateVersion = "22.11";
+    home.stateVersion = "24.11";
 
     programs.home-manager.enable = true;
   };

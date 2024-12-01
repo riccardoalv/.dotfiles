@@ -29,7 +29,7 @@ with lib.hm.gvariant; {
     };
     "org/gnome/desktop/input-sources" = {
       sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "br" ]) ];
-      xkb-options = [ "ctrl:swapcaps" "mod_led:compose" ];
+      xkb-options = [ "ctrl:swapcaps" "fkeys:basic_13-24" "shift:both_capslock" "scrolllock:mod3"];
     };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;

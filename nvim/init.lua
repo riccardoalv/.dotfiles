@@ -1,4 +1,5 @@
-require("config")
+vim.api.nvim_set_var("localmapleader", [[\]])
+vim.api.nvim_set_var("mapleader", ",")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,6 +16,4 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("config.plugins")
 
-require("config.keymaps")
-
-vim.cmd.colorscheme("catppuccin-mocha")
+require("config")

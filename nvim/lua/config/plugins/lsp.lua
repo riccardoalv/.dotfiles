@@ -167,16 +167,17 @@ return {
 
     local null_ls = require("null-ls")
 
-    if not vim.fn.filereadable(".nvim.lua") then
-      null_ls.setup({
-        on_attach = on_attach,
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.nixfmt,
-          null_ls.builtins.code_actions.gitsigns,
-        },
-      })
-    end
+    null_ls.setup({
+      on_attach = on_attach,
+      sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.nixfmt,
+        null_ls.builtins.code_actions.gitsigns,
+        null_ls.builtins.formatting.prettierd,
+        require("none-ls.diagnostics.eslint"),
+        require("none-ls.code_actions.eslint"),
+      },
+    })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -189,5 +190,16 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    lspconfig.ts_ls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig.prismals.setup {
+      cmd = { "npx", "prisma-language-server", "--stdio" },
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
   end,
 }

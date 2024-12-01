@@ -1,6 +1,7 @@
 local init_modules = {
 	"config.autocmd",
 	"config.options",
+	"config.keymaps",
 }
 
 for _, module in ipairs(init_modules) do
