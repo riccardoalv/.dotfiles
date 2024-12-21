@@ -29,7 +29,12 @@ with lib.hm.gvariant; {
     };
     "org/gnome/desktop/input-sources" = {
       sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "br" ]) ];
-      xkb-options = [ "ctrl:swapcaps" "fkeys:basic_13-24" "shift:both_capslock" "scrolllock:mod3"];
+      xkb-options = [
+        "ctrl:swapcaps"
+        "fkeys:basic_13-24"
+        "shift:both_capslock"
+        "scrolllock:mod3"
+      ];
     };
     "org/gnome/desktop/interface" = {
       clock-show-weekday = true;
@@ -104,16 +109,40 @@ with lib.hm.gvariant; {
       move-to-workspace-right = [ "<Shift><Control><Alt>l" ];
       switch-to-workspace-left = [ "<Control><Alt>h" ];
       switch-to-workspace-right = [ "<Control><Alt>l" ];
-      cycle-windows= ["<Alt>Tab"];
+      cycle-windows = [ "<Alt>Tab" ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-       logout = [ ];
+      logout = [ ];
       next = [ "<Alt><Super>Right" ];
       play = [ "Pause" ];
       previous = [ "<Alt><Super>Left" ];
     };
     "org/gnome/deja-dup" = {
-      exclude-list=["$TRASH" "/home/ricardo/.android" "/home/ricardo/.arduino15" "/home/ricardo/.conda" "/home/ricardo/.cups" "/home/ricardo/.docker" "/home/ricardo/.expo" "/home/ricardo/.gnupg" "/home/ricardo/.ipython" "/home/ricardo/.java" "/home/ricardo/.jssc" "/home/ricardo/.minecraft" "/home/ricardo/.mozilla" "/home/ricardo/.nix-defexpr" "/home/ricardo/.nix-profile" "/home/ricardo/.npm" "/home/ricardo/.tlauncher" "/home/ricardo/.yarn" "/home/ricardo/Android" "/home/ricardo/Arduino" "/home/ricardo/.local" "/home/ricardo/Documents/ISOs" "/home/ricardo/Projects/*/node_modules"];
+      exclude-list = [
+        "$TRASH"
+        "/home/ricardo/.android"
+        "/home/ricardo/.arduino15"
+        "/home/ricardo/.conda"
+        "/home/ricardo/.cups"
+        "/home/ricardo/.docker"
+        "/home/ricardo/.expo"
+        "/home/ricardo/.gnupg"
+        "/home/ricardo/.ipython"
+        "/home/ricardo/.java"
+        "/home/ricardo/.jssc"
+        "/home/ricardo/.minecraft"
+        "/home/ricardo/.mozilla"
+        "/home/ricardo/.nix-defexpr"
+        "/home/ricardo/.nix-profile"
+        "/home/ricardo/.npm"
+        "/home/ricardo/.tlauncher"
+        "/home/ricardo/.yarn"
+        "/home/ricardo/Android"
+        "/home/ricardo/Arduino"
+        "/home/ricardo/.local"
+        "/home/ricardo/Documents/ISOs"
+        "/home/ricardo/Projects/*/node_modules"
+      ];
     };
   };
 }

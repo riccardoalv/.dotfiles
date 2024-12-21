@@ -1,48 +1,49 @@
 { config, pkgs, lib, unstable, ... }: {
   imports = [ ./modules/dconf.nix ./modules/tmux.nix ];
   config = {
-    home.packages = with pkgs;
-      [
-        alacritty
-        obs-studio
-        # Web
-        distrobox
-        fragments
-        docker-compose
-        gparted
-        wine
-        qmk
+    home.packages = with pkgs; [
+      alacritty
+      obs-studio
+      # Web
+      distrobox
+      fragments
+      docker-compose
+      gparted
+      wine
+      qmk
 
-        # Terminal apps
-        tmux
-        atuin
-        fzf
-        ripgrep
-        zoxide
-        lazygit
-        tokei
-        bat
-        delta
-        vscode
-        fd
-        yq
-        jq
-        stow
-        entr
-        gh
-        xclip
-        wl-clipboard
-        appimage-run
+      # Terminal apps
+      tmux
+      atuin
+      fzf
+      ripgrep
+      zoxide
+      lazygit
+      tokei
+      bat
+      delta
+      vscode
+      fd
+      yq
+      jq
+      stow
+      entr
+      gh
+      xclip
+      wl-clipboard
+      appimage-run
 
-        # Utils
-        scrcpy
-        nmap
-        eyedropper
-        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ]; })
-        obsidian
-        google-chrome
-        vesktop
-      ];
+      # Utils
+      scrcpy
+      nmap
+      eyedropper
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ];
+      })
+      obsidian
+      google-chrome
+      vesktop
+    ];
 
     qt = {
       enable = true;
@@ -85,24 +86,21 @@
       backup = {
         Unit = {
           Description = "Mount Backup using gio";
-          After = ["network.target"];
-          Wants = ["network-online.target"];
+          After = [ "network.target" ];
+          Wants = [ "network-online.target" ];
         };
         Service = {
           Restart = "on-failure";
           Type = "oneshot";
           PassEnvironment = "DISPLAY";
-          ExecStart = "/run/current-system/sw/bin/gio mount smb://ubuntu-server/Backups/";
+          ExecStart =
+            "/run/current-system/sw/bin/gio mount smb://192.168.1.51/Backups/";
         };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
+        Install = { WantedBy = [ "default.target" ]; };
       };
 
       organizer = {
-        Unit = {
-          Description = "Automatic organize Downloads dir";
-        };
+        Unit = { Description = "Automatic organize Downloads dir"; };
         Service = {
           Type = "simple";
           ExecStart = "%h/organizer.sh";
@@ -119,15 +117,11 @@
           OnCalendar = "monthly";
           Persistent = true;
         };
-        Install = {
-          WantedBy = ["timers.target"];
-        };
+        Install = { WantedBy = [ "timers.target" ]; };
       };
     };
 
-    systemd.user.tmpfiles.rules = [
-      "d %h/TEMP 0755 - - 7d"
-    ];
+    systemd.user.tmpfiles.rules = [ "d %h/TEMP 0755 - - 7d" ];
 
     programs.neovim = {
       enable = true;

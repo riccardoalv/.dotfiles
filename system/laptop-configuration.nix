@@ -16,12 +16,13 @@
     };
     plymouth = {
       enable = true;
-      theme = "circle_hud";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-         selected_themes = [ "circle_hud" ];
-         })
-      ];
+      theme = "blockchain";
+      themePackages = with pkgs;
+        [
+          (adi1090x-plymouth-themes.override {
+            selected_themes = [ "blockchain" ];
+          })
+        ];
     };
     consoleLogLevel = 0;
     initrd = {
@@ -81,10 +82,7 @@
     cpu.amd.updateMicrocode = true;
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
+      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
     };
   };
 
