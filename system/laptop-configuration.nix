@@ -39,6 +39,11 @@
       systemd-boot = {
         enable = lib.mkForce false;
         configurationLimit = 5;
+        extraEntries = {
+          "loader.conf" = ''
+            default auto-efi-default
+          '';
+        };
       };
       efi.canTouchEfiVariables = true;
 
