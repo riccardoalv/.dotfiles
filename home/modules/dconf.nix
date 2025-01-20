@@ -145,7 +145,7 @@ with lib.hm.gvariant; {
         "/home/ricardo/Arduino"
         "/home/ricardo/.local"
         "/home/ricardo/Documents/ISOs"
-        "/home/ricardo/.config/dconf"
+        "/home/ricardo/.config"
       ];
     };
     "org/gnome/deja-dup/remote" = {
