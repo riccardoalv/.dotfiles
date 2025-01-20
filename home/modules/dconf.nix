@@ -118,6 +118,10 @@ with lib.hm.gvariant; {
       previous = [ "<Alt><Super>Left" ];
     };
     "org/gnome/deja-dup" = {
+      backend = "remote";
+      delete-after = 0;
+      periodic = true;
+      periodic-period = 1;
       exclude-list = [
         "$TRASH"
         "/home/ricardo/.android"
@@ -141,8 +145,12 @@ with lib.hm.gvariant; {
         "/home/ricardo/Arduino"
         "/home/ricardo/.local"
         "/home/ricardo/Documents/ISOs"
-        "/home/ricardo/Projects/*/node_modules"
+        "/home/ricardo/.config/dconf"
       ];
+    };
+    "org/gnome/deja-dup/remote" = {
+      folder = "NixOS-Laptop";
+      uri = "smb://192.168.1.51/Backups";
     };
   };
 }
