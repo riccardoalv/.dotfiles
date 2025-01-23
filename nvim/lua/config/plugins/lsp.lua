@@ -4,7 +4,7 @@ return {
     "nvimtools/none-ls.nvim",
     "nvimtools/none-ls-extras.nvim",
     "glepnir/lspsaga.nvim",
-    'hrsh7th/cmp-nvim-lsp',
+    "hrsh7th/cmp-nvim-lsp",
   },
   opts = {
     diagnostics = {
@@ -51,10 +51,10 @@ return {
         settings = {
           Lua = {
             runtime = {
-              version = 'LuaJIT',
+              version = "LuaJIT",
             },
             completion = {
-              callSnippet = 'Replace',
+              callSnippet = "Replace",
             },
             workspace = {
               checkThirdParty = false,
@@ -113,24 +113,24 @@ return {
       local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 
       if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-        local highlight_augroup = vim.api.nvim_create_augroup('lsp_highlight', { clear = false })
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        local highlight_augroup = vim.api.nvim_create_augroup("lsp_highlight", { clear = false })
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
           buffer = bufnr,
           group = highlight_augroup,
           callback = vim.lsp.buf.document_highlight,
         })
 
-        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
           buffer = bufnr,
           group = highlight_augroup,
           callback = vim.lsp.buf.clear_references,
         })
 
-        vim.api.nvim_create_autocmd('LspDetach', {
-          group = vim.api.nvim_create_augroup('lsp_detach', { clear = true }),
+        vim.api.nvim_create_autocmd("LspDetach", {
+          group = vim.api.nvim_create_augroup("lsp_detach", { clear = true }),
           callback = function(event2)
             vim.lsp.buf.clear_references()
-            vim.api.nvim_clear_autocmds { group = 'lsp_highlight', buffer = event2.buf }
+            vim.api.nvim_clear_autocmds({ group = "lsp_highlight", buffer = event2.buf })
           end,
         })
       end
@@ -147,18 +147,17 @@ return {
       end
     end
 
-    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics,
-      {
-        virtual_text = {
-          spacing = 5,
-          severity = {
-            min = vim.diagnostic.severity.WARN
-          }
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        spacing = 5,
+        severity = {
+          min = vim.diagnostic.severity.WARN,
         },
-        update_in_insert = true,
-      }
-    )
+      },
+      update_in_insert = true,
+    })
+
+    keymap("n", "<C-f>", vim.lsp.buf.format, opts)
 
     -- Floating terminal
     keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
@@ -196,10 +195,20 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig.prismals.setup {
+    lspconfig.pyright.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig.ruff.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig.prismals.setup({
       cmd = { "npx", "prisma-language-server", "--stdio" },
       capabilities = capabilities,
       on_attach = on_attach,
-    }
+    })
   end,
 }

@@ -70,11 +70,6 @@
         ln -s -v -f \
         $HOME/.dotfiles/dotfiles/starship.toml $HOME/.config/
       '';
-      linkLazyGit = ''
-        mkdir -p $HOME/.config/lazygit/
-        ln -s -v -f \
-        $HOME/.dotfiles/dotfiles/config.yml $HOME/.config/lazygit/
-      '';
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
         ln -s -v -f \
