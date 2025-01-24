@@ -33,6 +33,11 @@ return {
           layout_strategy = "vertical",
         },
       },
+      pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+      },
     })
 
     telescope.load_extension("undo")

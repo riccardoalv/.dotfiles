@@ -45,6 +45,7 @@
     docker = {
       enable = true;
       enableOnBoot = false;
+      liveRestore = false;
     };
 
     libvirtd.enable = true;
