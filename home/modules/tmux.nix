@@ -45,6 +45,11 @@
       bind-key -T copy-mode-vi 'C-l' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
 
+      bind-key -r -T prefix       M-Up              resize-pane -U 5
+      bind-key -r -T prefix       M-Down            resize-pane -D 5
+      bind-key -r -T prefix       M-Left            resize-pane -L 5
+      bind-key -r -T prefix       M-Right           resize-pane -R 5
+
       # Status bar configuration
       set -g status on
       set -g status-justify left
@@ -84,9 +89,8 @@
           set -g @dracula-show-powerline true
           set -g @dracula-plugins "git ssh-session"
           set -g @dracula-show-ssh-session-port true
-          '';
+        '';
       }
     ];
   };
 }
-

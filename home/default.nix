@@ -32,6 +32,10 @@
       xclip
       wl-clipboard
       appimage-run
+      eza
+      fd
+      gping
+      difftastic
 
       # Utils
       scrcpy
