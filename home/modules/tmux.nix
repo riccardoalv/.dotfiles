@@ -64,12 +64,7 @@
 
     plugins = with pkgs; [
       tmuxPlugins.sensible
-      {
-        plugin = pkgs.tmuxPlugins.resurrect;
-        extraConfig = ''
-          set -g @resurrect-capture-pane-contents 'on'
-        '';
-      }
+      { plugin = pkgs.tmuxPlugins.resurrect; }
       {
         plugin = pkgs.tmuxPlugins.continuum;
         extraConfig = ''
@@ -89,6 +84,20 @@
           set -g @dracula-show-powerline true
           set -g @dracula-plugins "git ssh-session"
           set -g @dracula-show-ssh-session-port true
+
+          set -g @dracula-colors "
+          white='#f8f8f2'
+          gray='#44475a'
+          dark_gray='#000000'
+          light_purple='#bd93f9'
+          dark_purple='#6272a4'
+          cyan='#8be9fd'
+          green='#50fa7b'
+          orange='#ffb86c'
+          red='#ff5555'
+          pink='#ff79c6'
+          yellow='#f1fa8c'
+          "
         '';
       }
     ];
