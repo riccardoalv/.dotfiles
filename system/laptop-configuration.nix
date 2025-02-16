@@ -69,6 +69,7 @@
       "splash"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
+      "mem_sleep_default=deep"
       "udev.log_priority=3"
       "amd_pstate=active"
       "boot.shell_on_fail"
@@ -79,6 +80,11 @@
       options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     '';
   };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30m
+    SuspendState=mem
+  '';
 
   security.polkit.enable = true;
 
@@ -101,5 +107,18 @@
   services.displayManager.autoLogin = {
     enable = true;
     user = "ricardo";
+  };
+
+  services.power-profiles-daemon.enable = false;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
   };
 }
