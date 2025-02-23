@@ -22,9 +22,7 @@ return {
     require("neotest").setup({
       status = { virtual_text = true },
       adapters = {
-        require("neotest-jest")({
-          jestCommand = "yarn jest",
-        }),
+        require("neotest-jest")({}),
       },
     })
     local keymap = vim.keymap.set
