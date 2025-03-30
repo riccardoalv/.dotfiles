@@ -14,6 +14,7 @@
     description = "Ricardo";
     extraGroups = [
       "wheel"
+      "wireshark"
       "networkmanager"
       "docker"
       "libvirtd"

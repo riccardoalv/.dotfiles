@@ -36,6 +36,15 @@
     };
   };
 
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark-qt;
+
+  services.udev = {
+    extraRules = ''
+      SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+    '';
+  };
+
   hardware.keyboard.qmk.enable = true;
 
   services.flatpak.enable = true;

@@ -22,7 +22,9 @@ return {
     require("neotest").setup({
       status = { virtual_text = true },
       adapters = {
-        require("neotest-jest")({}),
+        require("neotest-jest")({
+          jestCommand = "yarn jest --detectOpenHandles --passWithNoTests",
+        }),
       },
     })
     local keymap = vim.keymap.set
