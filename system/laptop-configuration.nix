@@ -54,16 +54,8 @@
         useOSProber = true;
       };
     };
-    kernelModules = [
-      "tcp_bbr"
-      "kvm-amd"
-      "netconsole"
-      "amd-pstate"
-      "amdgpu"
-      "v4l2loopback"
-      "v4l2loopback-dc"
-      "snd-aloop"
-    ];
+    kernelModules =
+      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" "snd-aloop" ];
     kernelParams = [
       "quiet"
       "splash"
@@ -75,9 +67,8 @@
       "boot.shell_on_fail"
       "loglevel=3"
     ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
     extraModprobeConfig = ''
-      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+      options exclusive_caps=1 card_label="Virtual Camera" snd slots=snd-hda-intel
     '';
   };
 

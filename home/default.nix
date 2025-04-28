@@ -3,7 +3,6 @@
   config = {
     home.packages = with pkgs; [
       alacritty
-      obs-studio
       # Web
       distrobox
       fragments
@@ -142,8 +141,6 @@
         eslint
       ];
     };
-
-    services.easyeffects.enable = true;
 
     gtk.theme.name = "Adawaita";
 
