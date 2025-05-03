@@ -25,6 +25,7 @@
       "input"
       "video"
       "audio"
+      "rtkit"
       "colord"
     ];
   };
@@ -37,5 +38,5 @@
   environment.sessionVariables.EDITOR = "nvim";
   environment.sessionVariables.VISUAL = "nvim";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }

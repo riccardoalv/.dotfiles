@@ -2,13 +2,13 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = { url = "github:nix-community/home-manager/release-24.11"; };
+    home-manager = { url = "github:nix-community/home-manager/master"; };
   };
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, lanzaboote, ... }:
     let
@@ -24,8 +24,7 @@
         inherit system;
         config.allowUnfree = true;
       };
-    in
-    {
+    in {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;

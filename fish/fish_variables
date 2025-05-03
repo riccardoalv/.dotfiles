@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fish_abbr_d:docker
 SETUVAR _fish_abbr_db:distrobox
 SETUVAR _fish_abbr_dc:docker\x2dcompose

@@ -54,8 +54,7 @@
         useOSProber = true;
       };
     };
-    kernelModules =
-      [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" "snd-aloop" ];
+    kernelModules = [ "tcp_bbr" "kvm-amd" "netconsole" "amd-pstate" "amdgpu" ];
     kernelParams = [
       "quiet"
       "splash"
@@ -68,7 +67,7 @@
       "loglevel=3"
     ];
     extraModprobeConfig = ''
-      options exclusive_caps=1 card_label="Virtual Camera" snd slots=snd-hda-intel
+      options exclusive_caps=1 card_label="Virtual Camera"
     '';
   };
 

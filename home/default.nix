@@ -40,9 +40,9 @@
       scrcpy
       nmap
       eyedropper
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "DroidSansMono" "UbuntuMono" ];
-      })
+      # nerd-fonts.fira-code
+      # nerd-fonts.droid-sans-mono
+      # nerd-fonts.ubuntu-mono
       obsidian
       google-chrome
       vesktop
@@ -145,6 +145,8 @@
     gtk.theme.name = "Adawaita";
 
     programs.firefox.enable = true;
+
+    services.easyeffects.enable = true;
 
     programs.starship.enable = true;
 
