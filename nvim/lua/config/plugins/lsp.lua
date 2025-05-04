@@ -168,6 +168,7 @@ return {
 
     null_ls.setup({
       on_attach = on_attach,
+      root_dir = require("lspconfig.util").root_pattern(".git", ".prettierrc", "package.json"),
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.nixfmt,
