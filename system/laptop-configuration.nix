@@ -60,21 +60,14 @@
       "splash"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
-      "mem_sleep_default=deep"
       "udev.log_priority=3"
       "amd_pstate=active"
-      "boot.shell_on_fail"
       "loglevel=3"
     ];
     extraModprobeConfig = ''
       options exclusive_caps=1 card_label="Virtual Camera"
     '';
   };
-
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30m
-    SuspendState=mem
-  '';
 
   security.polkit.enable = true;
 

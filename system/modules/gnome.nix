@@ -49,7 +49,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    amberol
     smartmontools
     deja-dup
     gnome-tweaks

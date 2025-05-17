@@ -66,8 +66,6 @@ with lib.hm.gvariant; {
       idle-dim = false;
       power-button-action = "suspend";
       power-saver-profile-on-low-battery = true;
-      sleep-inactive-ac-type = "nothing";
-      sleep-inactive-battery-type = "nothing";
     };
     "org/gnome/shell" = {
       disable-user-extensions = false;
