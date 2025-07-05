@@ -1,5 +1,15 @@
-{ config, pkgs, lib, unstable, ... }: {
-  imports = [ ./modules/dconf.nix ./modules/tmux.nix ];
+{
+  config,
+  pkgs,
+  lib,
+  unstable,
+  ...
+}:
+{
+  imports = [
+    ./modules/dconf.nix
+    ./modules/tmux.nix
+  ];
   config = {
     home.packages = with pkgs; [
       alacritty
@@ -9,7 +19,6 @@
       docker-compose
       gparted
       wine
-      qmk
 
       # Terminal apps
       tmux
@@ -46,6 +55,7 @@
       obsidian
       google-chrome
       vesktop
+      helvum
     ];
 
     qt = {
@@ -91,14 +101,17 @@
           Restart = "on-failure";
           Type = "oneshot";
           PassEnvironment = "DISPLAY";
-          ExecStart =
-            "/run/current-system/sw/bin/gio mount smb://192.168.1.51/Backups/";
+          ExecStart = "/run/current-system/sw/bin/gio mount smb://192.168.1.51/Backups/";
         };
-        Install = { WantedBy = [ "default.target" ]; };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
 
       organizer = {
-        Unit = { Description = "Automatic organize Downloads dir"; };
+        Unit = {
+          Description = "Automatic organize Downloads dir";
+        };
         Service = {
           Type = "simple";
           ExecStart = "%h/organizer.sh";
@@ -115,7 +128,9 @@
           OnCalendar = "monthly";
           Persistent = true;
         };
-        Install = { WantedBy = [ "timers.target" ]; };
+        Install = {
+          WantedBy = [ "timers.target" ];
+        };
       };
     };
 
@@ -150,7 +165,7 @@
 
     programs.starship.enable = true;
 
-    home.stateVersion = "24.11";
+    home.stateVersion = "25.05";
 
     programs.home-manager.enable = true;
   };

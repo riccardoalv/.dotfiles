@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   # gsconnect
   programs.kdeconnect = {
     enable = true;
@@ -11,15 +12,23 @@
   programs.xwayland.enable = true;
   services.xserver = {
     enable = true;
-    desktopManager.gnome.enable = true;
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
     excludePackages = with pkgs; [ xterm ];
   };
+
+  services.desktopManager.gnome.extraGSettingsOverrides = ''
+    [org.gnome.mutter]
+    experimental-features=['variable-refresh-rate']
+  '';
+
+  services.desktopManager.gnome.enable = true;
+  services.displayManager = {
+    gdm = {
+      enable = true;
+      wayland = true;
+    };
+  };
+
+  services.irqbalance.enable = true;
 
   services.libinput.enable = true;
 
@@ -33,12 +42,32 @@
     };
   };
 
+  systemd.user.services."gnome-shell" = {
+    serviceConfig = {
+      Slice = "gnome-realtime.slice";
+      CPUSchedulingPolicy = "rr";
+      CPUSchedulingPriority = 50;
+      IOSchedulingClass = "realtime";
+      IOSchedulingPriority = 0;
+    };
+  };
+
+  systemd.oomd = {
+    enable = true;
+    enableUserSlices = true;
+    enableRootSlice = true;
+    extraConfig = {
+      RootKill = "no";
+      DefaultMemoryPressureLimit = "80%";
+      ManagedOOMPreferenceOverride = "gnome-realtime.slice avoid";
+    };
+  };
+
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
   programs.dconf.enable = true;
   programs.gpaste.enable = true;
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
-  services.dbus.packages = with pkgs; [ gnome2.GConf ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-user-docs
@@ -58,10 +87,14 @@
     gnomeExtensions.tailscale-qs
   ];
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 =
-    lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
-      gst-plugins-good
-      gst-plugins-bad
-      gst-plugins-ugly
-      gst-libav
-    ]);
+    lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
+      (
+        with pkgs.gst_all_1;
+        [
+          gst-plugins-good
+          gst-plugins-bad
+          gst-plugins-ugly
+          gst-libav
+        ]
+      );
 }

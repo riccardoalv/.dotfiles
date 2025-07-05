@@ -1,13 +1,6 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ ./modules/packages.nix ./modules/network.nix ./modules/gnome.nix ];
-
-  # Set your time zone.
   time.timeZone = "America/Porto_Velho";
 
-  # Define a user account
   users.users.ricardo = {
     isNormalUser = true;
     home = "/home/ricardo";
@@ -27,16 +20,20 @@
       "audio"
       "rtkit"
       "colord"
+      "i2c"
     ];
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
   };
 
   environment.sessionVariables.EDITOR = "nvim";
   environment.sessionVariables.VISUAL = "nvim";
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }
