@@ -16,7 +16,7 @@
     kernel.sysctl = {
       "block/scheduler" = "bfq";
       "vm.vfs_cache_pressure" = 30;
-      "vm.swappiness" = 5;
+      "vm.swappiness" = 15;
       "vm.watermark_scale_factor" = 500;
       "vm.min_free_kbytes" = 131072;
       "net.ipv4.tcp_congestion_control" = "bbr";
@@ -69,14 +69,19 @@
     };
     kernelModules = [
       "tcp_bbr"
-      "kvm-amd"
+      "kvm-intel"
       "netconsole"
-      "amd-pstate"
-      "amdgpu"
       "i2c-dev"
       "ddcci_backlight"
+      "i915"
+      "intel_uncore_frequency"
+      "x86_pkg_temp_thermal"
+      "nvme"
+      "hid_lenovo"
     ];
     kernelParams = [
+      "intel_pstate=active"
+      "i915.enable_psr=0"
       "cpufreq.default_governor=schedutil"
       "random.trust_cpu=on"
       "quiet"
@@ -84,7 +89,6 @@
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
-      "amd_pstate=active"
       "loglevel=3"
       "sched_latency_ns=6000000"
       "sched_min_granularity_ns=750000"
@@ -103,15 +107,31 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  services.power-profiles-daemon.enable = true;
+
   hardware = {
     enableAllFirmware = true;
-    cpu.amd.updateMicrocode = true;
+    cpu.intel.updateMicrocode = true;
+    sensor.iio.enable = true;
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl
       ];
+    };
+  };
+
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
+
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-goodix-550a;
     };
   };
 

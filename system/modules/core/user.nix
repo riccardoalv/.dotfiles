@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   time.timeZone = "America/Porto_Velho";
 
@@ -36,4 +37,14 @@
   environment.sessionVariables.VISUAL = "nvim";
 
   system.stateVersion = "25.05";
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      zlib
+      gcc
+      openssl_3
+    ];
+  };
+
 }

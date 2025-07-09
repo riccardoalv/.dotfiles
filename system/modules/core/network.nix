@@ -44,7 +44,7 @@
       192.168.1.1 router.local
     '';
 
-    hostName = "nixos-laptop";
+    hostName = "NixOS-Laptop";
   };
 
   services.tailscale.enable = true;
