@@ -56,6 +56,7 @@
       google-chrome
       vesktop
       helvum
+      bitwarden
     ];
 
     qt = {

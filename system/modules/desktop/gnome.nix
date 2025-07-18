@@ -27,6 +27,10 @@
       wayland = true;
     };
   };
+  security.pam.services.gdm.enable = true;
+  security.pam.services.login.enable = true;
+  security.pam.services.sudo.enable = true;
+  services.accounts-daemon.enable = true;
 
   services.irqbalance.enable = true;
 

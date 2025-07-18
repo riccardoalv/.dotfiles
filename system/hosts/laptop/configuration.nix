@@ -45,7 +45,7 @@
 
     lanzaboote = {
       enable = true;
-      pkiBundle = "/etc/secureboot";
+      pkiBundle = "/var/lib/sbctl";
     };
 
     loader = {
@@ -141,7 +141,7 @@
   zramSwap = {
     enable = true;
     algorithm = "lz4";
-    memoryPercent = 25;
+    memoryPercent = 100;
   };
 
   services.displayManager.autoLogin = {
