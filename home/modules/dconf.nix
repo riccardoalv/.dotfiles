@@ -77,10 +77,10 @@ with lib.hm.gvariant;
       move-to-workspace-right = [ "<Shift><Control><Alt>l" ];
       switch-to-workspace-left = [ "<Control><Alt>h" ];
       switch-to-workspace-right = [ "<Control><Alt>l" ];
+      switch-applications = [ ];
+      switch-applications-backward = [ ];
       cycle-windows = [ "<Alt>Tab" ];
-      switch-windows = [ ];
-      switch-windows-backward = [ ];
-
+      cycle-windows-backward = [ "<Shift><Alt>Tab" ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       logout = [ ];

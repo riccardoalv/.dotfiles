@@ -137,6 +137,8 @@
     };
   };
 
+  security.pam.services.sudo.fprintAuth = false;
+
   services.hdapsd.enable = true;
   services.fstrim.enable = true;
 
