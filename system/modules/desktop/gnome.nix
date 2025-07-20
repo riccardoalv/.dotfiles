@@ -11,14 +11,9 @@
   services.colord.enable = true;
   programs.xwayland.enable = true;
   services.xserver = {
-    enable = true;
+    enable = lib.mkForce false;
     excludePackages = with pkgs; [ xterm ];
   };
-
-  services.desktopManager.gnome.extraGSettingsOverrides = ''
-    [org.gnome.mutter]
-    experimental-features=['variable-refresh-rate']
-  '';
 
   services.desktopManager.gnome.enable = true;
   services.displayManager = {
@@ -51,8 +46,8 @@
       Slice = "gnome-realtime.slice";
       CPUSchedulingPolicy = "rr";
       CPUSchedulingPriority = 50;
-      IOSchedulingClass = "realtime";
-      IOSchedulingPriority = 0;
+      IOSchedulingClass = "idle";
+      IOSchedulingPriority = 7;
     };
   };
 
@@ -80,6 +75,15 @@
     gnome-maps
     yelp
   ];
+
+  services.upower.percentageLow = 90;
+  services.upower.ignoreLid = false;
+  services.logind.lidSwitchExternalPower = "ignore";
+  services.logind.lidSwitchDocked = "ignore";
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=20min
+  '';
 
   environment.systemPackages = with pkgs; [
     smartmontools

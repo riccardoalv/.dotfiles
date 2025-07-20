@@ -3,6 +3,7 @@
 {
   programs.tmux = {
     enable = true;
+    prefix = "M-w";
     mouse = false;
     clock24 = true;
     historyLimit = 60000;
@@ -14,6 +15,7 @@
     aggressiveResize = false;
     disableConfirmationPrompt = false;
     extraConfig = ''
+
       # Set up focus events
       set-option -g focus-events on
 

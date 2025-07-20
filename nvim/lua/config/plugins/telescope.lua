@@ -54,6 +54,7 @@ return {
     keymap("n", "<space>b", require("telescope.builtin").buffers)
     keymap("n", "<leader>g", require("telescope.builtin").live_grep)
     keymap("n", "<leader>d", require("telescope.builtin").diagnostics)
+    keymap("n", "<leader>t", require("telescope.builtin").lsp_workspace_symbols)
     keymap("n", "<A-t>", require("telescope.builtin").treesitter)
     keymap("n", "<leader>u", require("telescope").extensions.undo.undo)
   end,

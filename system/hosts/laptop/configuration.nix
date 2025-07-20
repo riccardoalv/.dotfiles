@@ -14,19 +14,22 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     kernel.sysctl = {
-      "block/scheduler" = "bfq";
-      "vm.vfs_cache_pressure" = 30;
-      "vm.swappiness" = 15;
+      "vm.vfs_cache_pressure" = 50;
+      "vm.swappiness" = 20;
       "vm.watermark_scale_factor" = 500;
       "vm.min_free_kbytes" = 131072;
       "net.ipv4.tcp_congestion_control" = "bbr";
       "vm.overcommit_memory" = 1;
-      "net.ipv4.ip_forwarding" = 1;
+      "net.ipv4.ip_forward" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
-      "vm.dirty_writeback_centisecs" = 1500;
-      "vm.dirty_expire_centisecs" = 1500;
+      "vm.dirty_expire_centisecs" = 5000;
       "vm.dirty_ratio" = 25;
       "vm.dirty_background_ratio" = 10;
+      "vm.dirty_background_bytes" = 64 * 1024 * 1024;
+      "vm.dirty_bytes" = 256 * 1024 * 1024;
+      "vm.dirty_writeback_centisecs" = 5000;
+      "sched_latency_ns" = 6000000;
+      "sched_min_granularity_ns" = 750000;
     };
     plymouth = {
       enable = true;
@@ -80,8 +83,9 @@
       "hid_lenovo"
     ];
     kernelParams = [
-      "intel_pstate=active"
-      "i915.enable_psr=0"
+      "intel_pstate=passive"
+      "i915.enable_psr=1"
+      "i915.force_probe=a7a0"
       "cpufreq.default_governor=schedutil"
       "random.trust_cpu=on"
       "quiet"
@@ -90,15 +94,12 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "loglevel=3"
-      "sched_latency_ns=6000000"
-      "sched_min_granularity_ns=750000"
       "threadirqs"
     ];
   };
 
   services.udev.extraRules = ''
-    ACTION=="add|change", KERNEL=="nvme[0-9]n1", ATTR{queue/scheduler}="bfq"
-    ACTION=="add|change", SUBSYSTEM=="block", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
+    ACTION=="add|change", KERNEL=="nvme[0-9]n1", ATTR{queue/scheduler}="none"
   '';
 
   services.preload.enable = true;
@@ -118,6 +119,7 @@
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl
+        vpl-gpu-rt
       ];
     };
   };
@@ -138,11 +140,12 @@
   services.hdapsd.enable = true;
   services.fstrim.enable = true;
 
-  zramSwap = {
-    enable = true;
-    algorithm = "lz4";
-    memoryPercent = 100;
-  };
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
 
   services.displayManager.autoLogin = {
     enable = true;
