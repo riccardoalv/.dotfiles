@@ -150,10 +150,11 @@
         clang
         gcc
         gnumake
-        typescript-language-server
+        vtsls
         ruff
         prettierd
-        eslint
+        eslint_d
+        matlab-language-server
       ];
     };
 

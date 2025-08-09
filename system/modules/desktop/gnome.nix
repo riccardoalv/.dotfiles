@@ -1,5 +1,4 @@
-{ pkgs, lib, ... }:
-{
+{ pkgs, lib, ... }: {
   # gsconnect
   programs.kdeconnect = {
     enable = true;
@@ -76,10 +75,9 @@
     yelp
   ];
 
-  services.upower.percentageLow = 90;
   services.upower.ignoreLid = false;
-  services.logind.lidSwitchExternalPower = "ignore";
-  services.logind.lidSwitchDocked = "ignore";
+  services.logind.lidSwitchExternalPower = "suspend";
+  services.logind.lidSwitchDocked = "suspend";
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=20min
@@ -95,14 +93,10 @@
     gnomeExtensions.tailscale-qs
   ];
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 =
-    lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
-      (
-        with pkgs.gst_all_1;
-        [
-          gst-plugins-good
-          gst-plugins-bad
-          gst-plugins-ugly
-          gst-libav
-        ]
-      );
+    lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
+      gst-plugins-good
+      gst-plugins-bad
+      gst-plugins-ugly
+      gst-libav
+    ]);
 }

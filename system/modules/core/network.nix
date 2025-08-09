@@ -17,11 +17,15 @@
         5353
         8081
         24800
+        7236
+        7250
       ];
       allowedUDPPorts = [
         631
         1716
         24800
+        7236
+        5353
       ];
       allowedTCPPortRanges = [
         {

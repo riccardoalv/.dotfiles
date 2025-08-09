@@ -1,215 +1,186 @@
 return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    "nvimtools/none-ls.nvim",
-    "nvimtools/none-ls-extras.nvim",
-    "glepnir/lspsaga.nvim",
-    "hrsh7th/cmp-nvim-lsp",
-  },
-  opts = {
-    diagnostics = {
-      underline = false,
-      virtual_text = {
-        spacing = 4,
-        source = "if_many",
-      },
-      severity_sort = true,
-    },
-    inlay_hints = { enabled = false },
-    servers = {
-      tsserver = {
-        root_dir = function(...)
-          return require("lspconfig.util").root_pattern(".git")(...)
-        end,
-        single_file_support = false,
-        settings = {
-          typescript = {
-            inlayHints = {
-              includeInlayParameterNameHints = "literal",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-            },
-          },
-          javascript = {
-            inlayHints = {
-              includeInlayParameterNameHints = "all",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-            },
-          },
-        },
-      },
-      lua_ls = {
-        settings = {
-          Lua = {
-            runtime = {
-              version = "LuaJIT",
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = { vim.env.RUNTIME },
-              maxPreload = 1000,
-              preloadFileSize = 1000,
-            },
-            format = {
-              enable = false,
-            },
-          },
-        },
-      },
-    },
-  },
-  config = function()
-    local lspconfig = require("lspconfig")
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{
+				"saghen/blink.cmp",
+				version = "*",
+			},
 
-    require("lspsaga").setup({
-      ui = {
-        kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-      },
-      lightbulb = {
-        enable = false,
-      },
-      symbol_in_winbar = {
-        hide_keyword = true,
-        delay = 0,
-      },
-    })
+			"stevearc/conform.nvim",
+			"mfussenegger/nvim-lint",
 
-    local keymap = vim.keymap.set
-    local opts = { noremap = true, silent = true }
+			"nvimdev/lspsaga.nvim",
+		},
 
-    function on_attach(client, bufnr)
-      -- LSP finder - Find the symbol's definition
-      keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
-      -- Code action
-      keymap("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
-      keymap("v", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
-      -- Rename all occurrences of the hovered word for the entire file
-      keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
-      -- Peek definition
-      keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
-      -- Go to definition
-      keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-      -- Diagnostic jump
-      keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-      keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-      -- Hover Doc
-      keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-      -- Call hierarchy
-      keymap("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
-      keymap("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
+		opts = {
+			diagnostics = {
+				underline = true,
+				virtual_text = { spacing = 4, source = "if_many" },
+				severity_sort = true,
+				update_in_insert = false,
+				signs = true,
+			},
+			inlay_hints = { enabled = true },
 
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+			servers = {
+				vtsls = {
+					settings = {
+						typescript = {
+							format = { semicolons = "insert" },
+							inlayHints = {
+								parameterNames = { enabled = "literals" },
+								parameterTypes = { enabled = true },
+								variableTypes = { enabled = false },
+								propertyDeclarationTypes = { enabled = true },
+								functionLikeReturnTypes = { enabled = true },
+								enumMemberValues = { enabled = true },
+							},
+							preferences = { importModuleSpecifier = "non-relative" },
+						},
+					},
+				},
+				lua_ls = {
+					settings = {
+						Lua = {
+							completion = { callSnippet = "Replace" },
+							workspace = { checkThirdParty = false },
+							format = { enable = false },
+						},
+					},
+				},
+				basedpyright = {},
+				ruff = {},
+				nil_ls = {},
+				prismals = { cmd = { "npx", "prisma-language-server", "--stdio" } },
+				matlab_ls = {},
+			},
 
-      if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-        local highlight_augroup = vim.api.nvim_create_augroup("lsp_highlight", { clear = false })
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-          buffer = bufnr,
-          group = highlight_augroup,
-          callback = vim.lsp.buf.document_highlight,
-        })
+			conform = {
+				format_on_save = { timeout_ms = 8000, lsp_fallback = true },
+				formatters_by_ft = {
+					lua = { "stylua" },
+					nix = { "nixfmt" },
+					javascript = { "biome", "prettierd", "prettier" },
+					javascriptreact = { "biome", "prettierd", "prettier" },
+					typescript = { "biome", "prettierd", "prettier" },
+					typescriptreact = { "biome", "prettierd", "prettier" },
+					json = { "biome", "jq" },
+					css = { "prettierd", "prettier" },
+					scss = { "prettierd", "prettier" },
+					html = { "prettierd", "prettier" },
+					python = { "ruff_format" },
+					prisma = { "prisma_fmt" },
+					markdown = { "prettierd", "prettier" },
+				},
+			},
 
-        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-          buffer = bufnr,
-          group = highlight_augroup,
-          callback = vim.lsp.buf.clear_references,
-        })
+			lint = {
+				linters_by_ft = {
+					javascript = { "eslint_d" },
+					javascriptreact = { "eslint_d" },
+					typescript = { "eslint_d" },
+					typescriptreact = { "eslint_d" },
+					python = { "ruff" },
+				},
+			},
+		},
 
-        vim.api.nvim_create_autocmd("LspDetach", {
-          group = vim.api.nvim_create_augroup("lsp_detach", { clear = true }),
-          callback = function(event2)
-            vim.lsp.buf.clear_references()
-            vim.api.nvim_clear_autocmds({ group = "lsp_highlight", buffer = event2.buf })
-          end,
-        })
-      end
+		config = function(_, opts)
+			vim.diagnostic.config(opts.diagnostics)
 
-      if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = augroup,
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format()
-          end,
-        })
-      end
-    end
+			require("lspsaga").setup({
+				term = {
+					size = 0.7,
+					border = "rounded",
+				},
+				lightbulb = { enable = false },
+			})
+			vim.keymap.set(
+				"n",
+				"<A-i>",
+				"<cmd>Lspsaga term_toggle<CR>",
+				{ silent = true, desc = "Saga Terminal (float)" }
+			)
+			vim.keymap.set("t", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", { silent = true })
+			vim.keymap.set(
+				"n",
+				"<A-g>",
+				"<cmd>Lspsaga term_toggle<CR>lazygit<CR>",
+				{ silent = true, desc = "Saga Lazygit" }
+			)
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = {
-        spacing = 5,
-        severity = {
-          min = vim.diagnostic.severity.WARN,
-        },
-      },
-      update_in_insert = true,
-    })
+			local ok_blink, blink = pcall(require, "blink.cmp")
+			local capabilities = ok_blink and blink.get_lsp_capabilities()
+				or vim.lsp.protocol.make_client_capabilities()
 
-    keymap("n", "<C-f>", vim.lsp.buf.format, opts)
+			local enable_inlay = function(client, bufnr)
+				if opts.inlay_hints.enabled and client.supports_method("textDocument/inlayHint") then
+					pcall(vim.lsp.inlay_hint, bufnr, true)
+				end
+			end
 
-    -- Floating terminal
-    keymap("n", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
-    keymap("n", "<A-g>", "<cmd>Lspsaga term_toggle<CR>lazygit<cr>", opts)
-    keymap("t", "<A-i>", "<cmd>Lspsaga term_toggle<CR>", opts)
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
+				callback = function(ev)
+					local bufnr = ev.buf
+					local client = vim.lsp.get_client_by_id(ev.data.client_id)
+					enable_inlay(client, bufnr)
+					local map = function(mode, lhs, rhs, desc)
+						vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, noremap = true, desc = desc })
+					end
 
-    local null_ls = require("null-ls")
+					map("n", "gd", function()
+						vim.cmd("vsplit")
+						local ok = pcall(vim.cmd, "Lspsaga goto_definition")
+						if not ok then
+							vim.lsp.buf.definition()
+						end
+					end, "Go to Definition (vsplit)")
+					map("n", "gi", "<cmd>Lspsaga finder imp<CR>", "Implementations")
+					map("n", "gy", "<cmd>Lspsaga peek_type_definition<CR>", "Type Definition")
+					map("n", "K", "<cmd>Lspsaga hover_doc<CR>", "Hover")
+					map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", "Rename")
+					map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")
+					map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev Diagnostic")
+					map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic")
+					map("n", "<c-f>", function()
+						require("conform").format({ async = false })
+					end, "Format")
+				end,
+			})
 
-    null_ls.setup({
-      on_attach = on_attach,
-      root_dir = require("lspconfig.util").root_pattern(".git", ".prettierrc", "package.json"),
-      sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.nixfmt,
-        null_ls.builtins.code_actions.gitsigns,
-        null_ls.builtins.formatting.prettierd,
-        require("none-ls.diagnostics.eslint"),
-        require("none-ls.code_actions.eslint"),
-      },
-    })
+			local lspconfig = require("lspconfig")
+			for server_name, server_opts in pairs(opts.servers) do
+				server_opts.capabilities =
+					vim.tbl_deep_extend("force", {}, capabilities, server_opts.capabilities or {})
+				if lspconfig[server_name] then
+					lspconfig[server_name].setup(server_opts)
+				else
+					vim.schedule(function()
+						vim.notify("lspconfig: server não encontrado: " .. server_name, vim.log.levels.WARN)
+					end)
+				end
+			end
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			require("conform").setup(opts.conform)
+			if opts.conform.format_on_save then
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
+					callback = function(args)
+						require("conform").format({ bufnr = args.buf })
+					end,
+				})
+			end
 
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.nil_ls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.ts_ls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.ruff.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig.prismals.setup({
-      cmd = { "npx", "prisma-language-server", "--stdio" },
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-  end,
+			require("lint").linters_by_ft = opts.lint.linters_by_ft
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+				group = vim.api.nvim_create_augroup("LintOnEvents", { clear = true }),
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
+		end,
+	},
 }

@@ -1,61 +1,143 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  dependencies = {
-    "debugloop/telescope-undo.nvim",
-    "nvim-lua/plenary.nvim",
-    "ThePrimeagen/git-worktree.nvim",
-  },
-  config = function()
-    local keymap = vim.keymap.set
+	"nvim-telescope/telescope.nvim",
+	dependencies = {
+		"debugloop/telescope-undo.nvim",
+		"nvim-lua/plenary.nvim",
+		"ThePrimeagen/git-worktree.nvim",
+	},
 
-    local telescope = require("telescope")
+	cmd = {
+		"Telescope",
+	},
+	keys = {
+		{
+			"<leader>f",
+			function()
+				require("telescope.builtin").git_files()
+			end,
+			desc = "Telescope: git files",
+		},
+		{
+			"<C-p>",
+			function()
+				require("telescope.builtin").find_files()
+			end,
+			desc = "Telescope: find files",
+		},
+		{
+			"<leader>s",
+			function()
+				require("telescope.builtin").git_status()
+			end,
+			desc = "Telescope: git status",
+		},
+		{
+			"<A-b>",
+			function()
+				require("telescope.builtin").git_branches()
+			end,
+			desc = "Telescope: git branches",
+		},
+		{
+			"<A-q>",
+			function()
+				require("telescope.builtin").quickfix()
+			end,
+			desc = "Telescope: quickfix",
+		},
+		{
+			"<space>b",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+			desc = "Telescope: buffers",
+		},
+		{
+			"<leader>g",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			desc = "Telescope: live grep",
+		},
+		{
+			"<leader>d",
+			function()
+				require("telescope.builtin").diagnostics()
+			end,
+			desc = "Telescope: diagnostics",
+		},
+		{
+			"<leader>t",
+			function()
+				require("telescope.builtin").lsp_workspace_symbols()
+			end,
+			desc = "Telescope: LSP symbols",
+		},
+		{
+			"<A-t>",
+			function()
+				require("telescope.builtin").treesitter()
+			end,
+			desc = "Telescope: treesitter",
+		},
+		{
+			"<leader>u",
+			function()
+				require("telescope").extensions.undo.undo()
+			end,
+			desc = "Telescope: undo tree",
+		},
+	},
 
-    local actions = require("telescope.actions")
-    telescope.setup({
-      defaults = {
-        mappings = {
-          n = {
-            ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-            ["d"] = actions.delete_buffer,
-            ["<C-c>"] = actions.close,
-          },
-          i = {
-            ["<C-q>"] = actions.send_to_qflist,
-            ["<C-c>"] = false,
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
-          },
-        },
-      },
-      extensions = {
-        undo = {
-          side_by_side = true,
-          layout_strategy = "vertical",
-        },
-      },
-      pickers = {
-        find_files = {
-          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-        },
-      },
-    })
+	config = function()
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
 
-    telescope.load_extension("undo")
-    telescope.load_extension("git_worktree")
+		telescope.setup({
+			defaults = {
+				winblend = 10,
+				layout_strategy = "flex",
+				layout_config = {
+					height = 0.90,
+					width = 0.90,
+					prompt_position = "top",
+				},
+				sorting_strategy = "ascending",
+				dynamic_preview_title = true,
+				path_display = { "smart" },
 
-    vim.cmd([[au FileType TelescopePrompt nmap <buffer> v <c-v>]])
-    vim.cmd([[au FileType TelescopePrompt nmap <buffer> x <c-x>]])
+				mappings = {
+					n = {
+						["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+						["d"] = actions.delete_buffer,
+						["<C-c>"] = actions.close,
+						["v"] = actions.select_vertical,
+						["x"] = actions.select_horizontal,
+					},
+					i = {
+						["<C-q>"] = actions.send_to_qflist,
+						["<C-c>"] = false,
+						["<C-j>"] = actions.move_selection_next,
+						["<C-k>"] = actions.move_selection_previous,
+					},
+				},
+			},
 
-    keymap("n", "<leader>f", require("telescope.builtin").git_files)
-    keymap("n", "<c-p>", require("telescope.builtin").find_files)
-    keymap("n", "<leader>s", require("telescope.builtin").git_status)
-    keymap("n", "<A-b>", require("telescope.builtin").git_branches)
-    keymap("n", "<A-q>", require("telescope.builtin").quickfix)
-    keymap("n", "<space>b", require("telescope.builtin").buffers)
-    keymap("n", "<leader>g", require("telescope.builtin").live_grep)
-    keymap("n", "<leader>d", require("telescope.builtin").diagnostics)
-    keymap("n", "<leader>t", require("telescope.builtin").lsp_workspace_symbols)
-    keymap("n", "<A-t>", require("telescope.builtin").treesitter)
-    keymap("n", "<leader>u", require("telescope").extensions.undo.undo)
-  end,
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+				},
+			},
+
+			extensions = {
+				undo = {
+					side_by_side = true,
+					layout_strategy = "vertical",
+				},
+			},
+		})
+
+		pcall(telescope.load_extension, "undo")
+		pcall(telescope.load_extension, "git_worktree")
+	end,
 }

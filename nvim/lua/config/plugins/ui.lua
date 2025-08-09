@@ -1,41 +1,78 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 return {
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup({ current_line_blame = true })
-    end,
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-  },
-  {
-    "kyazdani42/nvim-tree.lua",
-    dependencies = {
-      "kyazdani42/nvim-web-devicons",
-    },
-    config = function()
-      keymap("n", "<leader>nn", "<cmd>NvimTreeToggle<cr>", opts)
-      require("nvim-tree").setup({ view = { side = "right" } })
-    end,
-  },
-  {
-    "stevearc/dressing.nvim",
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
+	{
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "▎" },
+				topdelete = { text = "▎" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+			current_line_blame = true,
+			current_line_blame_opts = {
+				delay = 300,
+				virt_text = true,
+				virt_text_pos = "eol",
+			},
+		},
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			indent = { char = "│" },
+			scope = {
+				enabled = true,
+				show_start = false,
+				show_end = false,
+			},
+			exclude = {
+				filetypes = {
+					"help",
+					"alpha",
+					"dashboard",
+					"neo-tree",
+					"NvimTree",
+					"Trouble",
+					"lazy",
+					"gitcommit",
+					"gitrebase",
+					"markdown",
+					"checkhealth",
+					"lspinfo",
+				},
+				buftypes = { "terminal", "nofile", "prompt" },
+			},
+		},
+	},
+
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			view = { side = "right", width = 36 },
+			hijack_unnamed_buffer_when_opening = false,
+			sync_root_with_cwd = true,
+			respect_buf_cwd = true,
+			update_focused_file = { enable = true, update_root = false },
+			renderer = {
+				highlight_git = true,
+				group_empty = true,
+				indent_markers = { enable = true },
+			},
+			actions = { open_file = { quit_on_open = false } },
+			filters = { dotfiles = false, custom = { "^.git$" } },
+		},
+		config = function(_, opts)
+			keymap("n", "<leader>nn", "<cmd>NvimTreeToggle<cr>", {})
+			require("nvim-tree").setup(opts)
+		end,
+	},
 }

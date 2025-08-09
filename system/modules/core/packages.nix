@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    qmk
     binutils
+    powertop
     sqlite
     bintools
     coreutils-full

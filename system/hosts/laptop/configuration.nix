@@ -83,8 +83,11 @@
       "hid_lenovo"
     ];
     kernelParams = [
-      "intel_pstate=passive"
+      "intel_pstate=active"
+      "sched_energy_cost"
       "i915.enable_psr=1"
+      "i915.enable_rc6=7"
+      "pcie_aspm=force"
       "i915.force_probe=a7a0"
       "cpufreq.default_governor=schedutil"
       "random.trust_cpu=on"
@@ -102,13 +105,38 @@
     ACTION=="add|change", KERNEL=="nvme[0-9]n1", ATTR{queue/scheduler}="none"
   '';
 
+  services.power-profiles-daemon.enable = false;
+  powerManagement.powertop = {
+    enable = true;
+  };
+
+  services.thermald.enable = true;
+
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+        energy_performance_preference = "power";
+      };
+
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+  };
+
+  systemd.extraConfig = ''
+    CPUAffinity=8-15
+  '';
+
   services.preload.enable = true;
 
   security.polkit.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-
-  services.power-profiles-daemon.enable = true;
 
   hardware = {
     enableAllFirmware = true;
