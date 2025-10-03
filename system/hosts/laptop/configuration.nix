@@ -1,15 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./hardware.nix
-    ../../modules
-  ];
+  imports = [ ./hardware.nix ../../modules ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -34,11 +26,12 @@
     plymouth = {
       enable = true;
       theme = "blockchain";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "blockchain" ];
-        })
-      ];
+      themePackages = with pkgs;
+        [
+          (adi1090x-plymouth-themes.override {
+            selected_themes = [ "blockchain" ];
+          })
+        ];
     };
     consoleLogLevel = 0;
     initrd = {
@@ -106,9 +99,7 @@
   '';
 
   services.power-profiles-daemon.enable = false;
-  powerManagement.powertop = {
-    enable = true;
-  };
+  powerManagement.powertop = { enable = true; };
 
   services.thermald.enable = true;
 
@@ -128,10 +119,6 @@
     };
   };
 
-  systemd.extraConfig = ''
-    CPUAffinity=8-15
-  '';
-
   services.preload.enable = true;
 
   security.polkit.enable = true;
@@ -144,11 +131,7 @@
     sensor.iio.enable = true;
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-        vpl-gpu-rt
-      ];
+      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl vpl-gpu-rt ];
     };
   };
 
@@ -170,12 +153,10 @@
   services.hdapsd.enable = true;
   services.fstrim.enable = true;
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 32 * 1024;
-    }
-  ];
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 32 * 1024;
+  }];
 
   services.displayManager.autoLogin = {
     enable = true;

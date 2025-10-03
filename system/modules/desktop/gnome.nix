@@ -1,5 +1,4 @@
 { pkgs, lib, ... }: {
-  # gsconnect
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
@@ -74,14 +73,6 @@
     gnome-maps
     yelp
   ];
-
-  services.upower.ignoreLid = false;
-  services.logind.lidSwitchExternalPower = "suspend";
-  services.logind.lidSwitchDocked = "suspend";
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=20min
-  '';
 
   environment.systemPackages = with pkgs; [
     smartmontools

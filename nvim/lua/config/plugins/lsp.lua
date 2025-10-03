@@ -131,13 +131,7 @@ return {
 						vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, noremap = true, desc = desc })
 					end
 
-					map("n", "gd", function()
-						vim.cmd("vsplit")
-						local ok = pcall(vim.cmd, "Lspsaga goto_definition")
-						if not ok then
-							vim.lsp.buf.definition()
-						end
-					end, "Go to Definition (vsplit)")
+					map("n", "gd", "<cmd>Lspsaga goto_definition<cr>")
 					map("n", "gi", "<cmd>Lspsaga finder imp<CR>", "Implementations")
 					map("n", "gy", "<cmd>Lspsaga peek_type_definition<CR>", "Type Definition")
 					map("n", "K", "<cmd>Lspsaga hover_doc<CR>", "Hover")
@@ -148,6 +142,13 @@ return {
 					map("n", "<c-f>", function()
 						require("conform").format({ async = false })
 					end, "Format")
+					map("n", "gh", "<cmd>Lspsaga finder<CR>", "LSP Finder")
+					map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")
+					map("v", "<space>ca", "<cmd>Lspsaga code_action<CR>", "Code Action (visual)")
+					map("n", "gr", "<cmd>Lspsaga rename<CR>", "Rename")
+					map("n", "gp", "<cmd>Lspsaga peek_definition<CR>", "Peek Definition")
+					map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", "Incoming Calls")
+					map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", "Outgoing Calls")
 				end,
 			})
 
