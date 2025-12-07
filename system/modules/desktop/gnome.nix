@@ -53,10 +53,12 @@
     enable = true;
     enableUserSlices = true;
     enableRootSlice = true;
-    extraConfig = {
-      RootKill = "no";
-      DefaultMemoryPressureLimit = "80%";
-      ManagedOOMPreferenceOverride = "gnome-realtime.slice avoid";
+    settings = {
+      OOM = {
+        RootKill = "no";
+        DefaultMemoryPressureLimit = "80%";
+        ManagedOOMPreferenceOverride = "gnome-realtime.slice avoid";
+      };
     };
   };
 
@@ -82,6 +84,7 @@
     adwaita-icon-theme
     gnomeExtensions.appindicator
     gnomeExtensions.tailscale-qs
+    wg-netmanager
   ];
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 =
     lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [

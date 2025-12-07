@@ -1,19 +1,9 @@
 { config, lib, ... }:
 
-with lib.hm.gvariant;
-{
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
-      sources = [
-        (mkTuple [
-          "xkb"
-          "us"
-        ])
-        (mkTuple [
-          "xkb"
-          "br"
-        ])
-      ];
+      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "br" ]) ];
       xkb-options = [
         "ctrl:swapcaps"
         "fkeys:basic_13-24"
@@ -42,7 +32,7 @@ with lib.hm.gvariant;
       center-new-windows = true;
     };
     "org/gnome/settings-daemon/plugins/power" = {
-      power-button-action = "suspend";
+      power-button-action = "hibernate";
       power-saver-profile-on-low-battery = true;
     };
     "org/gnome/shell" = {
@@ -62,9 +52,7 @@ with lib.hm.gvariant;
         "tailscale@joaophi.github.com"
       ];
     };
-    "org/gnome/tweaks" = {
-      show-extensions-notice = false;
-    };
+    "org/gnome/tweaks" = { show-extensions-notice = false; };
     "org/gnome/shell/extensions/extension-list" = {
       del-button = false;
       dis-button = false;
@@ -73,6 +61,10 @@ with lib.hm.gvariant;
       url-button = false;
     };
     "org/gnome/desktop/wm/keybindings" = {
+      move-to-monitor-left = [ "<Control><Super>h" ];
+      move-to-monitor-right = [ "<Control><Super>l" ];
+      move-to-monitor-up = [ "<Control><Super>k" ];
+      move-to-monitor-down = [ "<Control><Super>j" ];
       move-to-workspace-left = [ "<Shift><Control><Alt>h" ];
       move-to-workspace-right = [ "<Shift><Control><Alt>l" ];
       switch-to-workspace-left = [ "<Control><Alt>h" ];
@@ -120,7 +112,7 @@ with lib.hm.gvariant;
     };
     "org/gnome/deja-dup/remote" = {
       folder = "NixOS-Laptop";
-      uri = "smb://192.168.1.51/Backups";
+      uri = "smb://192.168.1.10/Backups";
     };
   };
 }

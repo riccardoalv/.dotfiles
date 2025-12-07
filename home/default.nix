@@ -1,4 +1,4 @@
-{ config, pkgs, lib, unstable, ... }: {
+{ pkgs, ... }: {
   imports = [ ./modules/dconf.nix ./modules/tmux.nix ];
   config = {
     home.packages = with pkgs; [
@@ -93,7 +93,7 @@
           Type = "oneshot";
           PassEnvironment = "DISPLAY";
           ExecStart =
-            "/run/current-system/sw/bin/gio mount smb://192.168.1.51/Backups/";
+            "/run/current-system/sw/bin/gio mount smb://192.168.1.10/Backups/";
         };
         Install = { WantedBy = [ "default.target" ]; };
       };

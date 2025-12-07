@@ -98,29 +98,6 @@
     ACTION=="add|change", KERNEL=="nvme[0-9]n1", ATTR{queue/scheduler}="none"
   '';
 
-  services.power-profiles-daemon.enable = false;
-  powerManagement.powertop = { enable = true; };
-
-  services.thermald.enable = true;
-
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-        energy_performance_preference = "power";
-      };
-
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
-  };
-
-  services.preload.enable = true;
-
   security.polkit.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -131,7 +108,11 @@
     sensor.iio.enable = true;
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl vpl-gpu-rt ];
+      extraPackages = with pkgs; [
+        libva-vdpau-driver
+        libvdpau-va-gl
+        vpl-gpu-rt
+      ];
     };
   };
 
