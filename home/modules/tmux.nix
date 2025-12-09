@@ -85,7 +85,7 @@
 
           set -g @dracula-colors "
           white='#f8f8f2'
-          gray='#44475a'
+          gray='#1c1c1c'
           dark_gray='#000000'
           light_purple='#bd93f9'
           dark_purple='#6272a4'

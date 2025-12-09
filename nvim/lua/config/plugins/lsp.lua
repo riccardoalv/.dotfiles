@@ -58,7 +58,10 @@ return {
 			},
 
 			conform = {
-				format_on_save = { timeout_ms = 8000, lsp_fallback = true },
+				format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+				format_after_save = {
+					lsp_format = "fallback",
+				},
 				formatters_by_ft = {
 					lua = { "stylua" },
 					nix = { "nixfmt" },
@@ -140,7 +143,7 @@ return {
 					map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev Diagnostic")
 					map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic")
 					map("n", "<c-f>", function()
-						require("conform").format({ async = false })
+						require("conform").format({ async = true })
 					end, "Format")
 					map("n", "gh", "<cmd>Lspsaga finder<CR>", "LSP Finder")
 					map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", "Code Action")

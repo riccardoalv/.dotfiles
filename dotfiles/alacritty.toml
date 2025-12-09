@@ -38,7 +38,7 @@ hide_when_typing = false
 save_to_clipboard = true
 
 [colors.primary]
-background = '#000000'
+background = '#111111'
 
 [[colors.indexed_colors]]
 color = "#FAB387"

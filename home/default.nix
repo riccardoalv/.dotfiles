@@ -34,6 +34,7 @@
       fd
       gping
       difftastic
+      dblab
 
       # Utils
       scrcpy

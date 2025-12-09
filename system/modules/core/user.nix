@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   time.timeZone = "America/Porto_Velho";
 
   users.users.ricardo = {
@@ -26,10 +25,7 @@
   };
 
   nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
 
@@ -40,11 +36,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
-      zlib
-      gcc
-      openssl_3
-    ];
+    libraries = with pkgs; [ zlib gcc openssl_3 stdenv.cc.cc ];
   };
 
 }
