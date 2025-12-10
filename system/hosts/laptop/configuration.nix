@@ -100,8 +100,6 @@
 
   security.polkit.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
   hardware = {
     enableAllFirmware = true;
     cpu.intel.updateMicrocode = true;

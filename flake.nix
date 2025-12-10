@@ -20,17 +20,21 @@
       system = "x86_64-linux";
       username = "ricardo";
 
-      overlays = [ (import ./system/overlay/gnome.nix) ];
+      overlays = [
+        (import ./system/overlay/gnome.nix)
+        (import ./system/overlay/kernel.nix)
+        (import ./system/overlay/mesa.nix)
+      ];
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = overlays;
+      commonModule = { ... }: {
+        nixpkgs = {
+          overlays = overlays;
+          config.allowUnfree = true;
+        };
       };
 
       homeModule = {
         home-manager.useGlobalPkgs = true;
-        home-manager.extraSpecialArgs = { inherit pkgs; };
         home-manager.users.${username} = import ./home;
       };
     in {
@@ -38,6 +42,7 @@
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            commonModule
             ./system/hosts/laptop
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
@@ -48,6 +53,7 @@
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            commonModule
             ./system/hosts/desktop
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
