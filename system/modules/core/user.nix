@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   time.timeZone = "America/Porto_Velho";
 
   users.users.ricardo = {
@@ -7,6 +8,7 @@
     description = "Ricardo";
     extraGroups = [
       "wheel"
+      "bluetooth"
       "wireshark"
       "networkmanager"
       "docker"
@@ -17,6 +19,7 @@
       "adbusers"
       "input"
       "video"
+      "render"
       "audio"
       "rtkit"
       "colord"
@@ -24,9 +27,22 @@
     ];
   };
 
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
+  nix = {
+    optimise = {
+      automatic = true;
+      dates = [ "03:00" ];
+    };
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -36,7 +52,11 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [ zlib gcc openssl_3 stdenv.cc.cc ];
+    libraries = with pkgs; [
+      zlib
+      gcc
+      openssl_3
+      stdenv.cc.cc
+    ];
   };
-
 }

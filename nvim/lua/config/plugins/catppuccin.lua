@@ -5,9 +5,16 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
+			compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+			float = {
+				transparent = true,
+				solid = true,
+			},
 			flavour = "mocha",
 			transparent_background = true,
 			show_end_of_buffer = true,
+
+			no_italic = true,
 
 			integrations = {
 				treesitter = true,

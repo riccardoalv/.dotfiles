@@ -52,10 +52,11 @@ return {
 			},
 		},
 	},
-
 	{
 		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		opts = {
 			view = { side = "right", width = 36 },
 			hijack_unnamed_buffer_when_opening = false,
@@ -71,8 +72,21 @@ return {
 			filters = { dotfiles = false, custom = { "^.git$" } },
 		},
 		config = function(_, opts)
-			keymap("n", "<leader>nn", "<cmd>NvimTreeToggle<cr>", {})
+			keymap("n", "<leader>nn", function()
+				vim.cmd("NvimTreeToggle")
+			end, {})
 			require("nvim-tree").setup(opts)
+		end,
+	},
+
+	{
+		"antosha417/nvim-lsp-file-operations",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-tree.lua",
+		},
+		config = function()
+			require("lsp-file-operations").setup()
 		end,
 	},
 }

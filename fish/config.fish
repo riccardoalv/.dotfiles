@@ -11,6 +11,7 @@ if status is-interactive
   alias find='fd '
   alias cd='z '
   alias diff='difft '
+  alias c='restish '
 end
 
 fish_add_path $HOME/.local/bin

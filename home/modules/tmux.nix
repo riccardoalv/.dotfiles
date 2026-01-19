@@ -22,7 +22,7 @@
       # Configure pane selection and Vim navigation
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-      bind r source-file ~/.tmux.conf \; display "Reloaded!"
+      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
       bind o run-shell "open #{pane_current_path}"
 
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'"
@@ -51,8 +51,8 @@
       # Status bar configuration
       set -g status on
       set -g status-justify left
-      set -g status-fg cyan
-      set -g status-bg black
+      # set -g status-fg cyan
+      # set -g status-bg black
       set -g set-titles on
       set -g set-titles-string "#T"
 
@@ -75,26 +75,25 @@
         extraConfig = ''
           set -g @dracula-show-flags true
           set -g @dracula-cpu-usage-colors "pink dark_gray"
-          set -g @dracula-show-left-sep ""
-          set -g @dracula-show-right-sep ""
+          set -g @dracula-show-left-sep " "
+          set -g @dracula-show-right-sep " "
 
           set -g @dracula-show-left-icon " "
           set -g @dracula-show-powerline true
-          set -g @dracula-plugins "git ssh-session"
-          set -g @dracula-show-ssh-session-port true
+          set -g @dracula-plugins "git"
 
           set -g @dracula-colors "
           white='#f8f8f2'
           gray='#1c1c1c'
           dark_gray='#000000'
           light_purple='#bd93f9'
-          dark_purple='#6272a4'
+          dark_purple='#38383B'
           cyan='#8be9fd'
-          green='#50fa7b'
+          green='#383838'
           orange='#ffb86c'
           red='#ff5555'
           pink='#ff79c6'
-          yellow='#f1fa8c'
+          yellow='#383838'
           "
         '';
       }

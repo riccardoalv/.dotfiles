@@ -1,3 +1,25 @@
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	callback = function(args)
+		if vim.bo[args.buf].buftype ~= "quickfix" then
+			return
+		end
+
+		vim.schedule(function()
+			local win = vim.fn.bufwinid(args.buf)
+			if win ~= -1 and vim.api.nvim_win_is_valid(win) then
+				pcall(vim.api.nvim_win_close, win, true)
+			end
+
+			local ok, builtin = pcall(require, "telescope.builtin")
+			if ok then
+				builtin.quickfix()
+			else
+				pcall(vim.cmd, "Telescope quickfix")
+			end
+		end)
+	end,
+})
+
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
@@ -95,11 +117,10 @@ return {
 
 		telescope.setup({
 			defaults = {
-				winblend = 10,
 				layout_strategy = "flex",
 				layout_config = {
-					height = 0.90,
-					width = 0.90,
+					height = 0.80,
+					width = 0.65,
 					prompt_position = "top",
 				},
 				sorting_strategy = "ascending",

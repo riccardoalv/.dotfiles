@@ -3,29 +3,16 @@ local keymap = vim.keymap.set
 
 -- Toggle mouse
 function ToggleMouse()
-  if vim.o.mouse == "a" then
-    vim.o.mouse = ""
-    vim.notify("Mouse OFF")
-  else
-    vim.o.mouse = "a"
-    vim.notify("Mouse ON")
-  end
+	if vim.o.mouse == "a" then
+		vim.o.mouse = ""
+		vim.notify("Mouse OFF")
+	else
+		vim.o.mouse = "a"
+		vim.notify("Mouse ON")
+	end
 end
 
 keymap("n", "<space>m", ToggleMouse)
-
--- Toggle clipboard
-function ToggleClipboard()
-  if vim.o.clipboard == "unnamedplus" then
-    vim.o.clipboard = ""
-    vim.notify("Clipboard OFF")
-  else
-    vim.o.clipboard = "unnamedplus"
-    vim.notify("Clipboard ON")
-  end
-end
-
-keymap("n", "<space>c", ToggleClipboard)
 
 -- movement
 keymap("n", "0", "^", opts)
@@ -55,7 +42,8 @@ keymap("v", "<C-c>", "<esc>", opts)
 keymap("n", "<leader>h", ":noh<cr>", opts)
 
 -- copy
-keymap("n", "Y", "y$", opts)
+keymap({ "n", "v" }, "+", '"+', opts)
+keymap("n", "Y", '"+y$', opts)
 
 -- text-objectis quotes
 keymap("o", "ix", [[i']], opts)
@@ -78,9 +66,6 @@ keymap("n", "<A-0>", "<cmd>res -1<cr>", opts)
 keymap("n", "<A-->", "<cmd>res +1<cr>", opts)
 keymap("n", "<A-,>", "<cmd>vertical res -1<cr>", opts)
 keymap("n", "<A-.>", "<cmd>vertical res +1<cr>", opts)
-
--- Fast editing and reloading of vimrc configs
-keymap("n", "<leader>e", "<cmd>vs " .. git_dir .. "/.nvim.lua<cr>")
 
 -- Add undo break-points
 keymap("i", ",", ",<c-g>u", opts)

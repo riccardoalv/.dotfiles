@@ -1,9 +1,19 @@
 { config, lib, ... }:
 
-with lib.hm.gvariant; {
+with lib.hm.gvariant;
+{
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "br" ]) ];
+      sources = [
+        (mkTuple [
+          "xkb"
+          "us"
+        ])
+        (mkTuple [
+          "xkb"
+          "br"
+        ])
+      ];
       xkb-options = [
         "ctrl:swapcaps"
         "fkeys:basic_13-24"
@@ -22,16 +32,16 @@ with lib.hm.gvariant; {
       click-method = "areas";
       tap-to-click = true;
     };
-    "org/gnome/mutter" = { center-new-windows = true; };
+    "org/gnome/mutter" = {
+      center-new-windows = true;
+    };
     "org/gnome/settings-daemon/plugins/power" = {
       power-button-action = "hibernate";
       power-saver-profile-on-low-battery = true;
     };
     "org/gnome/desktop/background" = {
-      picture-uri =
-        "file:///home/ricardo/Pictures/wallpapers/wavy-abstract-black-yellow-background.jpg";
-      picture-uri-dark =
-        "file:///home/ricardo/Pictures/wallpapers/wavy-abstract-black-yellow-background.jpg";
+      picture-uri = "file:///home/ricardo/Pictures/wallpapers/wavy-abstract-black-yellow-background.jpg";
+      picture-uri-dark = "file:///home/ricardo/Pictures/wallpapers/wavy-abstract-black-yellow-background.jpg";
     };
     "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -40,7 +50,6 @@ with lib.hm.gvariant; {
         "org.gnome.Nautilus.desktop"
         "google-chrome.desktop"
         "com.spotify.Client.desktop"
-        "org.gnome.Geary.desktop"
         "obsidian.desktop"
       ];
       enabled-extensions = [
@@ -70,7 +79,9 @@ with lib.hm.gvariant; {
       play = [ "Pause" ];
       previous = [ "<Alt><Super>Left" ];
     };
-    "org/gnome/tweaks" = { show-extensions-notice = false; };
+    "org/gnome/tweaks" = {
+      show-extensions-notice = false;
+    };
     "org/gnome/deja-dup" = {
       backend = "remote";
       delete-after = 0;

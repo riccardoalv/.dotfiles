@@ -10,7 +10,6 @@
       "vm.swappiness" = 20;
       "vm.watermark_scale_factor" = 500;
       "vm.min_free_kbytes" = 131072;
-      "net.ipv4.tcp_congestion_control" = "bbr";
       "vm.overcommit_memory" = 1;
       "net.ipv4.ip_forward" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
@@ -64,7 +63,6 @@
       };
     };
     kernelModules = [
-      "tcp_bbr"
       "kvm-intel"
       "netconsole"
       "i2c-dev"
@@ -78,11 +76,11 @@
     kernelParams = [
       "intel_pstate=active"
       "sched_energy_cost"
+      "i915.enable_guc=3"
       "i915.enable_psr=1"
       "i915.enable_rc6=7"
       "pcie_aspm=force"
       "i915.force_probe=a7a0"
-      "cpufreq.default_governor=schedutil"
       "random.trust_cpu=on"
       "quiet"
       "splash"
@@ -101,18 +99,21 @@
   security.polkit.enable = true;
 
   hardware = {
+    enableRedistributableFirmware = true;
     enableAllFirmware = true;
     cpu.intel.updateMicrocode = true;
     sensor.iio.enable = true;
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        libva-vdpau-driver
-        libvdpau-va-gl
+        intel-media-driver
         vpl-gpu-rt
+        intel-compute-runtime
       ];
     };
   };
+
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
@@ -129,7 +130,6 @@
 
   security.pam.services.sudo.fprintAuth = false;
 
-  services.hdapsd.enable = true;
   services.fstrim.enable = true;
 
   swapDevices = [{

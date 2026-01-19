@@ -6,7 +6,7 @@ local function get_git_dir()
 	return vim.fn.system("git rev-parse --show-toplevel 2>/dev/null"):sub(1, -2)
 end
 
-git_dir = get_git_dir()
+local git_dir = get_git_dir()
 
 if git_dir ~= "" then
 	vim.cmd("cd " .. git_dir)
@@ -79,7 +79,7 @@ vim.api.nvim_set_var("vimsyn_embed", "lPr")
 vim.g["markdown_fenced_languages"] = { "html", "python", "ruby", "vim", "javascript", "json", "css" }
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	group = augroup("hilight_white_spaces"),
-	callback = function(event)
+	callback = function()
 		vim.fn.matchadd("TrailingWhitespace", [[\v\s+$]])
 		vim.cmd("hi TrailingWhitespace ctermbg=red guibg=red")
 	end,

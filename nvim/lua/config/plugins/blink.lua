@@ -5,14 +5,6 @@ return {
 		event = "InsertEnter",
 
 		opts = {
-			formatting = {
-				fields = { "abbr", "menu" },
-				format = function(_, item)
-					item.kind = ""
-					return item
-				end,
-			},
-
 			keymap = {
 				preset = "default",
 				["<C-k>"] = { "select_prev", "fallback" },

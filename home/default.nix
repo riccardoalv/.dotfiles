@@ -8,7 +8,6 @@
       fragments
       docker-compose
       gparted
-      wine
 
       # Terminal apps
       tmux
@@ -40,14 +39,12 @@
       scrcpy
       nmap
       eyedropper
-      # nerd-fonts.fira-code
-      # nerd-fonts.droid-sans-mono
-      # nerd-fonts.ubuntu-mono
       obsidian
       google-chrome
       vesktop
       helvum
       slack
+      packet
     ];
 
     qt = {
@@ -132,7 +129,7 @@
       extraPackages = with pkgs; [
         lua-language-server
         nil
-        nixfmt-classic
+        nixfmt
         stylua
         clang
         gcc
