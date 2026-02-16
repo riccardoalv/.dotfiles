@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  imports = [ ./modules/dconf.nix ./modules/tmux.nix ];
+{ pkgs, ... }:
+{
+  imports = [
+    ./modules/dconf.nix
+    ./modules/tmux.nix
+  ];
   config = {
     home.packages = with pkgs; [
       alacritty
@@ -90,14 +94,17 @@
           Restart = "on-failure";
           Type = "oneshot";
           PassEnvironment = "DISPLAY";
-          ExecStart =
-            "/run/current-system/sw/bin/gio mount smb://192.168.1.10/Backups/";
+          ExecStart = "/run/current-system/sw/bin/gio mount smb://192.168.1.10/Backups/";
         };
-        Install = { WantedBy = [ "default.target" ]; };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
 
       organizer = {
-        Unit = { Description = "Automatic organize Downloads dir"; };
+        Unit = {
+          Description = "Automatic organize Downloads dir";
+        };
         Service = {
           Type = "simple";
           ExecStart = "%h/organizer.sh";
@@ -114,7 +121,9 @@
           OnCalendar = "monthly";
           Persistent = true;
         };
-        Install = { WantedBy = [ "timers.target" ]; };
+        Install = {
+          WantedBy = [ "timers.target" ];
+        };
       };
     };
 
@@ -146,8 +155,6 @@
     gtk.theme.name = "Adawaita";
 
     programs.firefox.enable = true;
-
-    services.easyeffects.enable = true;
 
     programs.starship.enable = true;
 

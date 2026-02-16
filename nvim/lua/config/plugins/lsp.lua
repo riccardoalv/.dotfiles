@@ -23,6 +23,12 @@ return {
 
 			servers = {
 				vtsls = {
+					experimental = {
+						diagnostics = {
+							packageWatcher = true,
+						},
+					},
+					autoUseWorkspaceTsdk = true,
 					settings = {
 						typescript = {
 							format = { semicolons = "insert" },

@@ -15,29 +15,31 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, lanzaboote, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      lanzaboote,
+      ...
+    }:
     let
       system = "x86_64-linux";
       username = "ricardo";
 
-      overlays = [
-        (import ./system/overlay/gnome.nix)
-        (import ./system/overlay/kernel.nix)
-        (import ./system/overlay/mesa.nix)
-      ];
-
-      commonModule = { ... }: {
-        nixpkgs = {
-          overlays = overlays;
-          config.allowUnfree = true;
+      commonModule =
+        { ... }:
+        {
+          nixpkgs = {
+            config.allowUnfree = true;
+          };
         };
-      };
 
       homeModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.users.${username} = import ./home;
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;

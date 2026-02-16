@@ -1,10 +1,17 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports = [ ./hardware.nix ../../modules ];
+  imports = [
+    ./hardware.nix
+    ../../modules
+  ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 20;
@@ -25,12 +32,11 @@
     plymouth = {
       enable = true;
       theme = "blockchain";
-      themePackages = with pkgs;
-        [
-          (adi1090x-plymouth-themes.override {
-            selected_themes = [ "blockchain" ];
-          })
-        ];
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "blockchain" ];
+        })
+      ];
     };
     consoleLogLevel = 0;
     initrd = {
@@ -113,7 +119,9 @@
     };
   };
 
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
@@ -132,10 +140,12 @@
 
   services.fstrim.enable = true;
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 32 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
 
   services.displayManager.autoLogin = {
     enable = true;

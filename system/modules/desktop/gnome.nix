@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
@@ -83,14 +84,29 @@
     nautilus-python
     adwaita-icon-theme
     gnomeExtensions.appindicator
-    gnomeExtensions.tailscale-qs
+    gnomeExtensions.tailscale-status
     wg-netmanager
+    networkmanager-openvpn
+    libinput
+    libinput-gestures
+    gnome-color-manager
   ];
+
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
   environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 =
-    lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
-      gst-plugins-good
-      gst-plugins-bad
-      gst-plugins-ugly
-      gst-libav
-    ]);
+    lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
+      (
+        with pkgs.gst_all_1;
+        [
+          gst-plugins-good
+          gst-plugins-bad
+          gst-plugins-ugly
+          gst-libav
+        ]
+      );
 }

@@ -17,9 +17,6 @@ keymap("n", "<space>m", ToggleMouse)
 -- movement
 keymap("n", "0", "^", opts)
 
--- select all
-keymap("n", "aa", "ggVG", opts)
-
 -- next/previous buffer/quickfix list
 keymap("n", "<space>n", ":bn<cr>", opts)
 keymap("n", "<space>p", ":bp<cr>", opts)
@@ -50,16 +47,6 @@ keymap("o", "ix", [[i']], opts)
 keymap("o", "iq", [[i"]], opts)
 keymap("o", "ax", [[a']], opts)
 keymap("o", "aq", [[a!]], opts)
-
--- formatting
-keymap("n", "<A-j>", ":m .+1<cr>==", opts)
-keymap("n", "<A-k>", ":m .-2<cr>==", opts)
-keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", opts)
-keymap("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", opts)
-keymap("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", opts)
-keymap("n", "<space><tab>", "i<cr><esc>", opts)
-keymap("n", "<space><space>", "i<space><esc>", opts)
 
 -- resize splits
 keymap("n", "<A-0>", "<cmd>res -1<cr>", opts)

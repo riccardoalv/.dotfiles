@@ -56,7 +56,6 @@ with lib.hm.gvariant;
         "appindicatorsupport@rgcjonas.gmail.com"
         "gsconnect@andyholmes.github.io"
         "GPaste@gnome-shell-extensions.gnome.org"
-        "tailscale@joaophi.github.com"
       ];
     };
     "org/gnome/desktop/wm/keybindings" = {
