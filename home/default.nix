@@ -1,54 +1,56 @@
-{ pkgs, ... }:
+{ pkgs, stable, ... }:
 {
   imports = [
     ./modules/dconf.nix
     ./modules/tmux.nix
   ];
   config = {
-    home.packages = with pkgs; [
-      alacritty
+    home.packages = [
+      pkgs.alacritty
       # Web
-      distrobox
-      fragments
-      docker-compose
-      gparted
+      pkgs.distrobox
+      pkgs.fragments
+      pkgs.docker-compose
+      pkgs.gparted
 
       # Terminal apps
-      tmux
-      atuin
-      fzf
-      ripgrep
-      zoxide
-      lazygit
-      tokei
-      bat
-      delta
-      vscode
-      fd
-      yq
-      jq
-      stow
-      entr
-      gh
-      xclip
-      wl-clipboard
-      appimage-run
-      eza
-      fd
-      gping
-      difftastic
-      dblab
+      pkgs.tmux
+      pkgs.atuin
+      pkgs.fzf
+      pkgs.ripgrep
+      pkgs.zoxide
+      pkgs.lazygit
+      pkgs.tokei
+      pkgs.bat
+      pkgs.delta
+      pkgs.vscode
+      pkgs.fd
+      pkgs.yq
+      pkgs.jq
+      pkgs.stow
+      pkgs.entr
+      pkgs.gh
+      pkgs.xclip
+      pkgs.wl-clipboard
+      pkgs.appimage-run
+      pkgs.eza
+      pkgs.fd
+      pkgs.gping
+      pkgs.difftastic
+      pkgs.dblab
 
       # Utils
-      scrcpy
-      nmap
-      eyedropper
-      obsidian
-      google-chrome
-      vesktop
-      helvum
-      slack
-      packet
+      pkgs.scrcpy
+      pkgs.nmap
+      pkgs.eyedropper
+      pkgs.obsidian
+      pkgs.google-chrome
+      pkgs.vesktop
+      pkgs.crosspipe
+      pkgs.slack
+      pkgs.packet
+
+      stable.easyeffects
     ];
 
     qt = {

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    pkgsStable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -18,6 +19,7 @@
   outputs =
     {
       nixpkgs,
+      pkgsStable,
       home-manager,
       lanzaboote,
       ...
@@ -26,16 +28,20 @@
       system = "x86_64-linux";
       username = "ricardo";
 
+      stable = import pkgsStable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
       commonModule =
         { ... }:
         {
-          nixpkgs = {
-            config.allowUnfree = true;
-          };
+          nixpkgs.config.allowUnfree = true;
         };
 
       homeModule = {
         home-manager.useGlobalPkgs = true;
+        home-manager.extraSpecialArgs = { inherit stable; };
         home-manager.users.${username} = import ./home;
       };
     in
@@ -43,6 +49,7 @@
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit stable; };
           modules = [
             commonModule
             ./system/hosts/laptop
@@ -54,6 +61,7 @@
 
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit stable; };
           modules = [
             commonModule
             ./system/hosts/desktop

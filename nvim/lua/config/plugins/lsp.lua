@@ -73,6 +73,8 @@ return {
 					python = { "ruff_format" },
 					prisma = { "prisma_fmt" },
 					markdown = { "prettierd", "prettier" },
+					c = { "clang-format" },
+					cpp = { "clang-format" },
 				},
 			},
 
