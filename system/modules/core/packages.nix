@@ -1,5 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
+    evtest
+    libnotify
     qmk
     binutils
     powertop
@@ -15,7 +18,6 @@
     stow
     cifs-utils
     btrfs-progs
-    gnome-network-displays
     ddcutil
     sbctl
   ];

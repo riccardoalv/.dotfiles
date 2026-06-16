@@ -18,7 +18,6 @@
   services.displayManager = {
     gdm = {
       enable = true;
-      wayland = true;
     };
   };
   security.pam.services.gdm.enable = true;
@@ -31,22 +30,20 @@
   services.libinput.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
 
   xdg = {
     portal = {
       enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     };
   };
 
   systemd.user.services."gnome-shell" = {
     serviceConfig = {
       Slice = "gnome-realtime.slice";
-      CPUSchedulingPolicy = "rr";
-      CPUSchedulingPriority = 50;
-      IOSchedulingClass = "idle";
-      IOSchedulingPriority = 7;
+      IOSchedulingClass = "best-effort";
+      IOSchedulingPriority = 0;
     };
   };
 

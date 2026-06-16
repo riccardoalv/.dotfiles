@@ -1,5 +1,10 @@
 return {
 	{
+		"jmbuhr/otter.nvim",
+		dependencies = { "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
@@ -7,7 +12,6 @@ return {
 				"saghen/blink.cmp",
 				version = "*",
 			},
-
 			"stevearc/conform.nvim",
 			"mfussenegger/nvim-lint",
 		},
@@ -22,6 +26,16 @@ return {
 			},
 
 			servers = {
+				clangd = {
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+						"--header-insertion=never",
+					},
+				},
+				glsl_analyzer = {},
+
 				vtsls = {
 					experimental = {
 						diagnostics = {
@@ -96,11 +110,11 @@ return {
 			local capabilities = ok_blink and blink.get_lsp_capabilities()
 				or vim.lsp.protocol.make_client_capabilities()
 
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
 				callback = function(ev)
 					local bufnr = ev.buf
-
 					local map = function(mode, lhs, rhs, desc)
 						vim.keymap.set(mode, lhs, rhs, {
 							buffer = bufnr,

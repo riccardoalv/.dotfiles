@@ -3,21 +3,13 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        22
-        80
-        443
         631
         1716
-        3000
-        8000
         51413
         57621
-        5353
-        8081
         24800
         7236
         7250
-        9300
       ];
       allowedUDPPorts = [
         631
@@ -41,12 +33,21 @@
     };
 
     usePredictableInterfaceNames = false;
-    networkmanager.enable = true;
+
+    networkmanager = {
+      enable = true;
+      unmanaged = [
+        "interface-name:p2p-wlan0-*"
+        "interface-name:p2p-dev-*"
+      ];
+    };
 
     hostName = "NixOS-Laptop";
   };
 
   services.tailscale.enable = true;
+
+  services.dnsmasq.enable = true;
 
   services.avahi = {
     enable = true;

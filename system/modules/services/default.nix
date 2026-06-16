@@ -6,6 +6,5 @@
     ./qmk.nix
     ./wireshark.nix
     ./docker.nix
-    ./libvirt.nix
   ];
 }

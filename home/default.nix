@@ -7,6 +7,7 @@
   config = {
     home.packages = [
       pkgs.alacritty
+
       # Web
       pkgs.distrobox
       pkgs.fragments
@@ -27,14 +28,12 @@
       pkgs.fd
       pkgs.yq
       pkgs.jq
-      pkgs.stow
       pkgs.entr
       pkgs.gh
       pkgs.xclip
       pkgs.wl-clipboard
       pkgs.appimage-run
       pkgs.eza
-      pkgs.fd
       pkgs.gping
       pkgs.difftastic
       pkgs.dblab
@@ -137,6 +136,7 @@
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
+      sideloadInitLua = true;
       extraPackages = with pkgs; [
         lua-language-server
         nil
@@ -154,13 +154,13 @@
       ];
     };
 
-    gtk.theme.name = "Adawaita";
+    gtk.theme.name = "Adwaita";
 
     programs.firefox.enable = true;
 
     programs.starship.enable = true;
 
-    home.stateVersion = "25.05";
+    home.stateVersion = "26.05";
 
     programs.home-manager.enable = true;
   };

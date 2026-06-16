@@ -1,31 +1,48 @@
 return {
 	"ThePrimeagen/refactoring.nvim",
-	depedencies = {
-		"nvim-telescope/telescope.nvim",
+	lazy = false,
+	dependencies = {
+		"lewis6991/async.nvim",
+		"nvim-lua/plenary.nvim",
+		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
 		local keymap = vim.keymap.set
 
-		require("telescope").load_extension("refactoring")
-		keymap("v", "<space>rt", require("telescope").extensions.refactoring.refactors, { noremap = true })
-
 		keymap("n", "<space>rp", function()
-			require("refactoring").debug.printf({ below = false })
-		end, { noremap = true })
+			return require("refactoring.debug").print_loc({ output_location = "above" })
+		end, { desc = "Debug print location above", expr = true })
 
-		keymap("v", "<space>rp", require("refactoring").debug.print_var)
-		keymap("n", "<space>rc", require("refactoring").debug.cleanup)
+		keymap("x", "<space>rp", function()
+			return require("refactoring.debug").print_var({ output_location = "below" })
+		end, { desc = "Debug print var below", expr = true })
 
-		keymap("x", "<leader>re", ":Refactor extract ")
-		keymap("x", "<leader>rf", ":Refactor extract_to_file ")
+		keymap({ "n", "x" }, "<space>rc", function()
+			return require("refactoring.debug").cleanup()
+		end, { desc = "Cleanup debug prints", expr = true })
 
-		keymap("x", "<leader>rv", ":Refactor extract_var ")
+		keymap("x", "<leader>re", function()
+			return require("refactoring").extract_func()
+		end, { desc = "Extract Function", expr = true })
 
-		keymap({ "n", "x" }, "<leader>ri", ":Refactor inline_var")
+		keymap("x", "<leader>rf", function()
+			return require("refactoring").extract_func_to_file()
+		end, { desc = "Extract Function to File", expr = true })
 
-		keymap("n", "<leader>rI", ":Refactor inline_func")
+		keymap("x", "<leader>rv", function()
+			return require("refactoring").extract_var()
+		end, { desc = "Extract Variable", expr = true })
 
-		keymap("n", "<leader>rb", ":Refactor extract_block")
-		keymap("n", "<leader>rbf", ":Refactor extract_block_to_file")
+		keymap({ "n", "x" }, "<leader>ri", function()
+			return require("refactoring").inline_var()
+		end, { desc = "Inline Variable", expr = true })
+
+		keymap("n", "<leader>rI", function()
+			return require("refactoring").inline_func()
+		end, { desc = "Inline Function", expr = true })
+
+		keymap({ "n", "x" }, "<leader>rs", function()
+			require("refactoring").select_refactor()
+		end, { desc = "Select Refactor" })
 	end,
 }

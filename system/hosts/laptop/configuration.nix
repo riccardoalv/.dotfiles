@@ -12,6 +12,7 @@
   ];
 
   boot = {
+    resumeDevice = "/dev/disk/by-uuid/34be3042-202b-4baf-994f-fcc1c1dc38d4";
     kernel.sysctl = {
       "vm.vfs_cache_pressure" = 50;
       "vm.swappiness" = 20;
@@ -21,13 +22,12 @@
       "net.ipv4.ip_forward" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
       "vm.dirty_expire_centisecs" = 5000;
-      "vm.dirty_ratio" = 25;
-      "vm.dirty_background_ratio" = 10;
       "vm.dirty_background_bytes" = 64 * 1024 * 1024;
       "vm.dirty_bytes" = 256 * 1024 * 1024;
-      "vm.dirty_writeback_centisecs" = 5000;
-      "sched_latency_ns" = 6000000;
-      "sched_min_granularity_ns" = 750000;
+      "vm.dirty_writeback_centisecs" = 500;
+      "vm.page-cluster" = 0;
+      "kernel.sched_latency_ns" = 6000000;
+      "kernel.sched_min_granularity_ns" = 750000;
     };
     plymouth = {
       enable = true;
@@ -45,13 +45,13 @@
     };
 
     lanzaboote = {
-      enable = true;
+      enable = false;
       pkiBundle = "/var/lib/sbctl";
     };
 
     loader = {
       systemd-boot = {
-        enable = lib.mkForce false;
+        enable = lib.mkForce true;
         configurationLimit = 5;
         extraEntries = {
           "loader.conf" = ''
@@ -69,6 +69,7 @@
       };
     };
     kernelModules = [
+      "spi_intel"
       "kvm-intel"
       "netconsole"
       "i2c-dev"
@@ -80,8 +81,10 @@
       "hid_lenovo"
     ];
     kernelParams = [
+      "resume_offset=32366336"
+      "mem_sleep_default=deep"
+      "spi_intel.writeable=1"
       "intel_pstate=active"
-      "sched_energy_cost"
       "i915.enable_guc=3"
       "i915.enable_psr=1"
       "i915.enable_rc6=7"
@@ -102,7 +105,20 @@
     ACTION=="add|change", KERNEL=="nvme[0-9]n1", ATTR{queue/scheduler}="none"
   '';
 
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    sudo.extraRules = [
+      {
+        users = [ "ricardo" ];
+        commands = [
+          {
+            command = "/run/current-system/sw/bin/evtest";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
+  };
 
   hardware = {
     enableRedistributableFirmware = true;
@@ -142,13 +158,23 @@
 
   swapDevices = [
     {
-      device = "/var/lib/swapfile";
-      size = 32 * 1024;
+      device = "/swap/swapfile";
     }
   ];
 
-  services.displayManager.autoLogin = {
+  zramSwap = {
     enable = true;
-    user = "ricardo";
+    memoryPercent = 100;
+  };
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchDocked = "ignore";
+  };
+
+  systemd.sleep.settings = {
+    Sleep = {
+      HibernateDelaySec = "5min";
+    };
   };
 }

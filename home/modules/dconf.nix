@@ -17,7 +17,6 @@ with lib.hm.gvariant;
       xkb-options = [
         "ctrl:swapcaps"
         "fkeys:basic_13-24"
-        "shift:both_capslock"
         "scrolllock:mod3"
       ];
     };
@@ -26,6 +25,9 @@ with lib.hm.gvariant;
       show-battery-percentage = true;
       color-scheme = "prefer-dark";
       monospace-font-name = "UbuntuMono Nerd Font 12";
+    };
+    "org/gnome/desktop/peripherals/touchscreens/0457:0819" = {
+      output = [ "DP-1" ];
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       two-finger-scrolling-enabled = true;
@@ -40,8 +42,8 @@ with lib.hm.gvariant;
       power-saver-profile-on-low-battery = true;
     };
     "org/gnome/desktop/background" = {
-      picture-uri = "file:///home/ricardo/Pictures/wallpapers/wavy-abstract-black-yellow-background.jpg";
-      picture-uri-dark = "file:///home/ricardo/Pictures/wallpapers/wavy-abstract-black-yellow-background.jpg";
+      picture-uri = "file:///home/ricardo/Pictures/wallpapers/San Francisco.jpg";
+      picture-uri-dark = "file:///home/ricardo/Pictures/wallpapers/San Francisco.jpg";
     };
     "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -77,6 +79,14 @@ with lib.hm.gvariant;
       next = [ "<Alt><Super>Right" ];
       play = [ "Pause" ];
       previous = [ "<Alt><Super>Left" ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Shift><Alt>F5";
+      command = "/home/ricardo/toggle_keyboard.sh";
+      name = "Toggle Keyboard";
     };
     "org/gnome/tweaks" = {
       show-extensions-notice = false;
