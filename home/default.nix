@@ -37,6 +37,7 @@
       pkgs.gping
       pkgs.difftastic
       pkgs.dblab
+      pkgs.postgresql
 
       # Utils
       pkgs.scrcpy
@@ -48,8 +49,18 @@
       pkgs.crosspipe
       pkgs.slack
       pkgs.packet
+      pkgs.android-tools
 
       stable.easyeffects
+
+      (pkgs.spotify.overrideAttrs (oldAttrs: {
+        postInstall = (oldAttrs.postInstall or "") + ''
+          wrapProgram $out/bin/spotify \
+            --unset NIXOS_OZONE_WL \
+            --unset ELECTRON_OZONE_PLATFORM_HINT \
+            --set WAYLAND_DISPLAY ""
+        '';
+      }))
     ];
 
     qt = {
@@ -161,6 +172,21 @@
     programs.starship.enable = true;
 
     home.stateVersion = "26.05";
+
+    systemd.user.services.input-remapper-autoload = {
+      Unit = {
+        Description = "Input-Remapper Autoload Presets";
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.input-remapper}/bin/input-remapper-control --command autoload";
+        RemainAfterExit = true;
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
 
     programs.home-manager.enable = true;
   };

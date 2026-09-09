@@ -27,7 +27,11 @@ with lib.hm.gvariant;
       monospace-font-name = "UbuntuMono Nerd Font 12";
     };
     "org/gnome/desktop/peripherals/touchscreens/0457:0819" = {
-      output = [ "DP-1" ];
+      output = [
+        "RTK"
+        "FHD"
+        "demoset-1"
+      ];
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       two-finger-scrolling-enabled = true;
@@ -51,7 +55,7 @@ with lib.hm.gvariant;
         "Alacritty.desktop"
         "org.gnome.Nautilus.desktop"
         "google-chrome.desktop"
-        "com.spotify.Client.desktop"
+        "spotify.desktop"
         "obsidian.desktop"
       ];
       enabled-extensions = [

@@ -103,6 +103,7 @@
 
   services.udev.extraRules = ''
     ACTION=="add|change", KERNEL=="nvme[0-9]n1", ATTR{queue/scheduler}="none"
+    SUBSYSTEM=="input", ATTRS{idVendor}=="55d4", ATTRS{idProduct}=="0664", ENV{ID_INPUT_JOYSTICK}="", ENV{ID_INPUT_GAMEPAD}="", ENV{ID_INPUT_KEYBOARD}="1"
   '';
 
   security = {
@@ -139,11 +140,6 @@
     LIBVA_DRIVER_NAME = "iHD";
   };
 
-  systemd.services.fprintd = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "simple";
-  };
-
   services.fprintd = {
     enable = true;
     tod = {
@@ -153,6 +149,7 @@
   };
 
   security.pam.services.sudo.fprintAuth = false;
+  security.pam.services.login.fprintAuth = pkgs.lib.mkForce true;
 
   services.fstrim.enable = true;
 

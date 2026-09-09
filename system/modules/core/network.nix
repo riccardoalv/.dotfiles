@@ -10,6 +10,7 @@
         24800
         7236
         7250
+        24454
       ];
       allowedUDPPorts = [
         631
@@ -61,5 +62,10 @@
       userServices = true;
       workstation = true;
     };
+  };
+
+  services.openiscsi = {
+    enable = true;
+    name = "iqn.1993-08.org.debian:01:laptop-ricardo";
   };
 }

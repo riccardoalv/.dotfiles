@@ -14,20 +14,27 @@
     excludePackages = with pkgs; [ xterm ];
   };
 
-  services.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome = {
+    enable = true;
+    sessionPath = [ pkgs.gdm ];
+  };
+
   services.displayManager = {
     gdm = {
       enable = true;
     };
   };
   security.pam.services.gdm.enable = true;
-  security.pam.services.login.enable = true;
-  security.pam.services.sudo.enable = true;
   services.accounts-daemon.enable = true;
 
   services.irqbalance.enable = true;
 
   services.libinput.enable = true;
+
+  services.input-remapper = {
+    enable = true;
+    enableUdevRules = true;
+  };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
