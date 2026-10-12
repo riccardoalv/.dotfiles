@@ -1,0 +1,55 @@
+/* Wofi — tema Tokyo Night (estilo Omarchy) */
+* {
+  font-family: 'JetBrainsMono Nerd Font', 'UbuntuMono Nerd Font', monospace;
+  font-size: 14px;
+}
+
+window {
+  background-color: #1a1b26;
+  border: 2px solid #7aa2f7;
+  border-radius: 0;
+}
+
+#input {
+  margin: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 0;
+  background-color: #24283b;
+  color: #c0caf5;
+}
+
+#input image {
+  color: #565f89;
+}
+
+#inner-box,
+#outer-box,
+#scroll {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #1a1b26;
+}
+
+#text {
+  margin: 4px;
+  color: #a9b1d6;
+}
+
+#entry {
+  padding: 4px 10px;
+}
+
+#entry:selected {
+  background-color: #7aa2f7;
+  outline: none;
+}
+
+#entry:selected #text {
+  color: #1a1b26;
+}
+
+#entry image {
+  margin-right: 8px;
+}

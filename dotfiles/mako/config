@@ -1,0 +1,27 @@
+# Mako no estilo Omarchy — tema Tokyo Night
+anchor=top-right
+group-by=app-name,summary,body
+default-timeout=5000
+width=420
+outer-margin=20
+padding=10,15
+border-size=2
+max-icon-size=32
+font=sans-serif 14px
+
+text-color=#a9b1d6
+border-color=#7aa2f7
+background-color=#1a1b26
+
+[app-name=Spotify]
+invisible=1
+
+[mode=do-not-disturb]
+invisible=true
+
+[mode=do-not-disturb app-name=notify-send]
+invisible=false
+
+[urgency=critical]
+default-timeout=0
+layer=overlay

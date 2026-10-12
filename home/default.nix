@@ -6,15 +6,12 @@
   ];
   config = {
     home.packages = [
-      pkgs.alacritty
-
-      # Web
       pkgs.distrobox
       pkgs.fragments
       pkgs.docker-compose
       pkgs.gparted
-
-      # Terminal apps
+      pkgs.google-chrome
+      pkgs.alacritty
       pkgs.tmux
       pkgs.atuin
       pkgs.fzf
@@ -38,18 +35,21 @@
       pkgs.difftastic
       pkgs.dblab
       pkgs.postgresql
-
-      # Utils
+      pkgs.claude-code
+      pkgs.android-tools
+      pkgs.codex
+      pkgs.gcc
       pkgs.scrcpy
-      pkgs.nmap
       pkgs.eyedropper
       pkgs.obsidian
-      pkgs.google-chrome
       pkgs.vesktop
       pkgs.crosspipe
       pkgs.slack
       pkgs.packet
-      pkgs.android-tools
+      pkgs.orca-slicer
+      pkgs.octaveFull
+      pkgs.uv
+      pkgs.ansible
 
       stable.easyeffects
 
@@ -62,6 +62,14 @@
         '';
       }))
     ];
+
+    home.pointerCursor = {
+      enable = true;
+      gtk.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
 
     qt = {
       enable = true;
@@ -87,6 +95,22 @@
       linkStarship = ''
         ln -s -v -f \
         $HOME/.dotfiles/dotfiles/starship.toml $HOME/.config/
+      '';
+      linkHypr = ''
+        ln -s -v -f -n \
+        $HOME/.dotfiles/dotfiles/hypr $HOME/.config/
+      '';
+      linkWaybar = ''
+        ln -s -v -f -n \
+        $HOME/.dotfiles/dotfiles/waybar $HOME/.config/
+      '';
+      linkMako = ''
+        ln -s -v -f -n \
+        $HOME/.dotfiles/dotfiles/mako $HOME/.config/
+      '';
+      linkWofi = ''
+        ln -s -v -f -n \
+        $HOME/.dotfiles/dotfiles/wofi $HOME/.config/
       '';
       linkAlacritty = ''
         mkdir -p $HOME/.config/alacritty/
@@ -172,21 +196,6 @@
     programs.starship.enable = true;
 
     home.stateVersion = "26.05";
-
-    systemd.user.services.input-remapper-autoload = {
-      Unit = {
-        Description = "Input-Remapper Autoload Presets";
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.input-remapper}/bin/input-remapper-control --command autoload";
-        RemainAfterExit = true;
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-    };
 
     programs.home-manager.enable = true;
   };

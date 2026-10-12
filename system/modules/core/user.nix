@@ -56,7 +56,6 @@
     libraries = with pkgs; [
       zlib
       gcc
-      openssl_3
       stdenv.cc.cc
     ];
   };

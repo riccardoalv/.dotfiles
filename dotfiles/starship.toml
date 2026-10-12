@@ -12,7 +12,7 @@ renamed = "r"
 deleted = "x"
 
 [aws]
-symbol = "aws "
+disabled = true
 
 [azure]
 symbol = "az "

@@ -40,6 +40,7 @@ with lib.hm.gvariant;
     };
     "org/gnome/mutter" = {
       center-new-windows = true;
+      dynamic-workspaces = false;
     };
     "org/gnome/settings-daemon/plugins/power" = {
       power-button-action = "hibernate";
@@ -64,6 +65,9 @@ with lib.hm.gvariant;
         "GPaste@gnome-shell-extensions.gnome.org"
       ];
     };
+    "org/gnome/desktop/wm/preferences" = {
+      num-workspaces = 4;
+    };
     "org/gnome/desktop/wm/keybindings" = {
       move-to-monitor-left = [ "<Control><Super>h" ];
       move-to-monitor-right = [ "<Control><Super>l" ];
@@ -77,6 +81,8 @@ with lib.hm.gvariant;
       switch-applications-backward = [ ];
       cycle-windows = [ "<Alt>Tab" ];
       cycle-windows-backward = [ "<Shift><Alt>Tab" ];
+      switch-to-workspace-2 = [ "<Super>Page_Down" ];
+      switch-to-workspace-3 = [ "<Super>Page_Up" ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       logout = [ ];

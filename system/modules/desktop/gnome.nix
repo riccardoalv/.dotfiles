@@ -31,11 +31,6 @@
 
   services.libinput.enable = true;
 
-  services.input-remapper = {
-    enable = true;
-    enableUdevRules = true;
-  };
-
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
 
@@ -94,6 +89,8 @@
     libinput
     libinput-gestures
     gnome-color-manager
+    endeavour
+    convey
   ];
 
   networking.networkmanager = {

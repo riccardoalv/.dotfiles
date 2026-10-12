@@ -20,5 +20,15 @@
     btrfs-progs
     ddcutil
     sbctl
+    net-tools
+    nmap
+    dig
+    traceroute
+    dnsutils
+    ethtool
+    iputils
+    iperf3
+    stdenv.cc
+    gnumake
   ];
 }

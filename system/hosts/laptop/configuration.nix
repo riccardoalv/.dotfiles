@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -53,11 +52,6 @@
       systemd-boot = {
         enable = lib.mkForce true;
         configurationLimit = 5;
-        extraEntries = {
-          "loader.conf" = ''
-            default auto-efi-default
-          '';
-        };
       };
       efi.canTouchEfiVariables = true;
 
@@ -128,6 +122,7 @@
     sensor.iio.enable = true;
     graphics = {
       enable = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         intel-media-driver
         vpl-gpu-rt
@@ -149,7 +144,6 @@
   };
 
   security.pam.services.sudo.fprintAuth = false;
-  security.pam.services.login.fprintAuth = pkgs.lib.mkForce true;
 
   services.fstrim.enable = true;
 
@@ -174,4 +168,6 @@
       HibernateDelaySec = "5min";
     };
   };
+
+  powerManagement.cpuFreqGovernor = "schedutil";
 }

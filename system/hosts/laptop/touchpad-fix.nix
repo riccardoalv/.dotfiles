@@ -59,4 +59,12 @@
       fi
     '';
   };
+
+  # No resume da hibernacao a BIOS executa de novo e volta a gravar GPDI=0,
+  # entao o fix precisa ser reaplicado. O restart re-executa o oneshot acima
+  # (RemainAfterExit o deixa "active", por isso restart e nao start). O script
+  # e idempotente, entao rodar tambem no resume de suspend simples nao faz mal.
+  powerManagement.resumeCommands = ''
+    ${config.systemd.package}/bin/systemctl restart thinkbook-touchpad-fix.service
+  '';
 }
