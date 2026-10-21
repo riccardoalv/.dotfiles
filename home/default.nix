@@ -29,7 +29,22 @@
       pkgs.gh
       pkgs.xclip
       pkgs.wl-clipboard
-      pkgs.appimage-run
+      (pkgs.appimage-run.override {
+        # bibliotecas extras para AppImages que usam WebKitGTK (ex.: Anycubic Slicer Next)
+        extraPkgs =
+          p: with p; [
+            webkitgtk_4_1
+            libsoup_3
+            glib-networking
+            libtiff
+            gst_all_1.gstreamer
+            gst_all_1.gst-plugins-base
+            gst_all_1.gst-plugins-good
+            gst_all_1.gst-libav
+            # AppRun da Anycubic força __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+            mesa
+          ];
+      })
       pkgs.eza
       pkgs.gping
       pkgs.difftastic
