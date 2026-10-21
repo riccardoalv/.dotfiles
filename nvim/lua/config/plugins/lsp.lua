@@ -65,7 +65,19 @@ return {
 				prismals = {
 					cmd = { "npx", "prisma-language-server", "--stdio" },
 				},
-				matlab_ls = {},
+				matlab_ls = {
+					filetypes = { "matlab", "octave" },
+					root_markers = { ".git" },
+					settings = {
+						MATLAB = {
+							-- sem MATLAB instalado (só octave): não tenta lançar o processo
+							installPath = "",
+							matlabConnectionTiming = "never",
+							indexWorkspace = true,
+							telemetry = false,
+						},
+					},
+				},
 			},
 
 			conform = {

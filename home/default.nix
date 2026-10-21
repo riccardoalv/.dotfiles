@@ -186,6 +186,7 @@
         eslint_d
         matlab-language-server
         basedpyright
+        tree-sitter
       ];
     };
 

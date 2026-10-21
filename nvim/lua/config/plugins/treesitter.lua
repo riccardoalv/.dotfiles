@@ -101,7 +101,36 @@ return {
 			live_rename = true,
 		})
 
-		require("nvim-treesitter").setup(opts)
+		require("nvim-treesitter").setup()
+		require("nvim-treesitter").install(opts.ensure_installed)
+
+		-- a branch main não liga highlight/indent sozinha: precisa de vim.treesitter.start()
+		vim.treesitter.language.register("matlab", "octave")
+
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
+			callback = function(args)
+				local buf = args.buf
+				local lang = vim.treesitter.language.get_lang(vim.bo[buf].filetype)
+
+				if not lang or opts.highlight.disable(lang, buf) then
+					return
+				end
+
+				if not vim.treesitter.language.add(lang) then
+					if opts.auto_install and vim.list_contains(require("nvim-treesitter").get_available(), lang) then
+						require("nvim-treesitter").install(lang)
+					end
+					return
+				end
+
+				vim.treesitter.start(buf, lang)
+
+				if not opts.indent.disable(lang, buf) then
+					vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
+			end,
+		})
 
 		require("nvim-treesitter-textobjects").setup({
 			select = {
